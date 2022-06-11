@@ -1,0 +1,28 @@
+/*  COLOR PALETTE  */
+/*  60%  */
+.Navbar {
+  background-color: #fff;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(10px + 1vmin);
+  color: #000;
+}
+.Navbar-logo-container {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: flex-start;
+}
+.Navbar-menu-container {
+  flex-basis: 80%;
+}
+.Navbar-menu-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.Navbar-menu-item {
+  flex-basis: 10%;
+  display: inline-block;
+}/*# sourceMappingURL=Navbar.css.map */

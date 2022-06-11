@@ -1,0 +1,50 @@
+@use '../../scss-components/colors' as clr;
+
+.Navbar {
+
+    background-color: #fff;
+    min-height: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: calc(10px + 1vmin);
+    color: #000;
+
+    &-logo{
+
+        &-container {
+
+            flex-basis: 20%;
+            display: flex;
+            justify-content: flex-start;
+
+        }
+
+    }
+
+    &-menu {
+
+        &-container {
+
+            flex-basis: 80%;
+
+        }
+
+        &-list {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+
+        }
+
+        &-item {
+
+            flex-basis: 10%;
+            display: inline-block;
+
+        }
+
+    }
+
+}

@@ -1,10 +1,12 @@
+@use './scss-components/colors' as clr;
+
 .App {
   
     text-align: center;
   
-  &__header {
+  &-header {
 
-    background-color: #282c34;
+    background-color: clr.$dark-grey;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
