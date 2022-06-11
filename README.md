@@ -1,1 +1,1 @@
-# Project `Together`
+# Project 'Together'
