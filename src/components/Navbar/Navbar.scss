@@ -2,13 +2,13 @@
 
 .Navbar {
 
-    background-color: #012676;
+    background-color: clr.$zsti-blue;
     min-height: 5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     font-size: calc(10px + 1vmin);
-    color: #fff;
+    color: clr.$zsti-white;
     padding: 0 6em;
 
     &-logo{
