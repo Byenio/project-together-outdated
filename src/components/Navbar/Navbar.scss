@@ -2,13 +2,14 @@
 
 .Navbar {
 
-    background-color: #fff;
+    background-color: #012676;
     min-height: 5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     font-size: calc(10px + 1vmin);
-    color: #000;
+    color: #fff;
+    padding: 0 6em;
 
     &-logo{
 
@@ -17,6 +18,12 @@
             flex-basis: 20%;
             display: flex;
             justify-content: flex-start;
+
+        }
+
+        &-image {
+
+            height: 6vh;
 
         }
 

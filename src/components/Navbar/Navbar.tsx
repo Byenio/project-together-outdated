@@ -5,7 +5,7 @@ function Navbar() {
     return (
         <div className="Navbar">
             <div className="Navbar-logo-container">
-                <img src="" alt="Logo" className="Navbar-logo-image" />
+                <img src={require("../../images/logo.png")} alt="Logo" className="Navbar-logo-image" />
             </div>
             <div className="Navbar-menu-container">
                 <ul className="Navbar-menu-list">
