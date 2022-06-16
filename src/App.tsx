@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Posts from './components/Posts/Posts';
-import MyAccount from './components/MyAccount/MyAccount';
+import Account from './components/Account/Account';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export interface IAppProps {}
@@ -14,21 +14,12 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
                 <Navbar />
                 <Routes>
                     <Route path='/posts' element={<Posts />} />
+                    <Route path='/account' element={<Account />} />
                 </Routes>
             </BrowserRouter>
         </div>
         
     );
 };
-
-/*function App() {
-    return (
-        <div className="App">
-            <Navbar />
-            <Posts path='/posts' />
-            <MyAccount />
-        </div>
-    );
-}*/
 
 export default App;

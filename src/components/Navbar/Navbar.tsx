@@ -18,8 +18,8 @@ const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
                     <Link to="/posts">
                         <li className="Navbar-menu-item">Posts</li>
                     </Link>
-                    <Link to="/about">
-                        <li className="Navbar-menu-item">About</li>
+                    <Link to="/account">
+                        <li className="Navbar-menu-item">Account</li>
                     </Link>
                 </ul>
             </div>
