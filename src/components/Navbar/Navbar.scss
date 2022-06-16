@@ -43,12 +43,16 @@
             flex-direction: row;
             justify-content: flex-end;
 
+            & a {
+                flex-basis: 10%;
+            }
+
         }
 
         &-item {
-
-            flex-basis: 10%;
+            
             display: inline-block;
+            color: clr.$zsti-white;
 
         }
 
