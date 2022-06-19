@@ -3,7 +3,7 @@ import './Posts.css';
 
 export interface IPostsProps {}
 
-const Posts: React.FunctionComponent<IPostsProps> = (props) => {
+export const Posts: React.FunctionComponent<IPostsProps> = (props) => {
     return (
         <div className="Posts">
             <div className="Posts-post">Post 1</div>
@@ -12,5 +12,3 @@ const Posts: React.FunctionComponent<IPostsProps> = (props) => {
         </div>
     );
 };
-
-export default Posts;
