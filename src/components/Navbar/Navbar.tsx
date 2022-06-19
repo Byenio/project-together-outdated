@@ -7,7 +7,7 @@ export interface INavbarProps {};
 
 export const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
 
-    if (getCookie('logged')) {
+    if (!getCookie('logged')) {
         return (
             <div className="Navbar">
                 <div className="Navbar-logo-container">
@@ -20,17 +20,19 @@ export const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
                         <Link to="/">
                             <li className="Navbar-menu-item">Home</li>
                         </Link>
-                        <Link to="/posts">
+                        <Link to="/login">
                             <li className="Navbar-menu-item">Posty</li>
                         </Link>
-                        <Link to="/account">
-                            <li className="Navbar-menu-item">Konto</li>
+                        <Link to="/login">
+                            <li className="Navbar-menu-item">Logowanie</li>
                         </Link>
                     </ul>
                 </div>
             </div>
         );
-    } else return (
+    };
+
+    return (
         <div className="Navbar">
             <div className="Navbar-logo-container">
                 <Link to="/">
@@ -45,8 +47,8 @@ export const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
                     <Link to="/posts">
                         <li className="Navbar-menu-item">Posty</li>
                     </Link>
-                    <Link to="/login">
-                        <li className="Navbar-menu-item">Logowanie</li>
+                    <Link to="/account">
+                        <li className="Navbar-menu-item">Konto</li>
                     </Link>
                 </ul>
             </div>

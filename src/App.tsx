@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Posts } from './components/Posts/Posts';
 import { Account } from './components/Account/Account';
 import { Login } from './components/Login/Login';
+import { Register } from './components/Register/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export interface IAppProps {}
@@ -17,6 +18,7 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
                     <Route path='/posts' element={<Posts />} />
                     <Route path='/account' element={<Account />} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
                 </Routes>
             </BrowserRouter>
         </div>
