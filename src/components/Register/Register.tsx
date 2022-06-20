@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Register.css';
 
 export interface IRegisterProps {};
 
 export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
+
+    useEffect(() => {
+
+        fetchItems();
+
+    }, []);
+
+    const [classListItems, setClassListItems] = useState<any[]>([]);
+
+    const fetchItems = async () => {
+
+        const classList = await fetch(
+            'http://localhost/api.php/classes/list'
+        );
+
+        const classListItems = await classList.json();
+        console.log(classListItems.items[0]);
+        setClassListItems(classListItems.items);
+
+    }
 
     return (
 
@@ -24,6 +44,15 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
                 <div className="form-group">
                     <label htmlFor="email">Email</label><br />
                     <input type="email" name="email" id="email" placeholder="example@example.com" required />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="class">Klasa</label><br />
+                    <select name="class" id="class">
+                        { classListItems.map(item => (
+                            <option value="item.id">{item.name}</option>
+                        )) }
+                    </select>
                 </div>
                     
                 <div className="form-group">
