@@ -20,7 +20,6 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
         );
 
         const classListItems = await classList.json();
-        console.log(classListItems.items[0]);
         setClassListItems(classListItems.items);
 
     }
@@ -29,7 +28,7 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
 
         <div className="Register">
 
-            <form action="../../scripts/php/register.php" method="post">
+            <form action="http://localhost:8000/src/scripts/php/register.php" method="POST">
 
                 <div className="form-group">
                     <label htmlFor="fname">Imię</label><br />
@@ -49,15 +48,18 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
                 <div className="form-group">
                     <label htmlFor="class">Klasa</label><br />
                     <select name="class" id="class">
-                        { classListItems.map(item => (
-                            <option value="item.id">{item.name}</option>
-                        )) }
+                        { classListItems.map(item => ( <option value={item.id} key={item.id}>{item.name}</option> )) }
                     </select>
                 </div>
                     
                 <div className="form-group">
                     <label htmlFor="password">Hasło</label><br />
                     <input type="password" name="password" id="password" placeholder="********" required />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="password-repeat">Powtórz hasło</label><br />
+                    <input type="password" name="password-repeat" id="password-repeat" placeholder="********" required />
                 </div>
 
                 <input type="submit" value="Zarejestruj" />
