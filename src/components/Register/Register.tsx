@@ -28,7 +28,7 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
 
         <div className="Register">
 
-            <form action="http://localhost:8000/src/scripts/php/register.php" method="POST">
+            <form action="http://localhost/src/scripts/php/register.php" method="POST">
 
                 <div className="form-group">
                     <label htmlFor="fname">Imię</label><br />
