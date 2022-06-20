@@ -1,4 +1,4 @@
-export function getCookie(name: string): string {
+export function getCookie(name: string): string | null {
     const nameLenPlus = (name.length + 1);
     return document.cookie
             .split(';')
