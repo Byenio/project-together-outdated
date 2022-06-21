@@ -6,13 +6,13 @@ import { Account } from './components/Account/Account';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { getCookie } from './scripts/tsx/getCookie';
+import { checkAuth } from './scripts/tsx/checkAuth';
 
 export interface IAppProps {}
 
 export const App: React.FunctionComponent<IAppProps> = (props) => {
 
-    if (!getCookie('logged')) {
+    if (!checkAuth()) {
 
         return (
 
@@ -20,7 +20,7 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
                 <BrowserRouter>
                     <Navbar />
                     <Routes>
-                        <Route path='/posts' element={<Posts />} />
+                        <Route path='/posts' element={<Login />} />
                         <Route path='/account' element={<Login />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />

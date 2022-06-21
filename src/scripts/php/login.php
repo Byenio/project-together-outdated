@@ -30,7 +30,7 @@
 
     if (!checkEmail($conn, $query)) {
 
-        setcookie('userExists', false, strtotime('+10 minutes'), '/');
+        setcookie('userExists', false, 0, '/');
 
         header("Location: http://localhost:3000/register");
         exit();
@@ -46,7 +46,7 @@
 
     if (!checkPass($student, $pass)) {
 
-        setcookie('invalidAuth', true, strtotime('+10 minutes'), '/');
+        setcookie('invalidAuth', true, 0, '/');
 
         header('Location: http://localhost:3000/login');
         exit();
@@ -55,9 +55,9 @@
 
     if ($conn -> connect_error) { die('Connection error: ' . $conn -> connect_error); }
 
-    setcookie('logged', true, strtotime('+30 days'), '/');
-    setcookie('user["email"]', $email, strtotime('+30 days'), '/');
-    setcookie('user["password"]', $pass, strtotime('+30 days'), '/');
+    setcookie('logged', true, 0, '/');
+    setcookie('user["email"]', $email, 0, '/');
+    setcookie('user["password"]', $pass, 0, '/');
 
     header("Location: http://localhost:3000/account");
     exit();
