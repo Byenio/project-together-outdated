@@ -65,9 +65,10 @@
     $stmt -> close();
     $conn -> close();
 
-    setcookie('logged', true, strtotime('+30 days'), '/');
-    setcookie('user["email"]', $email, strtotime('+30 days'), '/');
-    setcookie('user["password"]', md5($pass), strtotime('+30 days'), '/');
+    setcookie('logged', true, 0, '/');
+    setcookie('user["email"]', $email, 0, '/');
+    setcookie('user["password"]', md5($pass), 0, '/');
+    setcookie('user["isTeacher"]', false, 0, '/');
 
     header("Location: http://localhost:3000/login");
     exit();

@@ -7,7 +7,8 @@
     $email = $_POST['email'];
     $pass = md5($_POST['password']);
 
-    $query = "SELECT email, password FROM students WHERE email = '".$email."';";
+    $queryStudent = "SELECT email, password FROM students WHERE email = '".$email."';";
+    $queryTeacher = "SELECT email, password FROM teachers WHERE email = '".$email."';";
 
     include './php-components/connect.php';
 
@@ -16,19 +17,21 @@
     setcookie('user["email"]', false, -1, '/');
     setcookie('user["password"]', false, -1, '/');
     setcookie('invalidAuth', false, -1, '/');
+    setcookie('isTeacher', false, -1, '/');
 
-    $student = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+    $student = mysqli_fetch_array(mysqli_query($conn, $queryStudent), MYSQLI_ASSOC);
+    $teacher = mysqli_fetch_array(mysqli_query($conn, $queryTeacher), MYSQLI_ASSOC);
 
     function checkEmail($conn, $query) {
 
-        $student = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+        $user = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
         
-        if (!$student) { return false; }
+        if (!$user) { return false; }
         return true;
 
     }
 
-    if (!checkEmail($conn, $query)) {
+    if (!checkEmail($conn, $queryStudent) && !checkEmail($conn, $queryTeacher)) {
 
         setcookie('userExists', false, 0, '/');
 
@@ -37,21 +40,37 @@
 
     }
 
-    function checkPass($student, $pass) {
+    function who($conn, $queryStudent, $queryTeacher) {
+        
+        if (checkEmail($conn, $queryTeacher)) { return 'teacher'; }
+        if (checkEmail($conn, $queryStudent)) { return 'student'; }
 
-        if ($student['password'] == $pass) return true;
+    }
+
+    function checkPass($user, $pass) {
+
+        if ($user['password'] == $pass) return true;
         return false;
 
     }
 
-    if (!checkPass($student, $pass)) {
+    function validAuth($user, $pass) {
 
-        setcookie('invalidAuth', true, 0, '/');
+        if (!checkPass($user, $pass)) {
 
-        header('Location: http://localhost:3000/login');
-        exit();
-        
+            setcookie('invalidAuth', true, 0, '/');
+
+            header('Location: http://localhost:3000/login');
+            exit();
+
+        }
+
+        return true;
+
     }
+
+    if (who($conn, $queryStudent, $queryTeacher) == 'student') { validAuth($student, $pass); }
+    if (who($conn, $queryStudent, $queryTeacher) == 'teacher') { validAuth($teacher, $pass); }
 
     if ($conn -> connect_error) { die('Connection error: ' . $conn -> connect_error); }
 
