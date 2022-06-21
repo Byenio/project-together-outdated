@@ -5,15 +5,9 @@
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $uri = explode('/', $uri);
 
-    if ((isset($uri[2]) && ($uri[2] != 'posts' && $uri[2] != 'classes')) || !isset($uri[3])) {
-
-        header("HTTP/1.1 404 Not Found");
-        exit();
-
-    }
-
     require PROJECT_ROOT_PATH."/Controller/Api/PostController.php";
     require PROJECT_ROOT_PATH."/Controller/Api/ClassController.php";
+    require PROJECT_ROOT_PATH."/Controller/Api/UserPostController.php";
 
     if ((isset($uri[2]) && ($uri[2] == 'posts'))) {
 
@@ -21,12 +15,25 @@
         $strMethodName = $uri[3].'PostAction';
         $objFeedController -> {$strMethodName}();
 
-    } elseif ((isset($uri[2]) && ($uri[2] == 'classes'))) {
+    } 
+
+    if ((isset($uri[2]) && ($uri[2] == 'classes'))) {
 
         $objFeedController = new ClassController();
         $strMethodName = $uri[3].'ClassAction';
         $objFeedController -> {$strMethodName}();
 
     }
+
+    if ((isset($uri[2]) && ($uri[2] == 'userposts')) && isset($uri[3])) {
+
+        $objFeedController = new UserPostController();
+        $strMethodName = $uri[3].'UserPostAction';
+        $objFeedController -> {$strMethodName}();
+
+    }
+
+    header("HTTP/1.1 404 Not Found");
+    exit();
 
 ?>
