@@ -1,5 +1,10 @@
 <?php
 
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Authorization');
+    header('Access-Control-Allow-Credentials: true');
+
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
 
@@ -34,9 +39,11 @@
 
     if (checkEmail($conn, $getEmailQuery)) {
 
-        setcookie('userExists', true, strtotime('+10 minutes'));
+        setcookie('userExists', true, strtotime('+10 minutes'), '/');
+        setcookie('user["email"]', $email, strtotime('+30 days'), '/');
+        setcookie('user["password"]', md5($pass), strtotime('+30 days'), '/');
 
-        header("Location: http://localhost:3000/register");
+        header("Location: http://localhost:3000/login");
         exit();
 
     }
@@ -64,9 +71,9 @@
     $stmt -> close();
     $conn -> close();
 
-    setcookie('logged', true, strtotime('+30 days'));
-    setcookie('user["email"]', $email, strtotime('+30 days'));
-    setcookie('user["password"]', md5($pass), strtotime('+30 days'));
+    setcookie('logged', true, strtotime('+30 days'), '/');
+    setcookie('user["email"]', $email, strtotime('+30 days'), '/');
+    setcookie('user["password"]', md5($pass), strtotime('+30 days'), '/');
 
     header("Location: http://localhost:3000/login");
     exit();
