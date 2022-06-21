@@ -17,7 +17,7 @@
     setcookie('user["email"]', false, -1, '/');
     setcookie('user["password"]', false, -1, '/');
     setcookie('invalidAuth', false, -1, '/');
-    setcookie('isTeacher', false, -1, '/');
+    setcookie('isTeacher', false, 0, '/');
 
     $student = mysqli_fetch_array(mysqli_query($conn, $queryStudent), MYSQLI_ASSOC);
     $teacher = mysqli_fetch_array(mysqli_query($conn, $queryTeacher), MYSQLI_ASSOC);
@@ -42,8 +42,19 @@
 
     function who($conn, $queryStudent, $queryTeacher) {
         
-        if (checkEmail($conn, $queryTeacher)) { return 'teacher'; }
-        if (checkEmail($conn, $queryStudent)) { return 'student'; }
+        if (checkEmail($conn, $queryTeacher)) {
+            
+            setcookie('isTeacher', true, 0, '/');
+            return 'teacher';
+
+        }
+
+        if (checkEmail($conn, $queryStudent)) {
+
+            setcookie('isTeacher', false, 0, '/');
+            return 'student';
+
+        }
 
     }
 
