@@ -7,8 +7,8 @@
     $email = $_POST['email'];
     $pass = md5($_POST['password']);
 
-    $queryStudent = "SELECT email, password FROM students WHERE email = '".$email."';";
-    $queryTeacher = "SELECT email, password FROM teachers WHERE email = '".$email."';";
+    $queryStudent = "SELECT id, email, password FROM students WHERE email = '".$email."';";
+    $queryTeacher = "SELECT id, email, password FROM teachers WHERE email = '".$email."';";
 
     include './php-components/connect.php';
 
@@ -18,6 +18,7 @@
     setcookie('user["password"]', false, -1, '/');
     setcookie('invalidAuth', false, -1, '/');
     setcookie('isTeacher', false, 0, '/');
+    setcookie('user["id"]', false, -1, '/');
 
     $student = mysqli_fetch_array(mysqli_query($conn, $queryStudent), MYSQLI_ASSOC);
     $teacher = mysqli_fetch_array(mysqli_query($conn, $queryTeacher), MYSQLI_ASSOC);
@@ -76,6 +77,7 @@
 
         }
 
+        setcookie('user["id"]', $user['id'], 0, '/');
         return true;
 
     }

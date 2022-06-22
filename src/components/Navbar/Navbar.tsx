@@ -1,13 +1,13 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import { getCookie } from '../../scripts/tsx/getCookie';
+import { checkAuth } from '../../scripts/tsx/checkAuth';
 
 export interface INavbarProps {};
 
 export const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
 
-    if (!getCookie('logged')) {
+    if (!checkAuth()) {
         return (
             <div className="Navbar">
                 <div className="Navbar-logo-container">

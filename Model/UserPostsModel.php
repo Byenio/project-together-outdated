@@ -6,13 +6,14 @@
 
         public function getUserPosts($id) { 
             
-            if (!isset($_COOKIE['isTeacher'])) {
+            if (!isset($_COOKIE['isTeacher']) && $_COOKIE['isTeacher'] == true) {
 
                 return $this-> select(
                     "SELECT posts.id,
                             subjects.name,
                             students.fName,
                             students.lName,
+                            posts.body,
                             classes.name,
                             types.name
                     FROM posts
@@ -32,6 +33,7 @@
                         subjects.name,
                         teachers.fName,
                         teachers.lName,
+                        posts.body,
                         types.name
                 FROM posts
                 INNER JOIN subjects ON posts.subject = subjects.id
