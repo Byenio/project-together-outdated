@@ -1,3 +1,5 @@
+@use '../../../scss-components/colors' as clr;
+
 .UserPosts {
 
     display: flex;
@@ -12,11 +14,14 @@
 
     .Post {
 
-        box-shadow: 0 0 0 2px #000;
-        border-radius: 2px;
+        border: 1px solid white;
+        background-color: clr.$zsti-white-60;
+        transition: all .5s;
+
+        position: relative;
     
         flex-basis: 60%;
-        margin: 1.5em auto;
+        margin: 2.5em auto;
         padding: 2em;
     
         display: grid;
@@ -27,6 +32,40 @@
         'content content content content content';
 
         font-weight: 500;
+
+        &:hover {
+            cursor: pointer;
+            background-color: clr.$zsti-white;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: inherit;
+            transition: all .5s;
+            border-color: clr.$zsti-yellow;
+        }
+
+        &::before {
+            top: -15px;
+            left: -15px;
+            border-width: 3px 0 0 3px;
+        }
+
+        &::after {
+            bottom: -15px;
+            right: -15px;
+            border-width: 0 3px 3px 0;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            width: calc(30% + 27px);
+            height: calc(30% + 27px);
+        }
     
         &-type {
 

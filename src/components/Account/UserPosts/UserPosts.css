@@ -1,3 +1,7 @@
+/*  COLOR PALETTE  */
+/*  60%  */
+/*  30%  */
+/*  10%  */
 .UserPosts {
   display: flex;
   flex-wrap: wrap;
@@ -7,15 +11,44 @@
   flex-basis: 100%;
 }
 .UserPosts .Post {
-  box-shadow: 0 0 0 2px #000;
-  border-radius: 2px;
+  border: 1px solid white;
+  background-color: rgba(229, 229, 229, 0.3764705882);
+  transition: all 0.5s;
+  position: relative;
   flex-basis: 60%;
-  margin: 1.5em auto;
+  margin: 2.5em auto;
   padding: 2em;
   display: grid;
   gap: 2em;
   grid-template-areas: "type . . . subject" "content content content content content" "content content content content content";
   font-weight: 500;
+}
+.UserPosts .Post:hover {
+  cursor: pointer;
+  background-color: #e5e5e5;
+}
+.UserPosts .Post::before, .UserPosts .Post::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: inherit;
+  transition: all 0.5s;
+  border-color: #f9b522;
+}
+.UserPosts .Post::before {
+  top: -15px;
+  left: -15px;
+  border-width: 3px 0 0 3px;
+}
+.UserPosts .Post::after {
+  bottom: -15px;
+  right: -15px;
+  border-width: 0 3px 3px 0;
+}
+.UserPosts .Post:hover::before, .UserPosts .Post:hover::after {
+  width: calc(30% + 27px);
+  height: calc(30% + 27px);
 }
 .UserPosts .Post-type {
   grid-area: type;

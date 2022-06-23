@@ -56,7 +56,7 @@ export const UserPosts: React.FunctionComponent<IUserPostsProps> = ({ user }: IU
                     
                 ))
             }
-            
+
         </div>
 
     );
