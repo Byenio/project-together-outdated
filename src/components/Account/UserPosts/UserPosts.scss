@@ -15,7 +15,7 @@
     .Post {
 
         border: 1px solid white;
-        background-color: clr.$zsti-white-60;
+        background-color: clr.$zsti-blue-20;
         transition: all .5s;
 
         position: relative;
@@ -35,7 +35,7 @@
 
         &:hover {
             cursor: pointer;
-            background-color: clr.$zsti-white;
+            background-color: clr.$zsti-blue-40;
         }
 
         &::before,

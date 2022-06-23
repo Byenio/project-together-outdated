@@ -12,7 +12,7 @@
 }
 .UserPosts .Post {
   border: 1px solid white;
-  background-color: rgba(229, 229, 229, 0.3764705882);
+  background-color: rgba(1, 38, 118, 0.1254901961);
   transition: all 0.5s;
   position: relative;
   flex-basis: 60%;
@@ -25,7 +25,7 @@
 }
 .UserPosts .Post:hover {
   cursor: pointer;
-  background-color: #e5e5e5;
+  background-color: rgba(1, 38, 118, 0.2509803922);
 }
 .UserPosts .Post::before, .UserPosts .Post::after {
   content: "";
