@@ -88,7 +88,7 @@
     if ($conn -> connect_error) { die('Connection error: ' . $conn -> connect_error); }
 
     setcookie('logged', true, 0, '/');
-    setcookie('user["email"]', $email, 0, '/');
+    setcookie('user["email"]', md5($email), 0, '/');
     setcookie('user["password"]', $pass, 0, '/');
 
     header("Location: http://localhost:3000/account");
