@@ -22,4 +22,4 @@ export const Account: React.FunctionComponent<IAccountProps> = (props) => {
 
     );
 
-};
+}

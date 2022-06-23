@@ -15,6 +15,8 @@
                     $userPostModel = new UserPostsModel();
 
                     $intId = 0;
+                    $key = '';
+                    $pass = '';
 
                     if (isset($arrQueryStringParams['id']) && $arrQueryStringParams['id']) {
 
@@ -22,7 +24,19 @@
 
                     }
 
-                    $arrUserPosts = $userPostModel -> getUserPosts($intId);
+                    if (isset($arrQueryStringParams['key']) && $arrQueryStringParams['key']) {
+
+                        $key = $arrQueryStringParams['key'];
+
+                    }
+
+                    if (isset($arrQueryStringParams['pass']) && $arrQueryStringParams['pass']) {
+
+                        $pass = $arrQueryStringParams['pass'];
+
+                    }
+
+                    $arrUserPosts = $userPostModel -> getUserPosts($intId, $key, $pass);
                     $responseData = '{"items": '.json_encode($arrUserPosts).'}';
 
                 } catch (Error $e) {

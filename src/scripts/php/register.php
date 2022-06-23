@@ -66,7 +66,7 @@
     $conn -> close();
 
     setcookie('logged', true, 0, '/');
-    setcookie('user["email"]', md5($email), 0, '/');
+    setcookie('user["email"]', $email, 0, '/');
     setcookie('user["password"]', md5($pass), 0, '/');
     setcookie('user["isTeacher"]', false, 0, '/');
 
