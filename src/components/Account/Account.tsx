@@ -16,7 +16,7 @@ export const Account: React.FunctionComponent<IAccountProps> = (props) => {
     return (
         
         <div className="Account">
-            <h2>Twoje konto</h2>
+            <h2>Zarządzanie kontem</h2>
             <UserPosts user = { userProps } />
         </div>
 

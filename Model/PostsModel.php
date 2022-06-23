@@ -8,14 +8,14 @@
 
             return $this -> select(
                 "SELECT posts.id,
-                        subjects.name,
+                        subjects.name as 'subject',
                         students.fName as 'studentfname',
                         students.lName as 'studentlname',
                         teachers.fName as 'teacherfname',
                         teachers.lName as 'teacherlname',
                         posts.body,
-                        classes.name,
-                        types.name
+                        classes.name as 'class',
+                        types.name as 'type'
                 FROM posts
                 INNER JOIN subjects ON posts.subject = subjects.id
                 LEFT JOIN students ON posts.tutor = students.id

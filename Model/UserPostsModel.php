@@ -80,12 +80,12 @@
 
                 return $this-> select(
                     "SELECT posts.id,
-                            subjects.name,
+                            subjects.name as 'subject',
                             students.fName,
                             students.lName,
                             posts.body,
-                            classes.name,
-                            types.name
+                            classes.name as 'class',
+                            types.name as 'type'
                     FROM posts
                     INNER JOIN subjects ON posts.subject = subjects.id
                     INNER JOIN students ON posts.tutor = students.id
@@ -100,11 +100,11 @@
 
             return $this-> select(
                 "SELECT posts.id,
-                        subjects.name,
+                        subjects.name as 'subject',
                         teachers.fName,
                         teachers.lName,
                         posts.body,
-                        types.name
+                        types.name as 'type'
                 FROM posts
                 INNER JOIN subjects ON posts.subject = subjects.id
                 INNER JOIN types ON posts.type = types.id

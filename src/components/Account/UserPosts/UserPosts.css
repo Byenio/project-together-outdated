@@ -1,1 +1,30 @@
-/*# sourceMappingURL=UserPosts.css.map */
+.UserPosts {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.UserPosts .Section-title {
+  flex-basis: 100%;
+}
+.UserPosts .Post {
+  box-shadow: 0 0 0 2px #000;
+  border-radius: 2px;
+  flex-basis: 60%;
+  margin: 1.5em auto;
+  padding: 2em;
+  display: grid;
+  gap: 2em;
+  grid-template-areas: "type . . . subject" "content content content content content" "content content content content content";
+  font-weight: 500;
+}
+.UserPosts .Post-type {
+  grid-area: type;
+}
+.UserPosts .Post-subject {
+  grid-area: subject;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.UserPosts .Post-content {
+  grid-area: content;
+}/*# sourceMappingURL=UserPosts.css.map */
