@@ -3,7 +3,7 @@
 /*  30%  */
 /*  10%  */
 .Navbar {
-  background-color: #012676;
+  background-color: rgba(1, 38, 118, 0.8549019608);
   min-height: 5vh;
   display: flex;
   flex-direction: row;

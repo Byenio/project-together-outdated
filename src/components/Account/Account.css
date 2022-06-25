@@ -1,1 +1,18 @@
-/*# sourceMappingURL=Account.css.map */
+/*  COLOR PALETTE  */
+/*  60%  */
+/*  30%  */
+/*  10%  */
+.Account {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.Account h2 {
+  flex-basis: 100%;
+}
+.Account .AccountNav {
+  flex-basis: 26%;
+}
+.Account .UserPosts {
+  flex-basis: 74%;
+}/*# sourceMappingURL=Account.css.map */

@@ -15,7 +15,7 @@
   flex-basis: 100%;
 }
 .UserPosts .Post {
-  border: 1px solid white;
+  border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(229, 229, 229, 0.3764705882);
   transition: all 0.5s;
   position: relative;

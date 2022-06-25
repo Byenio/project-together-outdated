@@ -1,0 +1,27 @@
+@use '../../scss-components/colors' as clr;
+
+.Account {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    h2 {
+
+        flex-basis: 100%;
+
+    }
+
+    .AccountNav {
+
+        flex-basis: 26%;
+
+    }
+
+    .UserPosts {
+
+        flex-basis: 74%;
+
+    }
+
+}

@@ -11,7 +11,7 @@ export const AccountNav: React.FunctionComponent<IAccountNavProps> = (props) => 
 
         return (
 
-            <div className="AccounNatNav">
+            <div className="AccountNav">
 
                 <div className="AccountNav-container">
                     <ul className="AccountNav-list">
@@ -22,7 +22,7 @@ export const AccountNav: React.FunctionComponent<IAccountNavProps> = (props) => 
                             <li className="AccountNav-item">Utwórz post</li>
                         </Link>
                         <Link to="/account/set-tutors">
-                            <li className="AccountNav-item">Dodaj pomagających z bazy</li>
+                            <li className="AccountNav-item">Dodaj pomagających</li>
                         </Link>
                         <Link to="/account/security">
                             <li className="AccountNav-item">Zabezpieczenia</li>
@@ -38,7 +38,7 @@ export const AccountNav: React.FunctionComponent<IAccountNavProps> = (props) => 
 
     return (
 
-        <div className="AccounNatNav">
+        <div className="AccountNav">
 
             <div className="AccountNav-container">
                 <ul className="AccountNav-list">
