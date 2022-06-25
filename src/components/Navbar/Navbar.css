@@ -3,13 +3,13 @@
 /*  30%  */
 /*  10%  */
 .Navbar {
-  background-color: rgba(1, 38, 118, 0.8549019608);
+  flex-basis: 100%;
+  background-color: rgba(33, 41, 64, 0.8784313725);
   min-height: 5vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: calc(10px + 1vmin);
-  color: #e5e5e5;
   padding: 0 6em;
 }
 .Navbar-logo-container {
@@ -32,7 +32,43 @@
   flex-basis: 10%;
 }
 .Navbar-menu-item {
+  border: 1px solid rgba(0, 0, 0, 0);
   display: inline-block;
-  color: #e5e5e5;
-  padding: 0 1em;
+  color: #DEDDD7;
+  padding: 0.5em 1em;
+  margin: 0 0.8em;
+  transition: all 0.2s;
+  position: relative;
+}
+.Navbar-menu-item:hover {
+  color: #EDB938;
+}
+.Navbar-menu-item::before, .Navbar-menu-item::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: inherit;
+  transition: all 0.2s;
+  border-color: #EDB938;
+}
+.Navbar-menu-item::before {
+  top: 0;
+  left: 0;
+  border-width: 0;
+}
+.Navbar-menu-item::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0;
+}
+.Navbar-menu-item:hover::before {
+  border-width: 1px 0 0 1px;
+}
+.Navbar-menu-item:hover::after {
+  border-width: 0 1px 1px 0;
+}
+.Navbar-menu-item:hover::before, .Navbar-menu-item:hover::after {
+  width: calc(10% + 12px);
+  height: calc(10% + 12px);
 }/*# sourceMappingURL=Navbar.css.map */

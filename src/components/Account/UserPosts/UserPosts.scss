@@ -3,9 +3,13 @@
 
 .UserPosts {
 
+    margin-top: 4em;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+
+    flex-basis: 74%;
 
     .Section-title {
 

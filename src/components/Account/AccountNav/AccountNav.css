@@ -20,13 +20,13 @@
   width: 80%;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 0 4px 4px 0;
-  color: #e5e5e5;
-  background-color: rgba(1, 38, 118, 0.6666666667);
+  color: #212940;
+  background-color: #EDB938;
   transition: all 0.2s;
   position: relative;
 }
 .AccountNav-item:hover {
   width: 100%;
   cursor: pointer;
-  background-color: rgba(1, 38, 118, 0.8549019608);
+  background-color: #EDB938;
 }/*# sourceMappingURL=AccountNav.css.map */

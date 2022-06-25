@@ -3,16 +3,15 @@
 /*  30%  */
 /*  10%  */
 .Account {
+  margin-top: 10em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  flex-basis: 26%;
 }
 .Account h2 {
   flex-basis: 100%;
 }
 .Account .AccountNav {
-  flex-basis: 26%;
-}
-.Account .UserPosts {
-  flex-basis: 74%;
+  width: 100%;
 }/*# sourceMappingURL=Account.css.map */

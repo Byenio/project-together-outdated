@@ -5,7 +5,8 @@
     .Post {
 
         border: 1px solid #00000000;
-        background-color: clr.$zsti-white-60;
+        background-color: clr.$zsti-blue-20;
+        color: clr.$zsti-blue;
         transition: all .5s;
     
         position: relative;
@@ -23,11 +24,10 @@
         'content content content content content'
         '. . . . author';
     
-        font-weight: 500;
+        font-weight: 400;
     
         &:hover {
             cursor: pointer;
-            background-color: clr.$zsti-white;
         }
     
         &::before,

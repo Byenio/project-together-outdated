@@ -2,9 +2,12 @@
 
 .Account {
 
+    margin-top: 10em;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex-basis: 26%;
 
     h2 {
 
@@ -14,13 +17,7 @@
 
     .AccountNav {
 
-        flex-basis: 26%;
-
-    }
-
-    .UserPosts {
-
-        flex-basis: 74%;
+        width: 100%;
 
     }
 

@@ -7,9 +7,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
 }
 .App-header {
-  background-color: #e5e5e5;
+  background-color: #1A1E26;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
