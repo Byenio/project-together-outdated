@@ -1,4 +1,5 @@
 @use '../../../scss-components/colors' as clr;
+@import '../../../scss-components/post';
 
 .UserPosts {
 
@@ -12,81 +13,6 @@
 
     }
 
-    .Post {
-
-        border: 1px solid white;
-        background-color: clr.$zsti-blue-20;
-        transition: all .5s;
-
-        position: relative;
-    
-        flex-basis: 60%;
-        margin: 2.5em auto;
-        padding: 2em;
-    
-        display: grid;
-        gap: 2em;
-        grid-template-areas: 
-        'type . . . subject'
-        'content content content content content'
-        'content content content content content';
-
-        font-weight: 500;
-
-        &:hover {
-            cursor: pointer;
-            background-color: clr.$zsti-blue-40;
-        }
-
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: inherit;
-            transition: all .5s;
-            border-color: clr.$zsti-yellow;
-        }
-
-        &::before {
-            top: -15px;
-            left: -15px;
-            border-width: 3px 0 0 3px;
-        }
-
-        &::after {
-            bottom: -15px;
-            right: -15px;
-            border-width: 0 3px 3px 0;
-        }
-
-        &:hover::before,
-        &:hover::after {
-            width: calc(30% + 27px);
-            height: calc(30% + 27px);
-        }
-    
-        &-type {
-
-            grid-area: type;
-
-        }
-
-        &-subject {
-
-            grid-area: subject;
-            text-transform: uppercase;
-            font-weight: 700;
-
-        }
-
-        &-content {
-
-            grid-area: content;
-
-        }
-    
-    }
+    @include post;
 
 }

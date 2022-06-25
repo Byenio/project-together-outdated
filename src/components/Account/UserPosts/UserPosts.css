@@ -2,6 +2,10 @@
 /*  60%  */
 /*  30%  */
 /*  10%  */
+/*  COLOR PALETTE  */
+/*  60%  */
+/*  30%  */
+/*  10%  */
 .UserPosts {
   display: flex;
   flex-wrap: wrap;
@@ -12,20 +16,21 @@
 }
 .UserPosts .Post {
   border: 1px solid white;
-  background-color: rgba(1, 38, 118, 0.1254901961);
+  background-color: rgba(229, 229, 229, 0.3764705882);
   transition: all 0.5s;
   position: relative;
   flex-basis: 60%;
+  max-width: 600px;
   margin: 2.5em auto;
   padding: 2em;
   display: grid;
   gap: 2em;
-  grid-template-areas: "type . . . subject" "content content content content content" "content content content content content";
+  grid-template-areas: "type . . . subject" "content content content content content" "content content content content content" ". . . . author";
   font-weight: 500;
 }
 .UserPosts .Post:hover {
   cursor: pointer;
-  background-color: rgba(1, 38, 118, 0.2509803922);
+  background-color: #e5e5e5;
 }
 .UserPosts .Post::before, .UserPosts .Post::after {
   content: "";
@@ -60,4 +65,7 @@
 }
 .UserPosts .Post-content {
   grid-area: content;
+}
+.UserPosts .Post-author {
+  grid-area: author;
 }/*# sourceMappingURL=UserPosts.css.map */

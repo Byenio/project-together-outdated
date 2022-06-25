@@ -5,6 +5,9 @@ import { Posts } from './components/Posts/Posts';
 import { Account } from './components/Account/Account';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
+import { Security } from './components/Account/Security/Security';
+import { SetTutors } from './components/Account/SetTutors/SetTutors';
+import { AddPost } from './components/Account/AddPost/AddPost';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { checkAuth } from './scripts/tsx/checkAuth';
 
@@ -24,6 +27,9 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
                         <Route path='/account' element={<Login />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
+                        <Route path='/account/add-post' element={<AddPost />} />
+                        <Route path='/account/set-tutors' element={<SetTutors />} />
+                        <Route path='/account/security' element={<Security />} />
                     </Routes>
                 </BrowserRouter>
             </div>
@@ -42,6 +48,9 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
                     <Route path='/account' element={<Account />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/account/add-post' element={<AddPost />} />
+                    <Route path='/account/set-tutors' element={<SetTutors />} />
+                    <Route path='/account/security' element={<Security />} />
                 </Routes>
             </BrowserRouter>
         </div>
