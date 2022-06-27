@@ -58,7 +58,7 @@
 
     if ($conn -> connect_error) { die("Connection error: " . $conn -> connect_error); }
 
-    $stmt = $conn ->prepare($insertStudentsQuery);
+    $stmt = $conn -> prepare($insertStudentsQuery);
 
     $stmt -> bind_param("ssssi", $fname, $lname, $email, $pass, $class);
     $execval = $stmt -> execute();

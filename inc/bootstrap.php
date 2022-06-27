@@ -7,5 +7,7 @@
     require_once PROJECT_ROOT_PATH."/Model/PostsModel.php";
     require_once PROJECT_ROOT_PATH."/Model/ClassesModel.php";
     require_once PROJECT_ROOT_PATH."/Model/UserPostsModel.php";
+    require_once PROJECT_ROOT_PATH."/Model/SubjectsModel.php";
+    require_once PROJECT_ROOT_PATH."/Model/TypesModel.php";
 
 ?>

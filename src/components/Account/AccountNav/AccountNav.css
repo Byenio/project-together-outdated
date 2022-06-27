@@ -26,7 +26,7 @@
   position: relative;
 }
 .AccountNav-item:hover {
-  width: 100%;
+  width: 90%;
   cursor: pointer;
   background-color: #EDB938;
 }/*# sourceMappingURL=AccountNav.css.map */
