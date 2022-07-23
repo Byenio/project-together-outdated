@@ -54,18 +54,30 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
                 <Routes>
                     <Route path='/posts' element={<Posts />} />
                     <Route path='/account' element={
-                        <><Account /><UserPosts user = { userProps }/></>
+                        <>
+                            <Account />
+                            <UserPosts user = { userProps }/>
+                        </>
                     } />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/account/add-post' element={
-                        <><Account /><AddPost /></>
+                        <>
+                            <Account />
+                            <AddPost />
+                        </>
                     } />
                     <Route path='/account/set-tutors' element={
-                        <><Account /><SetTutors /></>
+                        <>
+                            <Account />
+                            <SetTutors />
+                        </>
                     } />
                     <Route path='/account/security' element={
-                        <><Account /><Security /></>
+                        <>
+                            <Account />
+                            <Security />
+                        </>
                     } />
                 </Routes>
             </BrowserRouter>

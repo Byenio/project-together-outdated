@@ -11,42 +11,42 @@
     require PROJECT_ROOT_PATH."/Controller/Api/SubjectController.php";
     require PROJECT_ROOT_PATH."/Controller/Api/TypeController.php";
 
-    if ((isset($uri[2]) && ($uri[2] == 'posts'))) {
+    if ((isset($uri[2]) && ($uri[3] == 'posts'))) {
 
         $objFeedController = new PostController();
-        $strMethodName = $uri[3].'PostAction';
+        $strMethodName = $uri[4].'PostAction';
         $objFeedController -> {$strMethodName}();
 
     } 
 
-    if ((isset($uri[2]) && ($uri[2] == 'classes'))) {
+    if ((isset($uri[2]) && ($uri[3] == 'classes'))) {
 
         $objFeedController = new ClassController();
-        $strMethodName = $uri[3].'ClassAction';
+        $strMethodName = $uri[4].'ClassAction';
         $objFeedController -> {$strMethodName}();
 
     }
 
-    if ((isset($uri[2]) && ($uri[2] == 'subjects'))) {
+    if ((isset($uri[2]) && ($uri[3] == 'subjects'))) {
 
         $objFeedController = new SubjectController();
-        $strMethodName = $uri[3].'SubjectAction';
+        $strMethodName = $uri[4].'SubjectAction';
         $objFeedController -> {$strMethodName}();
 
     }
 
-    if ((isset($uri[2]) && ($uri[2] == 'types'))) {
+    if ((isset($uri[2]) && ($uri[3] == 'types'))) {
 
         $objFeedController = new TypeController();
-        $strMethodName = $uri[3].'TypeAction';
+        $strMethodName = $uri[4].'TypeAction';
         $objFeedController -> {$strMethodName}();
 
     }
 
-    if ((isset($uri[2]) && ($uri[2] == 'userposts')) && isset($uri[3])) {
+    if ((isset($uri[2]) && ($uri[3] == 'userposts')) && isset($uri[4])) {
 
         $objFeedController = new UserPostController();
-        $strMethodName = $uri[3].'UserPostAction';
+        $strMethodName = $uri[4].'UserPostAction';
         $objFeedController -> {$strMethodName}();
 
     }
