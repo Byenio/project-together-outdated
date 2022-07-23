@@ -19,4 +19,33 @@
 
     @include post;
 
+    .Post {
+
+        grid-template-areas: 
+        'type . . . subject'
+        'content content content content content'
+        'content content content content content'
+        '. . . . remove';
+
+        &-remove {
+
+            grid-area: remove;
+            position: relative;
+
+            border: 2px solid clr.$zsti-yellow;
+
+            padding: .2em 0;
+
+            &:hover {
+
+                cursor: pointer;
+                background-color: clr.$zsti-yellow;
+                transition: all .5s;
+
+            }
+
+        }
+
+    }
+
 }

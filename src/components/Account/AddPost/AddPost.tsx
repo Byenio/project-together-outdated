@@ -17,14 +17,14 @@ export const AddPost: React.FunctionComponent<IAddPostProps> = (props) => {
     const fetchItems = async () => {
 
         const subjectList = await fetch(
-            'http://localhost/api.php/subjects/list'
+            'http://localhost/project-together/api.php/subjects/list'
         );
 
         const subjectListItems = await subjectList.json();
         setSubjectListItems(subjectListItems.items);
 
         const typeList = await fetch(
-            'http://localhost/api.php/types/list'
+            'http://localhost/project-together/api.php/types/list'
         );
 
         const typeListItems = await typeList.json();
@@ -39,7 +39,7 @@ export const AddPost: React.FunctionComponent<IAddPostProps> = (props) => {
 
                 <h3>Utwórz post</h3>
 
-                <form action="http://localhost:3000/src/scripts/php/add-post.php" method="post">
+                <form action="http://localhost:3000/project-together/src/scripts/php/add-post.php" method="post">
 
                     <div className="form-group">
                         <label htmlFor="body">Treść</label><br />

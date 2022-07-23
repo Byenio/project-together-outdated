@@ -9,15 +9,11 @@
     $pass = $user['"password"'];
     $id = $user['"id"'];
 
-    $body = $_POST['body'];
-    $subject = $_POST['subject'];
-    $type = $_POST['type'];
+    $post_id = $_GET['id'];
 
+    $queryRemove = 'DELETE FROM posts WHERE posts.id = ' . $post_id;
     $queryStudent = "SELECT id, email, password FROM students WHERE email = '".$email."';";
     $queryTeacher = "SELECT id, email, password FROM teachers WHERE email = '".$email."';";
-
-    $queryInsertTutor = "INSERT INTO posts (body, subject, tutor, type) VALUES (?, ?, ?, ?)";
-    $queryInsertTeacher = "INSERT INTO posts (body, subject, teacher, type) VALUES (?, ?, ?, ?)";
 
     include './php-components/connect.php';
 
@@ -88,16 +84,14 @@
     if (who($conn, $queryStudent, $queryTeacher) == 'student') {
 
         validAuth($student, $pass);
-        $stmt = $conn -> prepare($queryInsertTutor);
-        $stmt -> bind_param("siii", $body, $subject, $id, $type);
+        $stmt = $conn -> prepare($queryRemove);
 
     }
 
     if (who($conn, $queryStudent, $queryTeacher) == 'teacher') {
 
         validAuth($teacher, $pass);
-        $stmt = $conn -> prepare($queryInsertTeacher);
-        $stmt -> bind_param("siii", $body, $subject, $id, $type);
+        $stmt = $conn -> prepare($queryRemove);
 
     }
 

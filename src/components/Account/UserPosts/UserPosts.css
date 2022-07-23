@@ -31,9 +31,6 @@
   grid-template-areas: "type . . . subject" "content content content content content" "content content content content content" ". . . . author";
   font-weight: 400;
 }
-.UserPosts .Post:hover {
-  cursor: pointer;
-}
 .UserPosts .Post::before, .UserPosts .Post::after {
   content: "";
   position: absolute;
@@ -42,6 +39,7 @@
   border: inherit;
   transition: all 0.5s;
   border-color: #EDB938;
+  z-index: -1;
 }
 .UserPosts .Post::before {
   top: -15px;
@@ -59,6 +57,8 @@
 }
 .UserPosts .Post-type {
   grid-area: type;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 .UserPosts .Post-subject {
   grid-area: subject;
@@ -70,4 +70,18 @@
 }
 .UserPosts .Post-author {
   grid-area: author;
+}
+.UserPosts .Post {
+  grid-template-areas: "type . . . subject" "content content content content content" "content content content content content" ". . . . remove";
+}
+.UserPosts .Post-remove {
+  grid-area: remove;
+  position: relative;
+  border: 2px solid #EDB938;
+  padding: 0.2em 0;
+}
+.UserPosts .Post-remove:hover {
+  cursor: pointer;
+  background-color: #EDB938;
+  transition: all 0.5s;
 }/*# sourceMappingURL=UserPosts.css.map */

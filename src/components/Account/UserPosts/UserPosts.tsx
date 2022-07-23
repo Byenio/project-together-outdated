@@ -11,6 +11,12 @@ export interface IUserPostsProps {
 
 }
 
+function deletePost(id: number): any {
+
+    window.location.href = `http://localhost/project-together/src/scripts/php/remove-post.php?id=${id}`;
+    
+}
+
 export const UserPosts: React.FunctionComponent<IUserPostsProps> = ({ user }: IUserPostsProps) => {
 
     useEffect(() => {
@@ -24,16 +30,14 @@ export const UserPosts: React.FunctionComponent<IUserPostsProps> = ({ user }: IU
     const fetchItems = async () => {
 
         const userPostsList = await fetch(
-            `http://localhost/together/api.php/userposts/list?
-                                        id=${user.id}&
-                                        pass=${user.password}&
-                                        key=${user.key}`
+            `http://localhost/project-together/api.php/userposts/list?
+            id=${user.id}&
+            pass=${user.password}&
+            key=${user.key}`
         );
 
         const userPostsListItems = await userPostsList.json();
         setUserPostsListItems(userPostsListItems.items);
-
-        console.log(userPostsListItems.items);
 
     }
 
@@ -48,10 +52,13 @@ export const UserPosts: React.FunctionComponent<IUserPostsProps> = ({ user }: IU
             { userPostsListItems.map(
                 item => (
 
-                    <div id={item.id} className="Post">
-                        <div className="Post-type">{item.type}</div>
-                        <div className="Post-subject">{item.subject}</div>
-                        <div className='Post-content'>{item.body}</div>
+                    <div id={ item.id } className="Post">
+                        <div className="Post-type">{ item.type }</div>
+                        <div className="Post-subject">{ item.subject }</div>
+                        <div className="Post-content">{ item.body }</div>
+                        <div className="Post-remove"
+                            id={ item.id }
+                            onClick={ () => deletePost(item.id) }>Usuń post</div>
                     </div>
                     
                 ))

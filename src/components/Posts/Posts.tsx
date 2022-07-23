@@ -15,12 +15,10 @@ export const Posts: React.FunctionComponent<IPostsProps> = (props) => {
 
     const fetchItems = async () => {
 
-        const userPostsList = await fetch(`http://localhost/together/api.php/posts/list`);
+        const userPostsList = await fetch(`http://localhost/project-together/api.php/posts/list`);
 
         const userPostsListItems = await userPostsList.json();
         setUserPostsListItems(userPostsListItems.items);
-
-        console.log(userPostsListItems.items);
 
     }
 

@@ -31,9 +31,6 @@
   grid-template-areas: "type . . . subject" "content content content content content" "content content content content content" ". . . . author";
   font-weight: 400;
 }
-.Posts .Post:hover {
-  cursor: pointer;
-}
 .Posts .Post::before, .Posts .Post::after {
   content: "";
   position: absolute;
@@ -42,6 +39,7 @@
   border: inherit;
   transition: all 0.5s;
   border-color: #EDB938;
+  z-index: -1;
 }
 .Posts .Post::before {
   top: -15px;
@@ -59,6 +57,8 @@
 }
 .Posts .Post-type {
   grid-area: type;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 .Posts .Post-subject {
   grid-area: subject;
