@@ -5,6 +5,12 @@ import { getCookie } from '../../../scripts/tsx/getCookie';
 
 export interface IAccountNavProps {};
 
+function logout(): any {
+
+    window.location.href = 'http://localhost/project-together/src/scripts/php/logout.php';
+
+}
+
 export const AccountNav: React.FunctionComponent<IAccountNavProps> = (props) => {
 
     if (getCookie('isTeacher')) {
@@ -27,6 +33,7 @@ export const AccountNav: React.FunctionComponent<IAccountNavProps> = (props) => 
                         <Link to="/account/security">
                             <li className="AccountNav-item">Zabezpieczenia</li>
                         </Link>
+                        <li className="AccountNav-item" onClick={ () => logout() }>Wyloguj</li>
                     </ul>
                 </div>
 
@@ -51,6 +58,7 @@ export const AccountNav: React.FunctionComponent<IAccountNavProps> = (props) => 
                     <Link to="/account/security">
                         <li className="AccountNav-item">Zabezpieczenia</li>
                     </Link>
+                    <li className="AccountNav-item" onClick={ () => logout() }>Wyloguj</li>
                 </ul>
             </div>
 

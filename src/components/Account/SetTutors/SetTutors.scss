@@ -1,0 +1,46 @@
+@use '../../../scss-components/colors' as clr;
+@import '../../../scss-components/post';
+
+.SetTutors {
+
+    margin-top: 4em;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    flex-basis: 74%;
+
+    .Section-title {
+
+        flex-basis: 100%;
+
+    }
+
+    .Form {
+
+        flex-basis: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        &-sumbit {
+
+            flex-basis: 20%;
+
+        }
+
+    }
+
+    .Table {
+
+        flex-basis: 100%;
+
+        &-title {
+
+            font-weight: 700;
+
+        }
+
+    }
+    
+}

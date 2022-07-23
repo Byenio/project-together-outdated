@@ -30,10 +30,7 @@ export const UserPosts: React.FunctionComponent<IUserPostsProps> = ({ user }: IU
     const fetchItems = async () => {
 
         const userPostsList = await fetch(
-            `http://localhost/project-together/api.php/userposts/list?
-            id=${user.id}&
-            pass=${user.password}&
-            key=${user.key}`
+            `http://localhost/project-together/api.php/userposts/list?id=${user.id}&pass=${user.password}&key=${user.key}`
         );
 
         const userPostsListItems = await userPostsList.json();

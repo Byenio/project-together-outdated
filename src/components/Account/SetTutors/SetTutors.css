@@ -1,1 +1,32 @@
-/*# sourceMappingURL=SetTutors.css.map */
+/*  COLOR PALETTE  */
+/*  60%  */
+/*  30%  */
+/*  10%  */
+/*  COLOR PALETTE  */
+/*  60%  */
+/*  30%  */
+/*  10%  */
+.SetTutors {
+  margin-top: 4em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-basis: 74%;
+}
+.SetTutors .Section-title {
+  flex-basis: 100%;
+}
+.SetTutors .Form {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.SetTutors .Form-sumbit {
+  flex-basis: 20%;
+}
+.SetTutors .Table {
+  flex-basis: 100%;
+}
+.SetTutors .Table-title {
+  font-weight: 700;
+}/*# sourceMappingURL=SetTutors.css.map */

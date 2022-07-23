@@ -4,7 +4,11 @@
 
     class TypesModel extends Database {
 
-        public function getTypes() { return $this -> select("SELECT types.id, types.name FROM types"); }
+        public function getTypes() { 
+
+            return $this -> select("SELECT types.id, types.name FROM types"); 
+            
+        }
 
     }
 

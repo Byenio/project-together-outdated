@@ -10,6 +10,7 @@
     require PROJECT_ROOT_PATH."/Controller/Api/UserPostController.php";
     require PROJECT_ROOT_PATH."/Controller/Api/SubjectController.php";
     require PROJECT_ROOT_PATH."/Controller/Api/TypeController.php";
+    require PROJECT_ROOT_PATH."/Controller/Api/UserController.php";
 
     if ((isset($uri[2]) && ($uri[3] == 'posts'))) {
 
@@ -47,6 +48,14 @@
 
         $objFeedController = new UserPostController();
         $strMethodName = $uri[4].'UserPostAction';
+        $objFeedController -> {$strMethodName}();
+
+    }
+
+    if ((isset($uri[2]) && ($uri[3] == 'users'))) {
+
+        $objFeedController = new UserController();
+        $strMethodName = $uri[4].'UserAction';
         $objFeedController -> {$strMethodName}();
 
     }

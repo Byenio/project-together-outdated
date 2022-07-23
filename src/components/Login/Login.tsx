@@ -10,7 +10,7 @@ export const Login: React.FunctionComponent<ILoginProps> = (props) => {
         
         <div className="Login">
 
-            <form action="http://localhost:3000/together/src/scripts/php/login.php" method="post">
+            <form action="http://localhost:3000/project-together/src/scripts/php/login.php" method="post">
 
                 <div className="form-group">
                     <label htmlFor="email">Email</label><br />

@@ -16,7 +16,7 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
     const fetchItems = async () => {
 
         const classList = await fetch(
-            'http://localhost/api.php/classes/list'
+            'http://localhost/project-together/api.php/classes/list'
         );
 
         const classListItems = await classList.json();
@@ -28,7 +28,7 @@ export const Register: React.FunctionComponent<IRegisterProps> = (props) => {
 
         <div className="Register">
 
-            <form action="http://localhost/src/scripts/php/register.php" method="POST">
+            <form action="http://localhost/project-together/src/scripts/php/register.php" method="POST">
 
                 <div className="form-group">
                     <label htmlFor="fname">Imię</label><br />
