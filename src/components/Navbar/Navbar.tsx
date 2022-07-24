@@ -17,9 +17,6 @@ export const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
                 </div>
                 <div className="Navbar-menu-container">
                     <ul className="Navbar-menu-list">
-                        <Link to="/">
-                            <li className="Navbar-menu-item">Home</li>
-                        </Link>
                         <Link to="/login">
                             <li className="Navbar-menu-item">Posty</li>
                         </Link>
@@ -42,9 +39,6 @@ export const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
             <div className="Navbar-menu-container">
                 <ul className="Navbar-menu-list">
                     <Link to="/">
-                        <li className="Navbar-menu-item">Home</li>
-                    </Link>
-                    <Link to="/posts">
                         <li className="Navbar-menu-item">Posty</li>
                     </Link>
                     <Link to="/account">

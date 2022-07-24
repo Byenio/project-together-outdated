@@ -31,7 +31,7 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
                 <BrowserRouter>
                     <Navbar />
                     <Routes>
-                        <Route path='/posts' element={<Login />} />
+                        <Route path='/' element={<Login />} />
                         <Route path='/account' element={<Login />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
@@ -52,7 +52,7 @@ export const App: React.FunctionComponent<IAppProps> = (props) => {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path='/posts' element={<Posts />} />
+                    <Route path='/' element={<Posts />} />
                     <Route path='/account' element={
                         <>
                             <Account />
