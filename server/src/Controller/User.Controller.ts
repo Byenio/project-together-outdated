@@ -4,10 +4,7 @@ import { CreateUserInput } from '../Schema/User.Schema';
 import { createUser } from '../Service/User.Service';
 import logger from '../Utils/Logger';
 
-export async function createUserHandler(
-    req: Request<{}, {}, CreateUserInput['body']>,
-    res: Response
-    ) {
+export async function createUserHandler( req: Request<{}, {}, CreateUserInput['body']>, res: Response ) {
 
     try {
         const user = await createUser(req.body); // Call create user service

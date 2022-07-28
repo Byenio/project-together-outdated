@@ -1,4 +1,3 @@
-// Imports
 import express from 'express';          // Create app
 import config from 'config';            // Config for app, /server/config/default.ts
 import connect from './Utils/Connect';  // Connect to database
