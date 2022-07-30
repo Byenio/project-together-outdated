@@ -1,5 +1,5 @@
-import { FilterQuery } from "mongoose";
-import SessionModel, { SchemaDocument } from "../Models/Session.Model";
+import { FilterQuery, UpdateQuery } from "mongoose";
+import SessionModel, { SessionDocument } from "../Models/Session.Model";
 
 export async function createSession( userId: string, userAgent: string ) {
 
@@ -9,8 +9,17 @@ export async function createSession( userId: string, userAgent: string ) {
 
 }
 
-export async function findSessions(query: FilterQuery<SchemaDocument>) {
+export async function findSessions(query: FilterQuery<SessionDocument>) {
 
     return SessionModel.find(query).lean();
+
+}
+
+export async function updateSession(
+    query: FilterQuery<SessionDocument>,
+    update: UpdateQuery<SessionDocument>
+    ){
+
+    return SessionModel.updateOne(query, update);
 
 }
