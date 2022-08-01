@@ -6,6 +6,7 @@ export interface UserDocument extends mongoose.Document {
     email: string,
     name: string,
     password: string,
+    permissionLevel: number,    // 0 - normal student, 1 - tutor, 2 - teacher/admin
     createdAt: Date,
     updatedAt: Date,
     comparePassword(candidatePassword: string): Promise<boolean>;
@@ -25,6 +26,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    permissionLevel: {
+        type: Number,
+        default: 0
     }
 
 }, {

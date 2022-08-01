@@ -1,4 +1,4 @@
-import { object, string, TypeOf } from 'zod';
+import { number, object, string, TypeOf } from 'zod';
 import { createUser } from '../Service/User.Service';
 
 export const createUserSchema = object({
