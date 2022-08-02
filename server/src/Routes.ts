@@ -12,7 +12,7 @@ function routes(App: Express) {
         res.sendStatus(200);
     });
 
-    App.post('/api/users', validateResource(createUserSchema), createUserHandler);
+    App.post('/api/create-user', validateResource(createUserSchema), createUserHandler);
     App.post('/api/sessions', validateResource(createSessionSchema), createUserSessionHandler);
 
     App.get('/api/sessions', requireUser, getUserSessionsHandler);

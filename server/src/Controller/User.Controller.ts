@@ -8,7 +8,7 @@ export async function createUserHandler( req: Request<{}, {}, CreateUserInput['b
 
     try {
         const user = await createUser(req.body); // Call create user service
-        return res.send(omit(user.toJSON(), 'password'));
+        return res.send(user);
     } catch(e: any) {
         logger.error(e);
         return res.status(409).send(e.message); // This function throws an error when user with email already exists
