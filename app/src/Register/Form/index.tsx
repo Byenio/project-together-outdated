@@ -1,7 +1,5 @@
 import React from 'react';
 import { FieldInterfaceProps } from './Field';
-import Cookies from 'universal-cookie';
-import { Navigate } from 'react-router-dom';
 
 export interface IFields {
 
@@ -102,6 +100,8 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
 
         e.preventDefault();
 
+        console.log(this.state.values)
+
         if (this.validateForm()) {
 
             const submitSuccess: boolean = await this.submitForm();
@@ -124,14 +124,7 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
                 Accept: "application/json"
               }),
               body: JSON.stringify(this.state.values)
-            })
-
-            const result = await response.json();
-
-            const cookies = new Cookies();
-            cookies.set('accessToken', result.accessToken);
-            cookies.set('refreshToken', result.refreshToken);
-
+            });
             return response.ok;
         } catch (ex) {
             return false;
@@ -189,14 +182,22 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
                             </button>
                         </div>
                         {submitSuccess && (
-                            <Navigate to="/account" />
+                            <div className="alert alert-info" role="alert">
+                                The form was successfully submitted!
+                            </div>
                         )}
                         {submitSuccess === false &&
                             !this.haveErrors(errors) && (
                             <div className="alert alert-danger" role="alert">
-                                Email and password doesn't match
+                                User with this email already exists
                             </div>
-                        )}
+                            )}
+                        {submitSuccess === false &&
+                            this.haveErrors(errors) && (
+                            <div className="alert alert-danger" role="alert">
+                                Sorry, the form is invalid. Please review, adjust and try again
+                            </div>
+                            )}
                     </div>
                 </form>
             </FormContext.Provider>
