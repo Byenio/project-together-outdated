@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Form, IFields } from './Form';
-import { Field } from './Form/Field';
+import { Form, IFields } from '../Form';
+import { Field } from '../Form/Field';
 
 export interface LogInterface {};
 
