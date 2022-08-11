@@ -3,8 +3,7 @@ import {
     createPostInput,
     updatePostInput,
     deletePostInput,
-    getPostInput,
-    getAllPostsInput
+    getPostInput
 } from '../Schema/Post.Schema';
 import {
     createPost,
@@ -13,6 +12,7 @@ import {
     deletePost,
     findAllPosts
 } from '../Service/Post.Service';
+import { getUserSessionsHandler } from './Session.Controller';
 
 export async function createPostHandler(
     req: Request<{}, {}, createPostInput['body']>,
@@ -20,9 +20,10 @@ export async function createPostHandler(
 ) {
 
     const userId = res.locals.user._id;
+    const userClass = res.locals.user.class;
 
     const body = req.body;
-    const post = await createPost({ ...body, user: userId });
+    const post = await createPost({ ...body, user: userId, class: userClass });
 
     return res.send(post);
 

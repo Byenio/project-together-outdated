@@ -3,8 +3,7 @@ import {
     createClassInput,
     updateClassInput,
     deleteClassInput,
-    getClassInput,
-    getAllClassesInput
+    getClassInput
 } from '../Schema/Class.Schema';
 import {
     createClass,

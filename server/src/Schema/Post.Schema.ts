@@ -9,10 +9,7 @@ const payload = {
         }),
         description: string({
             required_error: 'Description is required'
-        }),
-        class: string({
-            required_error: 'Class is required'
-        }),
+        })
 
     })
 
