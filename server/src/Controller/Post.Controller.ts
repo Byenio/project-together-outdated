@@ -1,6 +1,18 @@
 import { Request, Response } from 'express';
-import { createPostInput, updatePostInput, deletePostInput, getPostInput, getAllPostsInput } from '../Schema/Post.Schema';
-import { createPost, findPost, findAndUpdatePost, deletePost, findAllPosts } from '../Service/Post.Service';
+import {
+    createPostInput,
+    updatePostInput,
+    deletePostInput,
+    getPostInput,
+    getAllPostsInput
+} from '../Schema/Post.Schema';
+import {
+    createPost,
+    findPost,
+    findAndUpdatePost,
+    deletePost,
+    findAllPosts
+} from '../Service/Post.Service';
 
 export async function createPostHandler(
     req: Request<{}, {}, createPostInput['body']>,
@@ -28,11 +40,15 @@ export async function updatePostHandler(
     const post = await findPost({ postId });
 
     if (!post) {
-        return res.status(404);
+        return res.status(404).json({
+            message: 'Post not found'
+        });
     }
 
     if (String(post.user) !== userId) {
-        return res.status(403);
+        return res.status(403).json({
+            message: 'Forbidden'
+        });
     }
 
     const updatedPost = await findAndUpdatePost(
@@ -63,13 +79,12 @@ export async function getPostHandler(
 }
 
 export async function getAllPostsHandler(
-    req: Request<getAllPostsInput>,
     res: Response
 ) {
 
     const posts = await findAllPosts();
 
-    if (!posts) {
+    if (!posts.length) {
         return res.status(404);
     }
 
@@ -97,6 +112,8 @@ export async function deletePostHandler(
 
     await deletePost({ postId });
 
-    return res.sendStatus(200);
+    return res.sendStatus(200).json({
+        message: 'Post deleted'
+    });
 
 }

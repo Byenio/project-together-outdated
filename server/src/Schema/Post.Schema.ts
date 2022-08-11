@@ -23,7 +23,7 @@ const params = {
     params: object({
 
         postId: string({
-            required_error: 'Product ID is required'
+            required_error: 'Post ID is required'
         })
 
     })
@@ -47,9 +47,7 @@ export const getPostSchema = object({
     ...params
 })
 
-export const getAllPostsSchema = object({
-    ...payload
-})
+export const getAllPostsSchema = object({})
 
 export type createPostInput = TypeOf<typeof createPostSchema>
 export type updatePostInput = TypeOf<typeof updatePostSchema>

@@ -30,6 +30,21 @@ import {
     getAllPostsHandler
 } from './Controller/Post.Controller';
 
+import {
+    createClassSchema,
+    updateClassSchema,
+    getClassSchema,
+    deleteClassSchema,
+    getAllClassesSchema
+} from './Schema/Class.Schema';
+import {
+    createClassHandler,
+    updateClassHandler,
+    getClassHandler,
+    deleteClassHandler,
+    getAllClassesHandler
+} from './Controller/Class.Controller';
+
 
 function routes(App: Express) {
 
@@ -86,6 +101,32 @@ function routes(App: Express) {
         '/api/posts/:postId',
         [requireUser, validateResource(deletePostSchema)],
         deletePostHandler
+    );
+
+    //! Class routes
+    App.post(
+        '/api/classes',
+        [requireUser, validateResource(createClassSchema)],
+        createClassHandler
+    );
+    App.get(
+        '/api/classes/all',
+        getAllClassesHandler
+    );
+    App.put(
+        '/api/classes/:classId',
+        [requireUser, validateResource(updateClassSchema)],
+        updateClassHandler
+    );
+    App.get(
+        '/api/classes/:classId',
+        validateResource(getClassSchema),
+        getClassHandler
+    );
+    App.delete(
+        '/api/classes/:classId',
+        [requireUser, validateResource(deleteClassSchema)],
+        deleteClassHandler
     );
 
 };

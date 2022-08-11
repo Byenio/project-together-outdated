@@ -26,6 +26,8 @@ export async function findAndUpdatePost(
     return PostModel.findOneAndUpdate(query, update, options);
 }
 
-export async function deletePost(query: FilterQuery<PostDocument>) {
+export async function deletePost(
+    query: FilterQuery<PostDocument>
+) {
     return PostModel.deleteOne(query);
 }

@@ -19,7 +19,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        default: () => `post_${nanoId()}`,
+        default: () => `${nanoId()}`,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
