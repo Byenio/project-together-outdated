@@ -22,7 +22,7 @@ export async function createClassHandler(
 
     const body = req.body;
 
-    if (userPermission !== 2) {
+    if (Number(userPermission) !== 2) {
         return res.status(403).json({
             message: 'Forbidden'
         });
@@ -51,7 +51,7 @@ export async function updateClassHandler(
         })
     }
 
-    if (userPermission !== 2) {
+    if (Number(userPermission) !== 2) {
         return res.status(403).json({
             message: 'Forbidden'
         });
@@ -118,7 +118,7 @@ export async function deleteClassHandler(
         })
     }
 
-    if (userPermission !== 2) {
+    if (Number(userPermission) !== 2) {
         return res.status(403).json({
             message: 'Forbidden'
         })
