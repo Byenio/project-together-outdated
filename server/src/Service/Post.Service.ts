@@ -14,6 +14,10 @@ export async function findPost(
     return PostModel.findOne(query, {}, options);
 }
 
+export async function findAllPosts(){
+    return PostModel.find();
+};
+
 export async function findAndUpdatePost(
     query: FilterQuery<PostDocument>,
     update: UpdateQuery<PostDocument>,

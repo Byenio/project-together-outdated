@@ -47,7 +47,12 @@ export const getPostSchema = object({
     ...params
 })
 
+export const getAllPostsSchema = object({
+    ...payload
+})
+
 export type createPostInput = TypeOf<typeof createPostSchema>
 export type updatePostInput = TypeOf<typeof updatePostSchema>
 export type deletePostInput = TypeOf<typeof deletePostSchema>
 export type getPostInput = TypeOf<typeof getPostSchema>
+export type getAllPostsInput = TypeOf<typeof getAllPostsSchema>

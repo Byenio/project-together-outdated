@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { createPostInput, updatePostInput } from '../Schema/Post.Schema';
-import { createPost, findPost, findAndUpdatePost, deletePost } from '../Service/Post.Service';
+import { createPostInput, updatePostInput, deletePostInput, getPostInput, getAllPostsInput } from '../Schema/Post.Schema';
+import { createPost, findPost, findAndUpdatePost, deletePost, findAllPosts } from '../Service/Post.Service';
 
 export async function createPostHandler(
     req: Request<{}, {}, createPostInput['body']>,
@@ -46,7 +46,7 @@ export async function updatePostHandler(
 }
 
 export async function getPostHandler(
-    req: Request<updatePostInput['params']>,
+    req: Request<getPostInput['params']>,
     res: Response
 ) {
 
@@ -62,8 +62,23 @@ export async function getPostHandler(
 
 }
 
+export async function getAllPostsHandler(
+    req: Request<getAllPostsInput>,
+    res: Response
+) {
+
+    const posts = await findAllPosts();
+
+    if (!posts) {
+        return res.status(404);
+    }
+
+    return res.send(posts);
+
+}
+
 export async function deletePostHandler(
-    req: Request<updatePostInput['params']>,
+    req: Request<deletePostInput['params']>,
     res: Response
 ) {
 

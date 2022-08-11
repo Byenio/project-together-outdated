@@ -26,7 +26,8 @@ import {
     createPostHandler,
     updatePostHandler,
     getPostHandler,
-    deletePostHandler
+    deletePostHandler,
+    getAllPostsHandler
 } from './Controller/Post.Controller';
 
 
@@ -66,6 +67,10 @@ function routes(App: Express) {
         '/api/posts',
         [requireUser, validateResource(createPostSchema)],
         createPostHandler
+    );
+    App.get(
+        '/api/posts/all',
+        getAllPostsHandler
     );
     App.put(
         '/api/posts/:postId',
