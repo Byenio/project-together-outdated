@@ -19,7 +19,7 @@ const params = {
 
     params: object({
 
-        postId: string({
+        _id: string({
             required_error: 'Post ID is required'
         })
 

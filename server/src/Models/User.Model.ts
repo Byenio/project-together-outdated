@@ -2,12 +2,14 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import config from 'config';
 
+import { ClassDocument } from './Class.Model';
+
 export interface UserDocument extends mongoose.Document {
     email: string,
     name: string,
     password: string,
     permissionLevel: number,    // 0 - normal student, 1 - tutor, 2 - teacher/admin
-    class: string,
+    class: ClassDocument['_id'],
     createdAt: Date,
     updatedAt: Date,
     comparePassword(candidatePassword: string): Promise<boolean>;
@@ -33,7 +35,7 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
     class: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     }
 

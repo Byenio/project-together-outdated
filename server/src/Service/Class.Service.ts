@@ -4,7 +4,7 @@ import ClassModel, { ClassDocument } from '../Models/Class.Model';
 export async function createClass(
     input: DocumentDefinition<ClassDocument>
 ) {
-    return ClassModel.create(input);
+    return await ClassModel.create(input);
 }
 
 export async function findAndUpdateClass(
@@ -12,22 +12,22 @@ export async function findAndUpdateClass(
     update: UpdateQuery<ClassDocument>,
     options: QueryOptions
 ) {
-    return ClassModel.findOneAndUpdate(query, update, options)
+    return await ClassModel.findOneAndUpdate(query, update, options)
 }
 
 export async function findClass(
     query: FilterQuery<ClassDocument>,
     options: QueryOptions = { lean: true }
 ) {
-    return ClassModel.findOne(query, {}, options);
+    return await ClassModel.findOne(query, {}, options);
 }
 
 export async function findAllClasses() {
-    return ClassModel.find();
+    return await ClassModel.find();
 }
 
 export async function deleteClass(
     query: FilterQuery<ClassDocument>
 ) {
-    return ClassModel.deleteOne(query);
+    return await ClassModel.deleteOne(query);
 }

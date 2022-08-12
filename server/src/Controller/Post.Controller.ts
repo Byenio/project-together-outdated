@@ -12,7 +12,6 @@ import {
     deletePost,
     findAllPosts
 } from '../Service/Post.Service';
-import { getUserSessionsHandler } from './Session.Controller';
 
 export async function createPostHandler(
     req: Request<{}, {}, createPostInput['body']>,
@@ -36,7 +35,7 @@ export async function updatePostHandler(
 
     const userId = res.locals.user._id;
 
-    const postId = req.params.postId;
+    const postId = req.params._id;
     const update = req.body;
     const post = await findPost({ postId });
 
@@ -67,7 +66,7 @@ export async function getPostHandler(
     res: Response
 ) {
 
-    const postId = req.params.postId;
+    const postId = req.params._id;
 
     const post = await findPost({ postId });
 
@@ -100,7 +99,7 @@ export async function deletePostHandler(
 
     const userId = res.locals.user._id;
 
-    const postId = req.params.postId;
+    const postId = req.params._id;
     const post = await findPost({ postId });
 
     if (!post) {

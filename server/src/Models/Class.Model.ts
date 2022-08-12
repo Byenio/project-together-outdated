@@ -1,7 +1,4 @@
 import mongoose from 'mongoose';
-import { customAlphabet } from 'nanoid';
-
-const nanoId = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789');
 
 export interface ClassDocument extends mongoose.Document {
     name: String;
@@ -9,12 +6,6 @@ export interface ClassDocument extends mongoose.Document {
 
 const classSchema = new mongoose.Schema({
 
-    classId: {
-        type: String,
-        required: true,
-        unique: true,
-        default: () => `${nanoId()}`
-    },
     name: {
         type: String,
         required: true,

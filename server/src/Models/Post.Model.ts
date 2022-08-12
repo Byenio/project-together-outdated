@@ -1,8 +1,5 @@
 import mongoose from 'mongoose';
-import { customAlphabet } from 'nanoid';
 import { UserDocument } from './User.Model';
-
-const nanoId = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789');
 
 export interface PostDocument extends mongoose.Document {
     user: UserDocument['_id'],
@@ -14,13 +11,7 @@ export interface PostDocument extends mongoose.Document {
 }
 
 const postSchema = new mongoose.Schema({
-
-    postId: {
-        type: String,
-        required: true,
-        unique: true,
-        default: () => `${nanoId()}`,
-    },
+    
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -34,7 +25,7 @@ const postSchema = new mongoose.Schema({
         required: true,
     },
     class: {
-        type: mongoose.Schema.Types.String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 

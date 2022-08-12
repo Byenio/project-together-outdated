@@ -3,7 +3,8 @@ import {
     createClassInput,
     updateClassInput,
     deleteClassInput,
-    getClassInput
+    getClassInput,
+    getAllClassesInput
 } from '../Schema/Class.Schema';
 import {
     createClass,
@@ -41,7 +42,7 @@ export async function updateClassHandler(
 
     const userPermission = res.locals.user.permissionLevel;
 
-    const classId = req.params.classId;
+    const classId = req.params._id;
     const update = req.body;
     const classUpdate = await findClass({ classId });
 
@@ -72,7 +73,7 @@ export async function getClassHandler(
     res: Response
 ) {
 
-    const classId = req.params.classId;
+    const classId = req.params._id;
 
     const classRes = await findClass({ classId });
 
@@ -87,6 +88,7 @@ export async function getClassHandler(
 }
 
 export async function getAllClassesHandler(
+    req: Request<getAllClassesInput>,
     res: Response
 ) {
 
@@ -109,7 +111,7 @@ export async function deleteClassHandler(
 
     const userPermission = res.locals.user.permissionLevel;
 
-    const classId = req.params.classId;
+    const classId = req.params._id;
     const classRes = await findClass({ classId });
 
     if (!classRes) {

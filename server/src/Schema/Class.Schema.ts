@@ -16,7 +16,7 @@ const params = {
 
     params: object({
 
-        classId: string({
+        _id: string({
             required_error: 'Class ID is required'
         })
 
