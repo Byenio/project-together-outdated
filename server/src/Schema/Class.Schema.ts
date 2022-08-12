@@ -34,7 +34,6 @@ export const updateClassSchema = object({
 })
 
 export const deleteClassSchema = object({
-    ...payload,
     ...params
 })
 

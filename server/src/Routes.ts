@@ -45,6 +45,20 @@ import {
     getAllClassesHandler
 } from './Controller/Class.Controller';
 
+import {
+    createSubjectSchema,
+    updateSubjectSchema,
+    getSubjectSchema,
+    deleteSubjectSchema,
+    getAllSubjectsSchema
+} from './Schema/Subject.Schema';
+import {
+    createSubjectHandler,
+    updateSubjectHandler,
+    getSubjectHandler,
+    deleteSubjectHandler,
+    getAllSubjectsHandler
+} from './Controller/Subject.Controller';
 
 function routes(App: Express) {
 
@@ -127,6 +141,32 @@ function routes(App: Express) {
         '/api/classes/:classId',
         [requireUser, validateResource(deleteClassSchema)],
         deleteClassHandler
+    );
+
+    //! Subject routes
+    App.post(
+        '/api/subjects',
+        [requireUser, validateResource(createSubjectSchema)],
+        createSubjectHandler
+    );
+    App.get(
+        '/api/subjects/all',
+        getAllSubjectsHandler
+    );
+    App.put(
+        '/api/subjects/:subjectId',
+        [requireUser, validateResource(updateSubjectSchema)],
+        updateSubjectHandler
+    );
+    App.get(
+        '/api/subjects/:subjectId',
+        validateResource(getSubjectSchema),
+        getSubjectHandler
+    );
+    App.delete(
+        '/api/subjects/:subjectId',
+        [requireUser, validateResource(deleteSubjectSchema)],
+        deleteSubjectHandler
     );
 
 };
