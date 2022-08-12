@@ -20,6 +20,13 @@ export async function createPostHandler(
 
     const userId = res.locals.user._id;
     const userClass = res.locals.user.class;
+    const userPermission = res.locals.user.permissionLevel;
+
+    if (Number(userPermission) !== 1 && Number(userPermission) !== 2) {
+        return res.status(403).json({
+            message: 'You are not authorized to create a post.'
+        })
+    }
 
     const body = req.body;
     const post = await createPost({ ...body, user: userId, class: userClass });
