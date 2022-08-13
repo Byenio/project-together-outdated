@@ -1,4 +1,4 @@
-import { DocumentDefinition, FilterQuery } from 'mongoose';
+import { DocumentDefinition, FilterQuery, QueryOptions } from 'mongoose';
 import { omit } from 'lodash';
 import UserModel, { UserDocument } from '../Models/User.Model';
 
@@ -30,4 +30,11 @@ export async function findUser(query: FilterQuery<UserDocument>) {
 
     return UserModel.findOne(query).lean();
 
+}
+
+export async function getUser(
+    query: FilterQuery<UserDocument>,
+    options: QueryOptions = { lean: true }
+) {
+    return UserModel.findOne(query, {}, options).populate("class");
 }

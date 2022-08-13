@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     },
     class: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        ref: 'Class'
     }
 
 }, {

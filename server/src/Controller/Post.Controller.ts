@@ -3,7 +3,8 @@ import {
     createPostInput,
     updatePostInput,
     deletePostInput,
-    getPostInput
+    getPostInput,
+    getAllPostsInput
 } from '../Schema/Post.Schema';
 import {
     createPost,
@@ -86,6 +87,7 @@ export async function getPostHandler(
 }
 
 export async function getAllPostsHandler(
+    req: Request<getAllPostsInput>,
     res: Response
 ) {
 

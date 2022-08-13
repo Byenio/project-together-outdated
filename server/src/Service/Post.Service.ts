@@ -1,24 +1,24 @@
 import { DocumentDefinition, FilterQuery, QueryOptions, UpdateQuery } from 'mongoose';
 import PostModel, { PostDocument } from '../Models/Post.Model';
 
-export async function createPost(
+export function createPost(
     input: DocumentDefinition<Omit<PostDocument, 'createdAt' | 'updatedAt'>>
 ) {
     return PostModel.create(input)
 }
 
-export async function findPost(
+export function findPost(
     query: FilterQuery<PostDocument>,
     options: QueryOptions = { lean: true }
 ) {
     return PostModel.findOne(query, {}, options);
 }
 
-export async function findAllPosts(){
+export function findAllPosts(){
     return PostModel.find();
 };
 
-export async function findAndUpdatePost(
+export function findAndUpdatePost(
     query: FilterQuery<PostDocument>,
     update: UpdateQuery<PostDocument>,
     options: QueryOptions
@@ -26,7 +26,7 @@ export async function findAndUpdatePost(
     return PostModel.findOneAndUpdate(query, update, options);
 }
 
-export async function deletePost(
+export function deletePost(
     query: FilterQuery<PostDocument>
 ) {
     return PostModel.deleteOne(query);

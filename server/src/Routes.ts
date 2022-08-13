@@ -7,8 +7,14 @@ import {
 import validateResource from './Middleware/ValidateResource';
 import requireUser from './Middleware/RequireUser';
 
-import { createUserHandler } from './Controller/User.Controller';
-import { createUserSchema } from './Schema/User.Schema';
+import {
+    createUserHandler,
+    getUserHandler
+} from './Controller/User.Controller';
+import {
+    createUserSchema,
+    getUserSchema
+} from './Schema/User.Schema';
 import {
     createUserSessionHandler,
     getUserSessionsHandler,
@@ -69,17 +75,22 @@ function routes(App: Express) {
 
     //! User routes
     App.post(
-        '/api/create-user',
+        '/api/users',
         validateResource(createUserSchema),
         createUserHandler
     );
+    App.get(
+        '/api/users/:_id',
+        validateResource(getUserSchema),
+        getUserHandler
+    )
+
+    //! Session routes
     App.post(
         '/api/sessions',
         validateResource(createSessionSchema),
         createUserSessionHandler
     );
-
-    //! Session routes
     App.get(
         '/api/sessions',
         requireUser,
@@ -102,17 +113,17 @@ function routes(App: Express) {
         getAllPostsHandler
     );
     App.put(
-        '/api/posts/:postId',
+        '/api/posts/:_id',
         [requireUser, validateResource(updatePostSchema)],
         updatePostHandler
     );
     App.get(
-        '/api/posts/:postId',
+        '/api/posts/:_id',
         validateResource(getPostSchema),
         getPostHandler
     );
-    App.get(
-        '/api/posts/:postId',
+    App.delete(
+        '/api/posts/:_id',
         [requireUser, validateResource(deletePostSchema)],
         deletePostHandler
     );
@@ -128,17 +139,17 @@ function routes(App: Express) {
         getAllClassesHandler
     );
     App.put(
-        '/api/classes/:classId',
+        '/api/classes/:_id',
         [requireUser, validateResource(updateClassSchema)],
         updateClassHandler
     );
     App.get(
-        '/api/classes/:classId',
+        '/api/classes/:_id',
         validateResource(getClassSchema),
         getClassHandler
     );
     App.delete(
-        '/api/classes/:classId',
+        '/api/classes/:_id',
         [requireUser, validateResource(deleteClassSchema)],
         deleteClassHandler
     );
@@ -154,17 +165,17 @@ function routes(App: Express) {
         getAllSubjectsHandler
     );
     App.put(
-        '/api/subjects/:subjectId',
+        '/api/subjects/:_id',
         [requireUser, validateResource(updateSubjectSchema)],
         updateSubjectHandler
     );
     App.get(
-        '/api/subjects/:subjectId',
+        '/api/subjects/:_id',
         validateResource(getSubjectSchema),
         getSubjectHandler
     );
     App.delete(
-        '/api/subjects/:subjectId',
+        '/api/subjects/:_id',
         [requireUser, validateResource(deleteSubjectSchema)],
         deleteSubjectHandler
     );

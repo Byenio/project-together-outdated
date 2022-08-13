@@ -1,5 +1,14 @@
-import { number, object, string, TypeOf } from 'zod';
-import { createUser } from '../Service/User.Service';
+import { object, string, TypeOf } from 'zod';
+
+const params = {
+
+    params: object({
+        _id: string({
+            required_error: 'User ID is required'
+        })
+    })
+
+}
 
 export const createUserSchema = object({
 
@@ -15,7 +24,10 @@ export const createUserSchema = object({
         }),
         email: string({
             required_error: 'Email is required',
-        }).email('Invalid email')
+        }).email('Invalid email'),
+        class: string({
+            required_error: 'Class is required'
+        })
     }).refine((data) => data.password === data.passwordConfirmation, {
         message: 'Passwords do not match',
         path: ['passwordConfirmation'],
@@ -23,4 +35,9 @@ export const createUserSchema = object({
 
 });
 
+export const getUserSchema = object({
+    ...params
+})
+
 export type CreateUserInput = Omit<TypeOf<typeof createUserSchema>, 'body.passwordConfirmation' | 'body.permissionLevel'>;
+export type GetUserInput = TypeOf<typeof getUserSchema>
