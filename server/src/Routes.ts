@@ -9,7 +9,8 @@ import requireUser from './Middleware/RequireUser';
 
 import {
     createUserHandler,
-    getUserHandler
+    getPublicUserHandler,
+    getPrivateUserHandler
 } from './Controller/User.Controller';
 import {
     createUserSchema,
@@ -97,12 +98,12 @@ function routes(App: Express) {
     App.get(
         '/api/user-public/:_id',
         validateResource(getUserSchema),
-        getUserHandler
+        getPublicUserHandler
     );
-    App.get(//TODO: make this safe
+    App.get(
         '/api/user-private/:_id',
-        [requireUser, validateResource(createPostSchema)],
-        getUserHandler
+        [requireUser, validateResource(getUserSchema)],
+        getPrivateUserHandler
     )
 
     //! Session routes
