@@ -1,1 +1,1 @@
-# Project `Together`
+# project-together
