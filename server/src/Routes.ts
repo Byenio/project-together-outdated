@@ -95,8 +95,13 @@ function routes(App: Express) {
         createUserHandler
     );
     App.get(
-        '/api/users/:_id',
+        '/api/user-public/:_id',
         validateResource(getUserSchema),
+        getUserHandler
+    );
+    App.get(//TODO: make this safe
+        '/api/user-private/:_id',
+        [requireUser, validateResource(createPostSchema)],
         getUserHandler
     )
 

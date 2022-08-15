@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { CreateUserInput, GetUserInput } from '../Schema/User.Schema';
 import { createUser, getUser } from '../Service/User.Service';
 import logger from '../Utils/Logger';
+import { omit } from 'lodash';
 
 export async function createUserHandler( req: Request<{}, {}, CreateUserInput['body']>, res: Response ) {
 
@@ -28,6 +29,6 @@ export async function getUserHandler(
         return res.status(404);
     }
 
-    return res.send(user);
+    return res.send(omit(user, 'password', 'createdAt', 'updatedAt'));
 
 }
