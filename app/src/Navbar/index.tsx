@@ -12,7 +12,7 @@ const Navbar: React.FunctionComponent<NavbarInterface> = (props) => {
 
             <div className="navbar-logo-container">
                 <Link to="/">
-                    <img src={require("../img/logo192.png")} alt="Logo" className="navbar-logo-image" />
+                    <img src={require("../img/logo192.png")} alt="ZSTI logo" className="navbar-logo-image" />
                 </Link>
             </div>
 
