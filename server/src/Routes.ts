@@ -66,6 +66,21 @@ import {
     getAllSubjectsHandler
 } from './Controller/Subject.Controller';
 
+import {
+    createPostTypeSchema,
+    updatePostTypeSchema,
+    getPostTypeSchema,
+    deletePostTypeSchema,
+    getAllPostsTypesSchema
+} from './Schema/Post.Type.Schema';
+import {
+    createPostTypeHandler,
+    updatePostTypeHandler,
+    getPostTypeHandler,
+    deletePostTypeHandler,
+    getAllPostTypesHandler
+} from './Controller/Post.Type.Controller';
+
 function routes(App: Express) {
 
     App.get(
@@ -126,6 +141,32 @@ function routes(App: Express) {
         '/api/posts/:_id',
         [requireUser, validateResource(deletePostSchema)],
         deletePostHandler
+    );
+
+    //! Post type routes
+    App.post(
+        '/api/post-types',
+        [requireUser, validateResource(createPostTypeSchema)],
+        createPostTypeHandler
+    );
+    App.get(
+        '/api/post-types/all',
+        getAllPostTypesHandler
+    );
+    App.put(
+        '/api/post-types/:_id',
+        [requireUser, validateResource(updatePostTypeSchema)],
+        updatePostTypeHandler
+    );
+    App.get(
+        '/api/post-types/:_id',
+        validateResource(getPostTypeSchema),
+        getPostTypeHandler
+    );
+    App.delete(
+        '/api/post-types/:_id',
+        [requireUser, validateResource(deletePostTypeSchema)],
+        deletePostTypeHandler
     );
 
     //! Class routes

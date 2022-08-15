@@ -92,15 +92,15 @@ export async function getAllSubjectsHandler(
     res: Response
 ) {
 
-    const Subjectes = await findAllSubjects();
+    const Subjects = await findAllSubjects();
 
-    if (!Subjectes.length) {
+    if (!Subjects.length) {
         return res.status(404).json({
             message: 'No Subjectes found'
         })
     }
 
-    return res.send(Subjectes);
+    return res.send(Subjects);
 
 }
 
