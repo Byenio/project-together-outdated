@@ -13,7 +13,7 @@ export interface FieldInterfaceProps {
     id: string,
     label?: string,
     editor?: Editor,
-    options?: string[],
+    options?: any[],
     value?: any,
 
     validation?: ValidationInterface
@@ -103,8 +103,8 @@ export const Field: React.FunctionComponent<FieldInterfaceProps> = ({
               >
                 {options &&
                   options.map(option => (
-                    <option key={option} value={option}>
-                      {option}
+                    <option key={option._id} value={option._id}>
+                      {option.name}
                     </option>
                   ))}
               </select>

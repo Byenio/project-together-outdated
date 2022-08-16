@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 import { Form, IFields } from '../Form/Form.Component';
 import { Field } from '../Form/Field/Form.Field.Component';
@@ -6,6 +6,18 @@ import { Field } from '../Form/Field/Form.Field.Component';
 export interface LogInterface {};
 
 const Log: React.FunctionComponent = () => {
+
+    const classArray: any[] = [];
+
+    async function getClasses() {
+        const classes = await fetch('http://localhost:1337/api/classes/all').then(res => res.json());
+        for (let i = 0; i < classes.length; i++) {
+            classArray.push(classes[i]);
+        }
+    }
+    getClasses();
+
+    console.log(classArray);
 
     const fields: IFields = {
 
@@ -27,6 +39,12 @@ const Log: React.FunctionComponent = () => {
             id: 'passwordConfirmation',
             label: 'Confirm Password',
             editor: 'password'
+        },
+        class: {
+            id: 'class',
+            label: 'Class',
+            editor: 'dropdown',
+            options: classArray
         }
 
     }
@@ -34,7 +52,7 @@ const Log: React.FunctionComponent = () => {
     return (
 
         <Form
-            action="http://localhost:1337/api/create-user"
+            action="http://localhost:1337/api/users"
             fields={ fields }
             render={() => (
 
@@ -43,6 +61,7 @@ const Log: React.FunctionComponent = () => {
                     <Field { ...fields.email } />
                     <Field { ...fields.password } />
                     <Field { ...fields.passwordConfirmation } />
+                    <Field { ...fields.class } />
                 </React.Fragment>
 
             )}

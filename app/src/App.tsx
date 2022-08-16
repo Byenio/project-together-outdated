@@ -11,6 +11,7 @@ import Navbar from './Components/Navbar/Navbar.Component';
 import Posts from './Components/Posts/Posts.Component';
 import Account from './Components/Account/Account.Component';
 import Log from './Components/Log/Log.Component';
+import Register from './Components/Register/Register.Component';
 
 function App() {
 
@@ -64,6 +65,8 @@ function App() {
               <NewPost />
             </>
           }/>
+
+          <Route path='/register' element={<Register />} />
 
         </Routes>
       </BrowserRouter>
