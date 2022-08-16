@@ -43,9 +43,9 @@ export async function updatePostHandler(
 
     const userId = res.locals.user._id;
 
-    const postId = req.params._id;
+    const _id = req.params._id;
     const update = req.body;
-    const post = await findPost({ postId });
+    const post = await findPost({ _id });
 
     if (!post) {
         return res.status(404).json({
@@ -60,7 +60,7 @@ export async function updatePostHandler(
     }
 
     const updatedPost = await findAndUpdatePost(
-        { postId },
+        { _id },
         update,
         { new: true }
     );
@@ -108,8 +108,8 @@ export async function deletePostHandler(
 
     const userId = res.locals.user._id;
 
-    const postId = req.params._id;
-    const post = await findPost({ postId });
+    const _id = req.params._id;
+    const post = await findPost({ _id });
 
     if (!post) {
         return res.status(404);
@@ -119,7 +119,7 @@ export async function deletePostHandler(
         return res.status(403);
     }
 
-    await deletePost({ postId });
+    await deletePost({ _id });
 
     return res.sendStatus(200).json({
         message: 'Post deleted'
