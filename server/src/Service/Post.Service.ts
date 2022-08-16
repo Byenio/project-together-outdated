@@ -11,11 +11,21 @@ export function findPost(
     query: FilterQuery<PostDocument>,
     options: QueryOptions = { lean: true }
 ) {
-    return PostModel.findOne(query, {}, options);
+    return PostModel.findOne(query, {}, options).populate({
+        path: "user",
+        populate: {
+            path: "class"
+        }
+    });
 }
 
 export function findAllPosts(){
-    return PostModel.find();
+    return PostModel.find().populate({
+        path: "user",
+        populate: {
+            path: "class"
+        }
+    });
 };
 
 export function findAndUpdatePost(

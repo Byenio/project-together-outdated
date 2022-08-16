@@ -11,7 +11,6 @@ async function connect() {
         logger.info('Connected to database');
     } catch (error) {
         logger.error('Could not connect to database');
-        console.log(error);
         process.exit(1);
     }
 

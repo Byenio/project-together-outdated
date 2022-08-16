@@ -5,7 +5,7 @@ import { Field } from '../Form/Field/Form.Field.Component';
 
 export interface LogInterface {};
 
-const Log: React.FunctionComponent = () => {
+function Log() {
 
     const classArray: any[] = [];
 
@@ -16,8 +16,6 @@ const Log: React.FunctionComponent = () => {
         }
     }
     getClasses();
-
-    console.log(classArray);
 
     const fields: IFields = {
 

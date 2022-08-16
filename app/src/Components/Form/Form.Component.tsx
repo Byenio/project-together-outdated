@@ -100,8 +100,6 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
 
         e.preventDefault();
 
-        console.log(this.state.values)
-
         if (this.validateForm()) {
 
             const submitSuccess: boolean = await this.submitForm();
