@@ -4,13 +4,13 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
-import UserPosts from './Account/AccountNav/UserPosts';
-import NewPost from './Account/AccountNav/NewPost';
+import UserPosts from './Components/Account/AccountNav/UserPosts/Account.Userposts.Component';
+import NewPost from './Components/Account/AccountNav/NewPost/Account.Newpost.Component';
 
-import Navbar from './Navbar';
-import Posts from './Posts';
-import Account from './Account';
-import Log from './Log';
+import Navbar from './Components/Navbar/Navbar.Component';
+import Posts from './Components/Posts/Posts.Component';
+import Account from './Components/Account/Account.Component';
+import Log from './Components/Log/Log.Component';
 
 function App() {
 

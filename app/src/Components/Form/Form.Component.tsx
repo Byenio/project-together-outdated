@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldInterfaceProps } from './Field';
+import { FieldInterfaceProps } from './Field/Form.Field.Component';
 
 export interface IFields {
 
