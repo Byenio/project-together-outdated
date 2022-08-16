@@ -74,9 +74,9 @@ export async function getPostHandler(
     res: Response
 ) {
 
-    const postId = req.params._id;
+    const _id = req.params._id;
 
-    const post = await findPost({ postId });
+    const post = await findPost({ _id });
 
     if (!post) {
         return res.status(404);

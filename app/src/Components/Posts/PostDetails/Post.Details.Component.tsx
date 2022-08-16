@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export interface PostDetailsInterface {};
 
@@ -20,6 +20,8 @@ const PostDetails: React.FunctionComponent<PostDetailsInterface> = (props) => {
 
         const post = [await postList.json()];
         setPost(post);
+
+        console.log(post)
 
     }
 
