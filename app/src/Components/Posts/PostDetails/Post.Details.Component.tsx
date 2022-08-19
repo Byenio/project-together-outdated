@@ -21,8 +21,6 @@ const PostDetails: React.FunctionComponent<PostDetailsInterface> = (props) => {
         const post = [await postList.json()];
         setPost(post);
 
-        console.log(post)
-
     }
 
     return (

@@ -47,6 +47,8 @@ export const getPostSchema = object({
     ...params
 })
 
+export const getPostsByUserSchema = object({})
+
 export const getAllPostsSchema = object({})
 
 export type createPostInput = TypeOf<typeof createPostSchema>
@@ -54,3 +56,4 @@ export type updatePostInput = TypeOf<typeof updatePostSchema>
 export type deletePostInput = TypeOf<typeof deletePostSchema>
 export type getPostInput = TypeOf<typeof getPostSchema>
 export type getAllPostsInput = TypeOf<typeof getAllPostsSchema>
+export type getPostsByUserInput = TypeOf<typeof getPostsByUserSchema>

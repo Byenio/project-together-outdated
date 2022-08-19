@@ -27,14 +27,16 @@ import {
     createPostSchema,
     updatePostSchema,
     getPostSchema,
-    deletePostSchema
+    deletePostSchema,
+    getPostsByUserSchema
 } from './Schema/Post.Schema';
 import {
     createPostHandler,
     updatePostHandler,
     getPostHandler,
     deletePostHandler,
-    getAllPostsHandler
+    getAllPostsHandler,
+    getPostsByUserHandler,
 } from './Controller/Post.Controller';
 
 import {
@@ -133,6 +135,11 @@ function routes(App: Express) {
         '/api/posts/all',
         getAllPostsHandler
     );
+    App.get(
+        '/api/posts/user',
+        [requireUser, validateResource(getPostsByUserSchema)],
+        getPostsByUserHandler
+    )
     App.put(
         '/api/posts/:_id',
         [requireUser, validateResource(updatePostSchema)],

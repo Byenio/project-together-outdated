@@ -41,3 +41,14 @@ export function deletePost(
 ) {
     return PostModel.deleteOne(query);
 }
+
+export function findPostsByUser(
+    query: FilterQuery<PostDocument>
+) {
+    return PostModel.find({ "user": query }).populate({
+        path: "user",
+        populate: {
+            path: "class"
+        }
+    });
+}

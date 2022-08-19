@@ -6,7 +6,6 @@ export interface PostDocument extends mongoose.Document {
     user: UserDocument['_id'],
     subject: String,
     description: String,
-    class: UserDocument['class'],
     type: PostTypeDocument['_id'],
     createdAt: Date,
     updatedAt: Date,
@@ -25,10 +24,6 @@ const postSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-    },
-    class: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
     },
     type: {
         type: mongoose.Schema.Types.ObjectId,

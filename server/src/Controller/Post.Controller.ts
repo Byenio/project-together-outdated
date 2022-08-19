@@ -4,14 +4,16 @@ import {
     updatePostInput,
     deletePostInput,
     getPostInput,
-    getAllPostsInput
+    getAllPostsInput,
+    getPostsByUserInput
 } from '../Schema/Post.Schema';
 import {
     createPost,
     findPost,
     findAndUpdatePost,
     deletePost,
-    findAllPosts
+    findAllPosts,
+    findPostsByUser
 } from '../Service/Post.Service';
 
 export async function createPostHandler(
@@ -20,7 +22,6 @@ export async function createPostHandler(
 ) {
 
     const userId = res.locals.user._id;
-    const userClass = res.locals.user.class;
     const userPermission = res.locals.user.permissionLevel;
 
     if (Number(userPermission) !== 1 && Number(userPermission) !== 2) {
@@ -30,7 +31,7 @@ export async function createPostHandler(
     }
 
     const body = req.body;
-    const post = await createPost({ ...body, user: userId, class: userClass });
+    const post = await createPost({ ...body, user: userId });
 
     return res.send(post);
 
@@ -83,6 +84,27 @@ export async function getPostHandler(
     }
 
     return res.send(post);
+
+}
+
+export async function getPostsByUserHandler(
+    req: Request<getPostsByUserInput>,
+    res: Response
+) {
+
+    const _id = res.locals.user._id;
+
+    const posts = await findPostsByUser({ _id });
+
+    if (!posts) {
+        return res.status(404);
+    }
+
+    if (String(posts[0].user._id) !== _id) {
+        return res.status(403);
+    }
+
+    return res.send(posts);
 
 }
 
