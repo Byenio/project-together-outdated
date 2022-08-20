@@ -1,10 +1,9 @@
-import jwt from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 import config from 'config';
-import logger from './Logger';
 
 
-const privateKey = config.get<string>('privateKey');
-const publicKey = config.get<string>('publicKey');
+const privateKey = config.get<Secret>('privateKey');
+const publicKey = config.get<Secret>('publicKey');
 
 export function signJwt(
     object: Object,
@@ -22,7 +21,7 @@ export function verifyJwt(token: string){
 
     try {
 
-        const decoded = jwt.decode(token);
+        const decoded = jwt.verify(token, publicKey);
 
         return {
             valid: true,
