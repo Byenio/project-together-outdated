@@ -34,6 +34,8 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
             requestOptions
         );
 
+        const newAccessToken = (postList.headers.get('x-access-token'));
+
         const postListItems = await postList.json();
         setPostListItems(postListItems);
 

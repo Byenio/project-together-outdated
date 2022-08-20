@@ -25,10 +25,12 @@ const deserializeUser = async (req: Request, res: Response, next: NextFunction) 
 
         if (newAccessToken) {
             res.setHeader('x-access-token', newAccessToken);
+            res.setHeader('Access-Control-Expose-Headers', 'x-access-token');
         }
 
         const result = verifyJwt(newAccessToken as string);
 
+        
         res.locals.user = result.decoded;
         return next();
 
