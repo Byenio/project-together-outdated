@@ -35,9 +35,12 @@ export const createUserSchema = object({
 
 });
 
-export const getUserSchema = object({
+export const getPublicUserSchema = object({
     ...params
 })
 
+export const getPrivateUserSchema = object({});
+
 export type CreateUserInput = Omit<TypeOf<typeof createUserSchema>, 'body.passwordConfirmation' | 'body.permissionLevel'>;
-export type GetUserInput = TypeOf<typeof getUserSchema>
+export type GetPublicUserInput = TypeOf<typeof getPublicUserSchema>
+export type GetPrivateUserInput = TypeOf<typeof getPrivateUserSchema>

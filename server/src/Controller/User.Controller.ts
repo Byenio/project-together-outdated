@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CreateUserInput, GetUserInput } from '../Schema/User.Schema';
+import { CreateUserInput, GetPublicUserInput, GetPrivateUserInput } from '../Schema/User.Schema';
 import { createUser, getUser } from '../Service/User.Service';
 import logger from '../Utils/Logger';
 import { omit } from 'lodash';
@@ -17,7 +17,7 @@ export async function createUserHandler( req: Request<{}, {}, CreateUserInput['b
 }
 
 export async function getPublicUserHandler(
-    req: Request<GetUserInput['params']>,
+    req: Request<GetPublicUserInput['params']>,
     res: Response
 ) {
 
@@ -34,20 +34,19 @@ export async function getPublicUserHandler(
 }
 
 export async function getPrivateUserHandler(
-    req: Request<GetUserInput['params']>,
+    req: Request<GetPrivateUserInput>,
     res: Response
 ) {
 
-    const requestUserId = res.locals.user._id;
-    const userId = req.params._id;
+    const _id = res.locals.user._id;
 
-    const user = await getUser({ userId });
+    const user = await getUser({ _id });
 
     if (!user) {
         return res.status(404);
     }
 
-    if (String(user._id) !== requestUserId) {
+    if (String(user._id) !== _id) {
         return res.status(403).json({
             message: 'Forbidden'
         });

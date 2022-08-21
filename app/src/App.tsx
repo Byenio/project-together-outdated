@@ -16,31 +16,6 @@ import PostDetails from './Components/Posts/PostDetails/Post.Details.Component';
 
 function App() {
 
-  async function loggedIn(): Promise<boolean> {
-
-    const cookies = new Cookies();
-
-    try {
-      const response = await fetch('http://localhost:1337/api/sessions', {
-        method: 'GET',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'x-refresh': cookies.get('refreshToken')
-        }),
-        body: ''
-      })
-
-      const result = await response.json();
-
-      return response.ok;
-
-    } catch(ex) {
-      return false;
-    }
-
-  }
-
   return (
     <div className="App">
       

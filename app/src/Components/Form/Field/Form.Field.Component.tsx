@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorInterface, FormContextInterface, FormContext, ValuesInterface } from '../Form.Component';
 
-type Editor = "textbox" | "multilinetextbox" | "dropdown" | "email" | "password";
+type Editor = "textbox" | "textarea" | "dropdown" | "email" | "password";
 
 export interface ValidationInterface {
   rule: (values: ValuesInterface, fieldName: string, args: any) => string;
@@ -62,7 +62,7 @@ export const Field: React.FunctionComponent<FieldInterfaceProps> = ({
               />
             )}
       
-            {editor!.toLowerCase() === "multilinetextbox" && (
+            {editor!.toLowerCase() === "textarea" && (
               <textarea
                 id={id}
                 value={value}
@@ -93,14 +93,14 @@ export const Field: React.FunctionComponent<FieldInterfaceProps> = ({
               <select
                 id={id}
                 name={id}
-                value={value}
                 onChange={
                   (e: React.FormEvent<HTMLSelectElement>) =>
-                  context?.setValues({ [id]: e.currentTarget.value })
+                    context?.setValues({ [id]: e.currentTarget.value })
                 }
                 onBlur={ () => context?.validate(id) }
                 className="form-control"
               >
+                <option value="" selected disabled hidden>-</option>
                 {options &&
                   options.map(option => (
                     <option key={option._id} value={option._id}>
@@ -113,6 +113,7 @@ export const Field: React.FunctionComponent<FieldInterfaceProps> = ({
           </div>
         )}
       </FormContext.Consumer>
+      
 
     );
   };

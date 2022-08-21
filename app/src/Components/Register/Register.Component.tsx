@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Form, IFields } from '../Form/Form.Component';
 import { Field } from '../Form/Field/Form.Field.Component';
-
-export interface LogInterface {};
 
 function Log() {
 
@@ -50,9 +48,9 @@ function Log() {
     return (
 
         <Form
-            action="http://localhost:1337/api/users"
-            fields={ fields }
-            render={() => (
+            action = "http://localhost:1337/api/users"
+            fields = { fields }
+            render = { () => (
 
                 <React.Fragment>
                     <Field { ...fields.name } />
@@ -62,7 +60,7 @@ function Log() {
                     <Field { ...fields.class } />
                 </React.Fragment>
 
-            )}
+            ) }
         />
 
     );

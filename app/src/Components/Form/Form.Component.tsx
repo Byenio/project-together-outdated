@@ -114,13 +114,22 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
     }
 
     private async submitForm(): Promise<boolean> {
+        
+        const tokens = {
+            accessToken: String(localStorage.getItem('accessToken')),
+            refreshToken: String(localStorage.getItem('refreshToken')),
+        }
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Accept", "application/json");
+        myHeaders.append('authorization', `Bearer ${ tokens.accessToken }`);
+        myHeaders.append("x-refresh", `Bearer ${ tokens.refreshToken }`);
+
         try {
             const response = await fetch(this.props.action, {
               method: "post",
-              headers: new Headers({
-                "Content-Type": "application/json",
-                Accept: "application/json"
-              }),
+              headers: myHeaders,
               body: JSON.stringify(this.state.values)
             });
             return response.ok;

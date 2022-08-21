@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { getCookie } from '../../../../Scripts/Cookies.Get';
 import { Link } from 'react-router-dom';
 
 export interface UserPostsInterface {};
 
 const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
 
-    const user = {
-        _id: String(getCookie('userId')),
-        accessToken: String(getCookie('accessToken')),
-        refreshToken: String(getCookie('refreshToken'))
+    const tokens = {
+        accessToken: String(localStorage.getItem('accessToken')),
+        refreshToken: String(localStorage.getItem('refreshToken'))
     }
 
     useEffect(() => {
@@ -21,8 +19,8 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
     const fetchItems = async () => {
 
         var myHeaders = new Headers();
-        myHeaders.append("authorization", `Bearer ${user.accessToken}`);
-        myHeaders.append("x-refresh", `Bearer ${user.refreshToken}`);
+        myHeaders.append("authorization", `Bearer ${ tokens.accessToken }`);
+        myHeaders.append("x-refresh", `Bearer ${ tokens.refreshToken }`);
 
         var requestOptions = {
             method: 'GET',
@@ -35,6 +33,10 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
         );
 
         const newAccessToken = (postList.headers.get('x-access-token'));
+        
+        if (newAccessToken) {
+            localStorage.setItem('accessToken', newAccessToken);
+        }
 
         const postListItems = await postList.json();
         setPostListItems(postListItems);
@@ -45,19 +47,19 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
         
         <>
 
-            {postListItems.map(item => {
+            { postListItems.map(item => {
                 return (
                     <>
-                        <div key={item._id}>
-                            <div>{item.subject}</div>
-                            <div>{item.user.name} {item.user.class.name}</div>
-                            <div>{item.description}</div>
-                            <Link to={`/post/${item._id}`}>Go to post</Link>
+                        <div key={ item._id }>
+                            <div>{ item.subject }</div>
+                            <div>{ item.user.name } { item.user.class.name }</div>
+                            <div>{ item.description }</div>
+                            <Link to={ `/post/${ item._id }` }>Go to post</Link>
                         </div>
                         <br />
                     </>
                 )
-            })}
+            }) }
 
         </>
 

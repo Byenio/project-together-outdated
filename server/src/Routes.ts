@@ -14,7 +14,8 @@ import {
 } from './Controller/User.Controller';
 import {
     createUserSchema,
-    getUserSchema
+    getPublicUserSchema,
+    getPrivateUserSchema
 } from './Schema/User.Schema';
 import {
     createUserSessionHandler,
@@ -99,12 +100,12 @@ function routes(App: Express) {
     );
     App.get(
         '/api/user-public/:_id',
-        validateResource(getUserSchema),
+        validateResource(getPublicUserSchema),
         getPublicUserHandler
     );
     App.get(
-        '/api/user-private/:_id',
-        [requireUser, validateResource(getUserSchema)],
+        '/api/user-private/',
+        [requireUser, validateResource(getPrivateUserSchema)],
         getPrivateUserHandler
     )
 
