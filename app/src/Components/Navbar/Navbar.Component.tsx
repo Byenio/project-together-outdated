@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import Navlist from './Navbar.List';
 
 export interface NavbarInterface {};
 
@@ -16,20 +17,7 @@ const Navbar: React.FunctionComponent<NavbarInterface> = (props) => {
                 </Link>
             </div>
 
-            <div className="navbar-menu-container">
-                <ul className="navbar-menu-list">
-                    <Link to="/">
-                        <li className="navbar-menu-item">Posty</li>
-                    </Link>
-                    <Link to="/account">
-                        <li className="navbar-menu-item">Konto</li>
-                    </Link>
-                    <li className="navbar-menu-item">Powiadomienia</li>
-                    <Link to="/log">
-                        <li className="navbar-menu-item">Logowanie</li>
-                    </Link>
-                </ul>
-            </div>
+            <Navlist />
         </div>
 
     );

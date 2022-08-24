@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Account.Nav.Style.css';
 
 export interface AccountNavInterface {};
 
@@ -47,25 +48,17 @@ const AccountNav: React.FunctionComponent<AccountNavInterface> = (props) => {
 
         return (
         
-            <>
+            <div className="account-nav">
     
-                <Link to="/account">
-                    Posty uzytkownika
-                </Link>
+                <Link to="/account">Posty uzytkownika</Link>
+                <Link to="/account/new-post">Nowy post</Link>
+                <Link to="/account/tutors">Edytuj pomagajacych</Link>
+                <Link to="/account/classes">Edytuj klasy</Link>
+                <Link to="/account/subjects">Edytuj przedmioty</Link>
+                <Link to="/account/types">Edytuj typy postów</Link>
+                <Link to="/account/settings">Ustawienia konta</Link>
     
-                <Link to="/account/new-post">
-                    Nowy post
-                </Link>
-    
-                <Link to="/account/add-tutor">
-                    Dodaj pomagajacego
-                </Link>
-    
-                <Link to="/account/settings">
-                    Ustawienia konta
-                </Link>
-    
-            </>
+            </div>
     
         );
 
@@ -75,21 +68,13 @@ const AccountNav: React.FunctionComponent<AccountNavInterface> = (props) => {
 
         return (
         
-            <>
+            <div className="account-nav">
     
-                <Link to="/account">
-                    Posty uzytkownika
-                </Link>
+                <Link to="/account">Posty uzytkownika</Link>
+                <Link to="/account/new-post">Nowy post</Link>
+                <Link to="/account/settings">Ustawienia konta</Link>
     
-                <Link to="/account/new-post">
-                    Nowy post
-                </Link>
-    
-                <Link to="/account/settings">
-                    Ustawienia konta
-                </Link>
-    
-            </>
+            </div>
     
         );
 
@@ -97,13 +82,11 @@ const AccountNav: React.FunctionComponent<AccountNavInterface> = (props) => {
 
     return (
 
-        <>
+        <div className="account-nav">
     
-                <Link to="/account/settings">
-                    Ustawienia konta
-                </Link>
+            <Link to="/account/settings">Ustawienia konta</Link>
     
-        </>
+        </div>
 
     )
 

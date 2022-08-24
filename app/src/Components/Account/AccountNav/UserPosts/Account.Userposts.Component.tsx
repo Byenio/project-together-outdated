@@ -45,7 +45,7 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
 
     return (
         
-        <>
+        <div className='posts-container'>
 
             { postListItems.map(item => {
                 return (
@@ -61,7 +61,7 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
                 )
             }) }
 
-        </>
+        </div>
 
     );
 

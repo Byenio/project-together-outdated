@@ -1,0 +1,14 @@
+.account-nav {
+
+    flex-basis: 30%;
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.account-nav a {
+
+    flex-basis: 100%;
+
+}

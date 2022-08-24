@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 
 import UserPosts from './Components/Account/AccountNav/UserPosts/Account.Userposts.Component';
 import NewPost from './Components/Account/AccountNav/NewPost/Account.Newpost.Component';
