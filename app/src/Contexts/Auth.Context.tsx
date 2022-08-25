@@ -10,7 +10,7 @@ interface AuthContextInterface {
     updateTokens?: () => void;
 }
 
-const AuthContext = React.createContext<Partial<AuthContextInterface>>({});
+export const AuthContext = React.createContext<Partial<AuthContextInterface>>({});
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
