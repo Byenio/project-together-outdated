@@ -9,18 +9,25 @@ function NewPost() {
         fetchItems();
     }, [])
 
-    const [ subjectList, setSubjectList ] = useState<any[]>([]);
-    const [ typeList, setTypeList ] = useState<any[]>([]);
+    const [ dropdown, setDropdown ] = useState({
+        subjects: [],
+        types: []
+    })
 
     const fetchItems = async () => {
 
         const subjects = await fetch('http://localhost:1337/api/subjects/all');
         const subjectList = await subjects.json();
-        setSubjectList(subjectList);
 
         const types = await fetch('http://localhost:1337/api/post-types/all');
         const typeList = await types.json();
-        setTypeList(typeList);
+
+        const dropdown = {
+            subjects: subjectList,
+            types: typeList
+        }
+
+        setDropdown(dropdown);
 
     }
 
@@ -30,13 +37,13 @@ function NewPost() {
             id: 'subject',
             label: 'Subject',
             editor: 'dropdown',
-            options: subjectList
+            options: dropdown.subjects
         },
         type: {
             id: 'type',
             label: 'Type',
             editor: 'dropdown',
-            options: typeList
+            options: dropdown.types
         },
         description: {
             id: 'description',
