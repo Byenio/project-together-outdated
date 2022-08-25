@@ -13,12 +13,16 @@ import Log from './Components/Log/Log.Component';
 import Register from './Components/Register/Register.Component';
 import PostDetails from './Components/Posts/PostDetails/Post.Details.Component';
 
+import Composer from './Contexts/Context.Composer';
+import { ThemeProvider } from './Contexts/Theme.Context';
+import { AuthProvider } from './Contexts/Auth.Context';
+
 function App() {
 
   return (
-    <div className="App">
+    <div className='App'>
+    <Composer components = {[ BrowserRouter, ThemeProvider, AuthProvider ]}>
       
-      <BrowserRouter>
         <Navbar />
         <Routes>
 
@@ -43,8 +47,8 @@ function App() {
           <Route path='/post/:_id' element={<PostDetails />} />
 
         </Routes>
-      </BrowserRouter>
 
+    </Composer>
     </div>
   );
 }
