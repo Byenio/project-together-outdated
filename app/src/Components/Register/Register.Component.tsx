@@ -48,6 +48,11 @@ function Log() {
     return (
 
         <Form
+            service = {{
+                success: 'User was successfully registered',
+                error: 'User with this email already exists',
+                invalid: 'Invalid form'
+            }}
             action = "http://localhost:1337/api/users"
             fields = { fields }
             render = { () => (

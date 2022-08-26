@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { Form, IFields } from '../../../Form/Form.Component';
 import { Field } from '../../../Form/Field/Form.Field.Component';
 
@@ -56,6 +55,11 @@ function NewPost() {
     return (
         <>
             <Form
+                service = {{
+                    success: 'Post was created successfully',
+                    error: 'Invalid form',
+                    invalid: 'Invalid form'
+                }}
                 action = "http://localhost:1337/api/posts"
                 fields = { fields }
                 render = { () => (

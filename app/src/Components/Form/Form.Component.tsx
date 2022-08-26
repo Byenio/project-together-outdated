@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FieldInterfaceProps } from './Field/Form.Field.Component';
+import { AuthContext } from '../../Contexts/Auth.Context';
 
 export interface IFields {
 
@@ -11,7 +12,12 @@ interface FormInterface {
 
     action: string,
     render: () => React.ReactNode,
-    fields: IFields
+    fields: IFields,
+    service: {
+        success: string,
+        error: string,
+        invalid: string
+    }
 
 }
 
@@ -115,16 +121,13 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
 
     private async submitForm(): Promise<boolean> {
         
-        const tokens = {
-            accessToken: String(localStorage.getItem('accessToken')),
-            refreshToken: String(localStorage.getItem('refreshToken')),
-        }
+        const auth: any = this.context;
 
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Accept", "application/json");
-        myHeaders.append('authorization', `Bearer ${ tokens.accessToken }`);
-        myHeaders.append("x-refresh", `Bearer ${ tokens.refreshToken }`);
+        myHeaders.append('authorization', `Bearer ${ auth.accessToken }`);
+        myHeaders.append("x-refresh", `Bearer ${ auth.refreshToken }`);
 
         try {
             const response = await fetch(this.props.action, {
@@ -132,6 +135,7 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
               headers: myHeaders,
               body: JSON.stringify(this.state.values)
             });
+            const data = await response.json();
             return response.ok;
         } catch (ex) {
             return false;
@@ -171,6 +175,8 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
             validate: this.validate
         };
         
+        const messages = this.props.service
+
         return (
 
             <FormContext.Provider value={context}>
@@ -188,23 +194,27 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
                             Submit
                             </button>
                         </div>
+
                         {submitSuccess && (
                             <div className="alert alert-info" role="alert">
-                                The form was successfully submitted!
+                                { messages.success }
                             </div>
                         )}
+
                         {submitSuccess === false &&
                             !this.haveErrors(errors) && (
                             <div className="alert alert-danger" role="alert">
-                                User with this email already exists
+                                { messages.invalid }
                             </div>
-                            )}
+                        )}
+
                         {submitSuccess === false &&
                             this.haveErrors(errors) && (
                             <div className="alert alert-danger" role="alert">
-                                Sorry, the form is invalid. Please review, adjust and try again
+                                { messages.error }
                             </div>
-                            )}
+                        )}
+
                     </div>
                 </form>
             </FormContext.Provider>
@@ -214,3 +224,5 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
     }
 
 }
+
+Form.contextType = AuthContext;

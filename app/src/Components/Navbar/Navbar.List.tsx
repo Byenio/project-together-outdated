@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { loggedInNavbarItems, loggedOutNavbarItems } from './Navbar.Items';
+import { AuthContext } from '../../Contexts/Auth.Context';
 
 export interface NavlistInterface {};
 
 const Navlist: React.FunctionComponent<NavlistInterface> = (props) => {
 
-    const logged = true;
-    var list = null;
+    const auth = useContext(AuthContext);
 
-    if (!logged) {
+    var list = [];
+
+    if (!auth.authenticated) {
         list = loggedOutNavbarItems;
     } else {
         list = loggedInNavbarItems;

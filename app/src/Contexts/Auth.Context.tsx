@@ -1,8 +1,9 @@
 import React, { useState, PropsWithChildren, useEffect } from 'react';
 
 interface AuthContextInterface {
-    accessToken: string;
-    refreshToken: string;
+    authenticated: boolean;
+    accessToken: string | null;
+    refreshToken: string | null;
     userData: {
         email: string;
         permissionLevel: number;
@@ -15,6 +16,7 @@ export const AuthContext = React.createContext<Partial<AuthContextInterface>>({}
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
     const [ auth, setAuth ] = useState({
+        authenticated: false,
         accessToken: String(localStorage.getItem('accessToken')),
         refreshToken: String(localStorage.getItem('refreshToken')),
         userData: {
@@ -47,6 +49,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
         if (newAccessToken) {
             setAuth({
+                authenticated: true,
                 accessToken: newAccessToken,
                 refreshToken: auth.refreshToken,
                 userData: {
@@ -59,6 +62,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
         const user = await userData.json();
         const update = {
+            authenticated: true,
             accessToken: auth.accessToken,
             refreshToken: auth.refreshToken,
             userData: {
@@ -74,6 +78,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     return (
         <AuthContext.Provider
             value={{
+                authenticated: auth.authenticated,
                 accessToken: auth.accessToken,
                 refreshToken: auth.refreshToken,
                 userData: {

@@ -24,6 +24,11 @@ const Log: React.FunctionComponent = () => {
     return (
 
         <Form
+            service = {{
+                success: 'Login successful',
+                error: 'Invalid email or password',
+                invalid: 'Invalid email or password'
+            }}
             action="http://localhost:1337/api/sessions"
             fields={ fields }
             render={() => (
