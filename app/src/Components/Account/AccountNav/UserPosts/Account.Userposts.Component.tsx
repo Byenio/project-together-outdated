@@ -43,7 +43,8 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
                 return (
 
                     <div key={ item._id }>
-                        <div>{ item.subject }</div>
+                        <div>{ item.subject.name }</div>
+                        <div>{ item.type.name }</div>
                         <div>{ item.user.name } { item.user.class.name }</div>
                         <div>{ item.description }</div>
                         <Link to={ `/post/${ item._id }` }>Go to post</Link>

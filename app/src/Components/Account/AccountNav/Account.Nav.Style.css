@@ -7,8 +7,23 @@
 
 }
 
-.account-nav a {
+.account-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.account-nav-list a {
 
     flex-basis: 100%;
+    display: flex;
 
+}
+
+.account-nav-list li ul a {
+    flex-basis: 100%;
+}
+
+.account-nav-list-sub {
+    display: none;
 }

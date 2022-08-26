@@ -11,21 +11,35 @@ export function findPost(
     query: FilterQuery<PostDocument>,
     options: QueryOptions = { lean: true }
 ) {
-    return PostModel.findOne(query, {}, options).populate({
-        path: "user",
-        populate: {
-            path: "class"
-        }
-    });
+    return PostModel.findOne(query, {}, options)
+        .populate({
+            path: "subject",
+            populate: {
+                path: "class"
+            }
+        })
+        .populate({
+            path: "subject"
+        })
+        .populate({
+            path: "type"
+        });
 }
 
 export function findAllPosts(){
-    return PostModel.find().populate({
-        path: "user",
-        populate: {
-            path: "class"
-        }
-    });
+    return PostModel.find()
+        .populate({
+            path: "user",
+            populate: {
+                path: "class"
+            }
+        })
+        .populate({
+            path: "subject"
+        })
+        .populate({
+            path: "type"
+        });
 };
 
 export function findAndUpdatePost(
@@ -45,10 +59,17 @@ export function deletePost(
 export function findPostsByUser(
     query: FilterQuery<PostDocument>
 ) {
-    return PostModel.find({ "user": query }).populate({
-        path: "user",
-        populate: {
-            path: "class"
-        }
-    });
+    return PostModel.find({ "user": query })
+        .populate({
+            path: "user",
+            populate: {
+                path: "class"
+            }
+        })
+        .populate({
+            path: "subject"
+        })
+        .populate({
+            path: "type"
+        });
 }
