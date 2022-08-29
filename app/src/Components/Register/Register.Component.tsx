@@ -1,19 +1,25 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { Form, IFields } from '../Form/Form.Component';
 import { Field } from '../Form/Field/Form.Field.Component';
+import { sortAsc, sortDesc } from '../../Scripts/Sort.Script';
 
 function Log() {
 
-    const classArray: any[] = [];
+    useEffect(() => {
+        fetchItems();
+    }, [])
 
-    async function getClasses() {
-        const classes = await fetch('http://localhost:1337/api/classes/all').then(res => res.json());
-        for (let i = 0; i < classes.length; i++) {
-            classArray.push(classes[i]);
-        }
+    const [ classArray, setClassArray ] = useState<[]>([])
+
+    const fetchItems = async () => {
+
+        const classes = await fetch('http://localhost:1337/api/classes/all');
+        const classList = await classes.json();
+        sortAsc(classList, "name");
+
+        setClassArray(classList);
+
     }
-    getClasses();
 
     const fields: IFields = {
 

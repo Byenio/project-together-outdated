@@ -32,7 +32,8 @@ const PostDetails: React.FunctionComponent<PostDetailsInterface> = (props) => {
                     <>
                         <h1>{ `Post ${item._id}` }</h1>
                         <div key={item._id}>
-                            <div>{item.subject}</div>
+                            <div>{item.subject.name}</div>
+                            <div>{item.type.name}</div>
                             <div>{item.user.name} {item.user.class.name}</div>
                             <div>{item.description}</div>
                         </div>

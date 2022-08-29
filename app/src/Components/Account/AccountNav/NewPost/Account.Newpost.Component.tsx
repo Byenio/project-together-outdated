@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, IFields } from '../../../Form/Form.Component';
 import { Field } from '../../../Form/Field/Form.Field.Component';
+import { sortAsc, sortDesc } from '../../../../Scripts/Sort.Script';
 
 function NewPost() {
 
@@ -17,6 +18,7 @@ function NewPost() {
 
         const subjects = await fetch('http://localhost:1337/api/subjects/all');
         const subjectList = await subjects.json();
+        sortAsc(subjectList, "name");
 
         const types = await fetch('http://localhost:1337/api/post-types/all');
         const typeList = await types.json();

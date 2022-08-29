@@ -13,7 +13,7 @@ export function findPost(
 ) {
     return PostModel.findOne(query, {}, options)
         .populate({
-            path: "subject",
+            path: "user",
             populate: {
                 path: "class"
             }
