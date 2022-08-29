@@ -24,14 +24,16 @@ export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = 
     return (
         <ul className="account-nav-list">
             { accountNavItems.map((item, index) => {
+                const icon = React.createElement(item.icon);
                 if (item.submenu) {
                     return (
-                        <li key={ index } className="noselect" onClick={ (e) => handleDropdownFocus(openDropdown) }>{ item.title }
+                        <li key={ index } className="noselect" onClick={ (e) => handleDropdownFocus(openDropdown) }>{ icon }{ item.title }
                             <ul className='account-nav-list-sub noselect'>
                                 { openDropdown && item.submenu.map((submenuItem, index) => {
+                                    const icon = React.createElement(submenuItem.icon);
                                     return (
                                         <Link key={ index } to={ submenuItem.url } className="account-nav-list-sub-item noselect">
-                                            { submenuItem.title }
+                                            { icon }{ submenuItem.title }
                                         </Link>
                                     )
                                 }) }
@@ -40,7 +42,7 @@ export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = 
                     )
                 }
                 return (
-                    <Link key={ index } to={ item.url } className="account-nav-list-item">{ item.title }</Link>
+                    <Link key={ index } to={ item.url } className="account-nav-list-item">{ icon }{ item.title }</Link>
                 )
             }) }
         </ul>
