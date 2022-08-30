@@ -13,7 +13,8 @@ export interface listInterface {
     title: string,
     url: string,
     submenu?: any[],
-    icon?: any
+    icon?: any,
+    for?: string
 }
 
 export const accountNavItems_zero: listInterface[] = [

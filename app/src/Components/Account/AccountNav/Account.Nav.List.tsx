@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { accountNavItems_zero, accountNavItems_one, accountNavItems_two, listInterface } from './Account.Nav.Items';
 import { AuthContext } from '../../../Contexts/Auth.Context';
 
+import { FaDiscord } from '../../../Icons/React.Icons';
+
 export interface AccountNavlistInterface {};
 
 export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = () => {
@@ -22,6 +24,7 @@ export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = 
     }
 
     return (
+
         <ul className="account-nav-list">
             { accountNavItems.map((item, index) => {
                 const icon = React.createElement(item.icon);
@@ -45,7 +48,9 @@ export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = 
                     <Link key={ index } to={ item.url } className="account-nav-list-item">{ icon }{ item.title }</Link>
                 )
             }) }
+            <a href='https://discord.gg/HvYR5H6jMP'target="_blank" rel="noreferrer"><FaDiscord/>Zgłoś błędy/propozycje</a>
         </ul>
+        
     )
 
 }
