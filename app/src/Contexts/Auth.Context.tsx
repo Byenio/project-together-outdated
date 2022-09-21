@@ -6,7 +6,9 @@ interface AuthContextInterface {
     refreshToken: string | null;
     userData: {
         email: string;
-        permissionLevel: number;
+        permissionLevel: {
+            level: number;
+        };
     }
     updateTokens?: () => void;
 }
@@ -21,7 +23,9 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
         refreshToken: String(localStorage.getItem('refreshToken')),
         userData: {
             email: '',
-            permissionLevel: 0
+            permissionLevel: {
+                level: 0
+            }
         }
     });
 
@@ -54,7 +58,9 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
                 refreshToken: auth.refreshToken,
                 userData: {
                     email: auth.userData.email,
-                    permissionLevel: auth.userData.permissionLevel
+                    permissionLevel: {
+                        level: auth.userData.permissionLevel.level
+                    }
                 }
             })
             localStorage.setItem('accessToken', newAccessToken)
@@ -67,7 +73,9 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
             refreshToken: auth.refreshToken,
             userData: {
                 email: user.email,
-                permissionLevel: user.permissionLevel
+                permissionLevel: {
+                    level: user.permissionLevel.level
+                }
             }
         }
 
@@ -83,7 +91,9 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
                 refreshToken: auth.refreshToken,
                 userData: {
                     email: auth.userData.email,
-                    permissionLevel: auth.userData.permissionLevel
+                    permissionLevel: {
+                        level: auth.userData.permissionLevel.level
+                    }
                 },
                 updateTokens: () => {}
             }}

@@ -29,9 +29,10 @@ const Log: React.FunctionComponent = () => {
                 error: 'Invalid email or password',
                 invalid: 'Invalid email or password'
             }}
-            action="http://localhost:1337/api/sessions"
-            fields={ fields }
-            render={() => (
+            action ="http://localhost:1337/api/sessions"
+            method = "POST"
+            fields = { fields }
+            render = {() => (
 
                 <React.Fragment>
                     <Field { ...fields.email } />

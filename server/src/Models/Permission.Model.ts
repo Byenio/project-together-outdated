@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 export interface PermissionDocument extends mongoose.Document {
     name: String;
-    value: Number;
+    level: Number;
 }
 
 const permissionSchema = new mongoose.Schema({
@@ -12,10 +12,9 @@ const permissionSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    value: {
+    level: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
     }
 
 });

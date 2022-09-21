@@ -35,7 +35,7 @@ function Users() {
         const userItems = await users.json();
         setUserItems(userItems);
 
-        const permissions = await fetch('http://localhost:1337/api/classes/all');
+        const permissions = await fetch('http://localhost:1337/api/permissions/all');
 
         const permissionList = await permissions.json();
 
@@ -49,9 +49,9 @@ function Users() {
 
     const fields: IFields = {
 
-        permission: {
-            id: 'permission',
-            label: 'Permission',
+        permissionLevel: {
+            id: 'permissionLevel',
+            label: 'New permission',
             editor: 'dropdown',
             options: formItems.permissions
         }
@@ -63,18 +63,12 @@ function Users() {
         <>
             { userItems.map(user => {
 
-                var permissionLevel: string = '';
-
-                if (user.permissionLevel === 2) { permissionLevel = 'Nauczyciel' }
-                    else if (user.permissionLevel === 1) { permissionLevel = 'Pomagający' }
-                    else { permissionLevel = 'Uczeń' }
-
                 return (
                     <div>
                         <div key={ user._id }>
                             <div>{ user.name }</div>
                             <div>{ user.class.name }</div>
-                            <div>{ permissionLevel }</div>
+                            <div>{ user.permissionLevel.name }</div>
                         </div>
                         <div>
                         <Form
@@ -84,11 +78,12 @@ function Users() {
                                 invalid: 'Invalid form'
                             }}
                             action = { `http://localhost:1337/api/user-update/${ user._id }` }
+                            method = 'PUT'
                             fields = { fields }
                             render = { () => (
 
                                 <React.Fragment>
-                                    <Field { ...fields.permission } />
+                                    <Field { ...fields.permissionLevel } />
                                 </React.Fragment>
 
                             ) }

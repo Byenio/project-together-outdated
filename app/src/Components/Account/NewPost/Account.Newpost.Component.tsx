@@ -63,6 +63,7 @@ function NewPost() {
                     invalid: 'Invalid form'
                 }}
                 action = "http://localhost:1337/api/posts"
+                method = 'POST'
                 fields = { fields }
                 render = { () => (
 

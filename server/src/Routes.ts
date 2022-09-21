@@ -10,6 +10,7 @@ import postRoutes from './Routes/Post.Routes';
 import postTypeRoutes from './Routes/Post.Type.Routes';
 import classRoutes from './Routes/Class.Routes';
 import subjectRoutes from './Routes/Subject.Routes';
+import permissionRoutes from './Routes/Permission.Routes';
 
 function routes(App: Express) {
 
@@ -19,6 +20,7 @@ function routes(App: Express) {
     postTypeRoutes(App);
     classRoutes(App);
     subjectRoutes(App);
+    permissionRoutes(App);
 
 };
 

@@ -11,14 +11,16 @@ import {
     createUserHandler,
     getPublicUserHandler,
     getPrivateUserHandler,
-    getAllUsersHandler
+    getAllUsersHandler,
+    updateUserHandler
 } from '../Controller/User.Controller';
 
 import {
     createUserSchema,
     getPublicUserSchema,
     getPrivateUserSchema,
-    getAllUsersSchema
+    getAllUsersSchema,
+    updateUserSchema
 } from '../Schema/User.Schema';
 
 function userRoutes(App: Express) {
@@ -42,6 +44,11 @@ function userRoutes(App: Express) {
         '/api/users/all',
         [requireUser, validateResource(getAllUsersSchema)],
         getAllUsersHandler
+    );
+    App.put(
+        '/api/user-update/:_id',
+        [requireUser, validateResource(updateUserSchema)],
+        updateUserHandler
     )
 
 }

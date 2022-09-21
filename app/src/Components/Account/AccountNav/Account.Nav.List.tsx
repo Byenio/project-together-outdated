@@ -13,8 +13,8 @@ export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = 
 
     var accountNavItems: listInterface[] = [];
 
-    if (auth.userData?.permissionLevel === 2) { accountNavItems = accountNavItems_two }
-        else if (auth.userData?.permissionLevel === 1) { accountNavItems = accountNavItems_one }
+    if (auth.userData?.permissionLevel.level === 2) { accountNavItems = accountNavItems_two }
+        else if (auth.userData?.permissionLevel.level === 1) { accountNavItems = accountNavItems_one }
         else { accountNavItems = accountNavItems_zero; }
 
     const [ openDropdown, setOpenDropdown ] = useState<boolean>(false);

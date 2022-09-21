@@ -60,6 +60,7 @@ function Log() {
                 invalid: 'Invalid form'
             }}
             action = "http://localhost:1337/api/users"
+            method = "POST"
             fields = { fields }
             render = { () => (
 

@@ -17,7 +17,8 @@ interface FormInterface {
         success: string,
         error: string,
         invalid: string
-    }
+    },
+    method: string
 
 }
 
@@ -131,7 +132,7 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
 
         try {
             const response = await fetch(this.props.action, {
-              method: "post",
+              method: this.props.method,
               headers: myHeaders,
               body: JSON.stringify(this.state.values)
             });

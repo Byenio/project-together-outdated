@@ -7,8 +7,8 @@ const payload = {
         name: string({
             required_error: 'Name is required'
         }),
-        value: number({
-            required_error: 'Value is required'
+        level: number({
+            required_error: 'Level is required'
         })
 
     })
