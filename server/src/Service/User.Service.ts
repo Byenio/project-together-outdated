@@ -36,5 +36,13 @@ export async function getUser(
     query: FilterQuery<UserDocument>,
     options: QueryOptions = { lean: true }
 ) {
-    return UserModel.findOne(query, {}, options).populate("class");
+    return UserModel
+        .findOne(query, {}, options)
+        .populate("class");
+}
+
+export async function getAllUsers() {
+    return UserModel
+        .find()
+        .populate('class')
 }

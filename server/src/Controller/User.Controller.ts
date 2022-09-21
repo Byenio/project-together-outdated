@@ -1,6 +1,11 @@
 import { Request, Response } from 'express';
-import { CreateUserInput, GetPublicUserInput, GetPrivateUserInput } from '../Schema/User.Schema';
-import { createUser, getUser } from '../Service/User.Service';
+import {
+    CreateUserInput,
+    GetPublicUserInput,
+    GetPrivateUserInput,
+    GetAllUsersInput
+} from '../Schema/User.Schema';
+import { createUser, getUser, getAllUsers } from '../Service/User.Service';
 import logger from '../Utils/Logger';
 import { omit } from 'lodash';
 
@@ -53,5 +58,27 @@ export async function getPrivateUserHandler(
     }
 
     return res.send(user);
+
+}
+
+export async function getAllUsersHandler(
+    req: Request<GetAllUsersInput>,
+    res: Response
+) {
+
+    const users = await getAllUsers();
+    const userPermission = res.locals.user.permissionLevel;
+
+    if (Number(userPermission) !== 1 && Number(userPermission) !== 2) {
+        return res.status(403).json({
+            message: 'You are not authorized to create a post.'
+        })
+    }
+
+    if (!users) {
+        return res.status(404);
+    }
+
+    return res.send(users);
 
 }

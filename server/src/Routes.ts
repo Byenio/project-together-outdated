@@ -10,12 +10,14 @@ import requireUser from './Middleware/RequireUser';
 import {
     createUserHandler,
     getPublicUserHandler,
-    getPrivateUserHandler
+    getPrivateUserHandler,
+    getAllUsersHandler
 } from './Controller/User.Controller';
 import {
     createUserSchema,
     getPublicUserSchema,
-    getPrivateUserSchema
+    getPrivateUserSchema,
+    getAllUsersSchema
 } from './Schema/User.Schema';
 import {
     createUserSessionHandler,
@@ -107,6 +109,11 @@ function routes(App: Express) {
         '/api/user-private/',
         [requireUser, validateResource(getPrivateUserSchema)],
         getPrivateUserHandler
+    );
+    App.get(
+        '/api/users/all',
+        [requireUser, validateResource(getAllUsersSchema)],
+        getAllUsersHandler
     )
 
     //! Session routes

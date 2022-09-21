@@ -60,8 +60,8 @@ export const accountNavItems_two: listInterface[] = [
         icon: FiDatabase,
         submenu: [
             {
-                title: 'Pomagający',
-                url: '/account/manage/tutors',
+                title: 'Użytkownicy',
+                url: '/account/manage/users',
                 icon: VscMortarBoard
             },
             {

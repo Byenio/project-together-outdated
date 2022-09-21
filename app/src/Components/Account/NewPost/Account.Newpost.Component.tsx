@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Form, IFields } from '../../../Form/Form.Component';
-import { Field } from '../../../Form/Field/Form.Field.Component';
-import { sortAsc, sortDesc } from '../../../../Scripts/Sort.Script';
+import { Form, IFields } from '../../Form/Form.Component';
+import { Field } from '../../Form/Field/Form.Field.Component';
+import { sortAsc, sortDesc } from '../../../Scripts/Sort.Script';
 
 function NewPost() {
 
