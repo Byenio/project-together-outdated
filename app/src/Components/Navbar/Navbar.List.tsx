@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loggedInNavbarItems, loggedOutNavbarItems } from './Navbar.Items';
 import { AuthContext } from '../../Contexts/Auth.Context';
 
@@ -8,6 +8,23 @@ export interface NavlistInterface {};
 const Navlist: React.FunctionComponent<NavlistInterface> = (props) => {
 
     const auth = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const Logout = () => {
+
+        auth.authenticated = false;
+        auth.refreshToken = null;
+        auth.accessToken = null;
+        auth.userData = {
+            email: '',
+            permissionLevel: {
+                level: 0
+            }
+        }
+
+        navigate('/log');
+
+    }
 
     var list = [];
 
@@ -36,6 +53,11 @@ const Navlist: React.FunctionComponent<NavlistInterface> = (props) => {
                         const icon = React.createElement(menu.icon);
                         return (
                             <li key={ index }>{ icon }{ menu.title }</li>
+                        )
+                    } else if (menu.for === 'logout' && menu.icon) {
+                        const icon = React.createElement(menu.icon);
+                        return (
+                            <li key={ index } onClick={Logout} >{ icon }{ menu.title }</li>
                         )
                     }
                 }) }

@@ -30,7 +30,7 @@ export const loggedInNavbarItems: listInterface[] = [
     },
     {
         title: 'Wyloguj',
-        url: '/log',
+        for: 'logout',
         icon: FiLogOut
     }
 ]
@@ -42,6 +42,6 @@ export const loggedOutNavbarItems: listInterface[] = [
     },
     {
         title: 'Zaloguj',
-        url: '/log'
+        for: 'login'
     }
 ]
