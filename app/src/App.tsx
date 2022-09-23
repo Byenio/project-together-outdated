@@ -6,7 +6,7 @@ import UserPosts from './Components/Account/UserPosts/Account.Userposts.Componen
 import NewPost from './Components/Account/NewPost/Account.Newpost.Component';
 
 import Navbar from './Components/Navbar/Navbar.Component';
-import Posts from './Components/Posts/Posts.Component';
+import { Posts } from './Components/Posts/Posts.Component';
 import Account from './Components/Account/Account.Component';
 import Log from './Components/Log/Log.Component';
 import Register from './Components/Register/Register.Component';
@@ -18,7 +18,7 @@ import { ThemeProvider } from './Contexts/Theme.Context';
 import { AuthProvider } from './Contexts/Auth.Context';
 
 function App() {
-
+  
   return (
     <div className='App'>
     <Composer components = {[ BrowserRouter, ThemeProvider, AuthProvider ]}>

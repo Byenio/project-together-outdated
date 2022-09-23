@@ -1,6 +1,7 @@
 import React, { useState, PropsWithChildren, useEffect } from 'react';
+import { getAuth } from '../Proxies/getAuth';
 
-interface AuthContextInterface {
+export interface AuthContextInterface {
     authenticated: boolean;
     accessToken: string | null;
     refreshToken: string | null;
@@ -15,7 +16,7 @@ interface AuthContextInterface {
 
 export const AuthContext = React.createContext<Partial<AuthContextInterface>>({});
 
-export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
+const useAuth = () => {
 
     const [ auth, setAuth ] = useState({
         authenticated: false,
@@ -28,60 +29,31 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
             }
         }
     });
+    const [ errors, setErrors ] = useState(null);
 
-    useEffect(() => {
-        fetchItems();
-    }, []);
+    const fetchAuth = async () => {
 
-    const fetchItems = async () => {
-
-        var myHeaders = new Headers();
-        myHeaders.append('authorization', `Bearer ${ auth.accessToken }`);
-        myHeaders.append('x-refresh', `Bearer ${ auth.refreshToken }`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders
-        }
-
-        const userData = await fetch(
-            `http://localhost:1337/api/user-private`,
-            requestOptions
-        )
-
-        const newAccessToken = (userData.headers.get('x-access-token'));
-
-        if (newAccessToken) {
-            setAuth({
-                authenticated: true,
-                accessToken: newAccessToken,
-                refreshToken: auth.refreshToken,
-                userData: {
-                    email: auth.userData.email,
-                    permissionLevel: {
-                        level: auth.userData.permissionLevel.level
-                    }
-                }
+        getAuth(auth)
+            .then((response) => {
+                setAuth(response);
             })
-            localStorage.setItem('accessToken', newAccessToken)
-        }
-
-        const user = await userData.json();
-        const update = {
-            authenticated: true,
-            accessToken: auth.accessToken,
-            refreshToken: auth.refreshToken,
-            userData: {
-                email: user.email,
-                permissionLevel: {
-                    level: user.permissionLevel.level
-                }
-            }
-        }
-
-        setAuth(update);
+            .catch((error) => {
+                setErrors(error);
+            })
 
     }
+
+    useEffect(() => {
+        fetchAuth();
+    }, []);
+
+    return { auth, errors };
+
+}
+
+export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
+
+    const { auth } = useAuth();
 
     return (
         <AuthContext.Provider

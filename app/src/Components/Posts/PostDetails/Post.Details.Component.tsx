@@ -1,27 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
+import { getPostDetails } from '../../../Proxies/getPostDetails';
 
 export interface PostDetailsInterface {};
 
-const PostDetails: React.FunctionComponent<PostDetailsInterface> = (props) => {
-
-    useEffect(() => {
-        fetchItems();
-    }, []);
-
+const usePost = () => {
+    
     const [ post, setPost ] = useState<any[]>([]);
+    const [ errors, setErrors ] = useState(null);
     const params = useParams();
 
-    const fetchItems = async () => {
+    const fetchPost = async () => {
 
-        const postList = await fetch(
-            `http://localhost:1337/api/posts/${params._id}`
-        );
-
-        const post = [await postList.json()];
-        setPost(post);
+        await getPostDetails(params)
+            .then((returnedPost) => {
+                setPost(returnedPost);
+            })
+            .catch((error) => {
+                setErrors(error);
+            })
 
     }
+
+    useEffect(() => {
+        fetchPost();
+    }, []);
+
+    return { post, errors };
+
+}
+
+const PostDetails: React.FunctionComponent<PostDetailsInterface> = (props) => {
+
+    const { post } = usePost();
 
     return (
 

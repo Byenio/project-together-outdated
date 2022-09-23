@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { Form, IFields } from '../../Form/Form.Component';
 import { Field } from '../../Form/Field/Form.Field.Component';
-import { sortAsc, sortDesc } from '../../../Scripts/Sort.Script';
+import { BASE_API_URL } from '../../../config';
+import { getNewpostDropdown } from '../../../Proxies/getNewpostDropdown';
 
-function NewPost() {
-
-    useEffect(() => {
-        fetchItems();
-    }, [])
+const useDropdown = () => {
 
     const [ dropdown, setDropdown ] = useState({
         subjects: [],
         types: []
     })
+    const [ errors, setErrors ] = useState(null);
 
-    const fetchItems = async () => {
+    const fetchDropdown = async () => {
 
-        const subjects = await fetch('http://localhost:1337/api/subjects/all');
-        const subjectList = await subjects.json();
-        sortAsc(subjectList, "name");
-
-        const types = await fetch('http://localhost:1337/api/post-types/all');
-        const typeList = await types.json();
-
-        const dropdown = {
-            subjects: subjectList,
-            types: typeList
-        }
-
-        setDropdown(dropdown);
+        getNewpostDropdown()
+            .then((response) => {
+                setDropdown({
+                    subjects: response.subjects,
+                    types: response.types
+                })
+            })
+            .catch((error) => {
+                setErrors(error)
+            })
 
     }
+
+    useEffect(() => {
+        fetchDropdown();
+    }, [])
+
+    return { dropdown };
+
+}
+
+const useFields = (dropdown: { subjects: any[], types: any[] }) => {
 
     const fields: IFields = {
 
@@ -54,6 +59,15 @@ function NewPost() {
 
     }
 
+    return { fields };
+
+}
+
+function NewPost() {
+
+    const { dropdown } = useDropdown();
+    const { fields } = useFields(dropdown);    
+
     return (
         <>
             <Form
@@ -62,7 +76,7 @@ function NewPost() {
                     error: 'Invalid form',
                     invalid: 'Invalid form'
                 }}
-                action = "http://localhost:1337/api/posts"
+                action = { `${BASE_API_URL}/api/posts` }
                 method = 'POST'
                 fields = { fields }
                 render = { () => (

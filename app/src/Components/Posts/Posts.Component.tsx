@@ -1,33 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { getAllPosts } from "../../Proxies/getAllPosts";
 
 export interface PostsInterface {};
 
-const Posts: React.FunctionComponent<PostsInterface> = (props) => {
+const usePosts = () => {
 
-    useEffect(() => {
-        fetchItems();
-    }, []);
+    const [ posts, setPosts ] = useState<any[]>([]);
+    const [ errors, setErrors ] = useState(null);
 
-    const [ postListItems, setPostListItems ] = useState<any[]>([]);
+    const fetchPosts = async () => {
 
-    const fetchItems = async () => {
-
-        const postList = await fetch(
-            'http://localhost:1337/api/posts/all'
-        );
-
-        const postListItems = await postList.json();
-        setPostListItems(postListItems);
+        await getAllPosts()
+            .then((returnedPosts) => {
+                setPosts(returnedPosts);
+            })
+            .catch((error) => {
+                setErrors(error);
+            })
 
     }
+
+    useEffect(() => {
+        fetchPosts();
+    }, []);
+
+    return { posts, errors };
+
+}
+
+export const Posts: React.FunctionComponent<PostsInterface> = (props) => {
+
+    const { posts } = usePosts();
 
     return (
 
         <>
 
             <h1>Posts</h1>
-            {postListItems.map(item => {
+            {posts.map(item => {
                 return (
 
                     <div key={item._id}>
@@ -46,5 +57,3 @@ const Posts: React.FunctionComponent<PostsInterface> = (props) => {
     );
 
 }
-
-export default Posts;

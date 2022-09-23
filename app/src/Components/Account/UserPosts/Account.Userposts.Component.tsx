@@ -1,45 +1,46 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/Auth.Context';
+import { getUserPosts } from '../../../Proxies/getUserPosts';
 
 export interface UserPostsInterface {};
 
-const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
+const useUserPosts = () => {
 
     const auth = useContext(AuthContext);
 
+    const [ userPosts, setUserPosts ] = useState<any[]>([]);
+    const [ errors, setErrors ] = useState(null);
+
+    const fetchItems = async () => {
+
+        getUserPosts(auth)
+            .then((response) => {
+                setUserPosts(response);
+            })
+            .catch((error) => {
+                setErrors(error);
+            })
+
+    }
+    
     useEffect(() => {
         fetchItems();
     }, []);
 
-    const [ postListItems, setPostListItems ] = useState<any[]>([]);
+    return { userPosts, errors };
 
-    const fetchItems = async () => {
+}
 
-        var myHeaders = new Headers();
-        myHeaders.append("authorization", `Bearer ${ auth.accessToken }`);
-        myHeaders.append("x-refresh", `Bearer ${ auth.refreshToken }`);
+const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
 
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders
-        };
-
-        const postList = await fetch(
-            `http://localhost:1337/api/posts/user`,
-            requestOptions
-        );
-
-        const postListItems = await postList.json();
-        setPostListItems(postListItems);
-
-    }
+    const { userPosts } = useUserPosts();
 
     return (
         
         <div className='posts-container'>
 
-            { postListItems.map(item => {
+            { userPosts.map(item => {
                 return (
 
                     <div key={ item._id }>

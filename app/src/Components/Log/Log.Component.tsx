@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Form, IFields } from '../Form/Form.Component';
 import { Field } from '../Form/Field/Form.Field.Component';
+import { BASE_API_URL } from "../../config";
 
 export interface LogInterface {};
 
-const Log: React.FunctionComponent = () => {
+const useFields = () => {
 
     const fields: IFields = {
         email: {
@@ -21,6 +22,14 @@ const Log: React.FunctionComponent = () => {
 
     }
 
+    return { fields };
+
+}
+
+const Log: React.FunctionComponent = () => {
+
+    const { fields } = useFields();
+
     return (
 
         <>
@@ -30,7 +39,7 @@ const Log: React.FunctionComponent = () => {
                     error: 'Invalid email or password',
                     invalid: 'Invalid email or password'
                 }}
-                action ="http://localhost:1337/api/sessions"
+                action = { `${BASE_API_URL}/api/sessions` }
                 method = "POST"
                 fields = { fields }
                 render = {() => (

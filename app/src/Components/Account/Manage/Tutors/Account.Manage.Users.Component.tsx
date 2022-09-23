@@ -1,51 +1,41 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../../../Contexts/Auth.Context';
-import { sortAsc } from '../../../../Scripts/Sort.Script';
 import { Form, IFields } from '../../../Form/Form.Component';
 import { Field } from '../../../Form/Field/Form.Field.Component';
+import { getUsers } from '../../../../Proxies/getUsers';
+import { BASE_API_URL } from '../../../../config';
 
-function Users() {
+const useUsers = () => {
 
     const auth = useContext(AuthContext);
 
-    useEffect(() => {
-        fetchItems();
-    }, []);
+    const [ users, setUsers ] = useState<any[]>([]);
+    const [ permissions, setPermissions ] = useState([]);
+    const [ errors, setErrors ] = useState(null);
 
-    const [ userItems, setUserItems ] = useState<any[]>([]);
-    const [ formItems, setFormItems ] = useState({
-        permissions: []
-    });
+    const fetchUsers = async () => {
 
-    const fetchItems = async () => {
-
-        var myHeaders = new Headers();
-        myHeaders.append("authorization", `Bearer ${ auth.accessToken }`);
-        myHeaders.append("x-refresh", `Bearer ${ auth.refreshToken }`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders
-        };
-
-        const users = await fetch (
-            'http://localhost:1337/api/users/all',
-            requestOptions
-        );
-        const userItems = await users.json();
-        setUserItems(userItems);
-
-        const permissions = await fetch('http://localhost:1337/api/permissions/all');
-
-        const permissionList = await permissions.json();
-
-        sortAsc(permissionList, 'name');
-
-        setFormItems({
-            permissions: permissionList
-        })
+        getUsers(auth)
+            .then((response) => {
+                setUsers(response.users);
+                setPermissions(response.permissions);
+            })
+            .catch((error) => {
+                setErrors(error);
+            })
 
     }
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    return { users, permissions, errors };
+
+}
+
+const useFields = (permissions: any) => {
 
     const fields: IFields = {
 
@@ -53,15 +43,24 @@ function Users() {
             id: 'permissionLevel',
             label: 'New permission',
             editor: 'dropdown',
-            options: formItems.permissions
+            options: permissions
         }
 
     }
 
+    return { fields };
+
+}
+
+function Users() {
+
+    const { users, permissions } = useUsers();
+    const { fields } = useFields(permissions);
+
     return (
 
         <>
-            { userItems.map(user => {
+            { users.map(user => {
 
                 return (
                     <div>
@@ -77,7 +76,7 @@ function Users() {
                                 error: 'Invalid form',
                                 invalid: 'Invalid form'
                             }}
-                            action = { `http://localhost:1337/api/user-update/${ user._id }` }
+                            action = { `${BASE_API_URL}/api/user-update/${ user._id }` }
                             method = 'PUT'
                             fields = { fields }
                             render = { () => (
