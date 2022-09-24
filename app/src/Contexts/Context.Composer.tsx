@@ -11,9 +11,9 @@ export default function Composer(props: ComposerInterface) {
 
     return (
         <>
-            { components.reduceRight((acc, Comp) => {
-                return <Comp>{ acc }</Comp>
-            }, children) }
+            {components.reduceRight((acc, Comp) => {
+                return <Comp>{acc}</Comp>
+            }, children)}
         </>
     )
 

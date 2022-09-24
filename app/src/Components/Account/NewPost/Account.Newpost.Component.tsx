@@ -6,11 +6,11 @@ import { getNewpostDropdown } from '../../../Proxies/getNewpostDropdown';
 
 const useDropdown = () => {
 
-    const [ dropdown, setDropdown ] = useState({
+    const [dropdown, setDropdown] = useState({
         subjects: [],
         types: []
     })
-    const [ errors, setErrors ] = useState(null);
+    const [errors, setErrors] = useState(null);
 
     const fetchDropdown = async () => {
 
@@ -66,28 +66,28 @@ const useFields = (dropdown: { subjects: any[], types: any[] }) => {
 function NewPost() {
 
     const { dropdown } = useDropdown();
-    const { fields } = useFields(dropdown);    
+    const { fields } = useFields(dropdown);
 
     return (
         <>
             <Form
-                service = {{
+                service={{
                     success: 'Post was created successfully',
                     error: 'Invalid form',
                     invalid: 'Invalid form'
                 }}
-                action = { `${BASE_API_URL}/api/posts` }
-                method = 'POST'
-                fields = { fields }
-                render = { () => (
+                action={`${BASE_API_URL}/api/posts`}
+                method='POST'
+                fields={fields}
+                render={() => (
 
                     <React.Fragment>
-                        <Field { ...fields.subject } />
-                        <Field { ...fields.type } />
-                        <Field { ...fields.description } />
+                        <Field {...fields.subject} />
+                        <Field {...fields.type} />
+                        <Field {...fields.description} />
                     </React.Fragment>
 
-                ) }
+                )}
             />
         </>
     );

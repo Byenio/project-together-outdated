@@ -17,45 +17,47 @@ import Composer from './Contexts/Context.Composer';
 import { ThemeProvider } from './Contexts/Theme.Context';
 import { AuthProvider } from './Contexts/Auth.Context';
 
+const Contexts = [BrowserRouter, AuthProvider, ThemeProvider];
+
 function App() {
-  
+
   return (
     <div className='App'>
-    <Composer components = {[ BrowserRouter, ThemeProvider, AuthProvider ]}>
-      
+      <Composer components={Contexts}>
+
         <Navbar />
         <Routes>
 
-          <Route path='/' element={<Posts />}/>
-          <Route path='/account' element = {
+          <Route path='/' element={<Posts />} />
+          <Route path='/account' element={
             <>
               <Account />
               <UserPosts />
             </>
           } />
 
-          <Route path='/log' element={<Log />}/>
+          <Route path='/log' element={<Log />} />
 
           <Route path='/account/new-post' element={
             <>
               <Account />
               <NewPost />
             </>
-          }/>
+          } />
 
           <Route path='/account/manage/users' element={
             <>
               <Account />
               <Users />
             </>
-          }/>
+          } />
 
           <Route path='/register' element={<Register />} />
           <Route path='/post/:_id' element={<PostDetails />} />
 
         </Routes>
 
-    </Composer>
+      </Composer>
     </div>
   );
 }

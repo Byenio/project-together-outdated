@@ -2,7 +2,7 @@ import React from "react";
 
 import AccountNav from './AccountNav/Account.Nav.Component';
 
-export interface AccountInterface {};
+export interface AccountInterface { };
 
 const Account: React.FunctionComponent<AccountInterface> = (props) => {
 

@@ -13,8 +13,8 @@ export const getAuth = async (auth: {
 }) => {
 
     var myHeaders = new Headers();
-    myHeaders.append('authorization', `Bearer ${ auth.accessToken }`);
-    myHeaders.append('x-refresh', `Bearer ${ auth.refreshToken }`);
+    myHeaders.append('authorization', `Bearer ${auth.accessToken}`);
+    myHeaders.append('x-refresh', `Bearer ${auth.refreshToken}`);
 
     var requestOptions = {
         method: 'GET',
@@ -25,7 +25,7 @@ export const getAuth = async (auth: {
         `${BASE_API_URL}/api/user-private`,
         requestOptions
     )
-    
+
     const user = await response.json();
     const newAccessToken = (response.headers.get('x-access-token'));
 

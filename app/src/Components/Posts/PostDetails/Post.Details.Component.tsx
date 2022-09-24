@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getPostDetails } from '../../../Proxies/getPostDetails';
 
-export interface PostDetailsInterface {};
+export interface PostDetailsInterface { };
 
 const usePost = () => {
-    
-    const [ post, setPost ] = useState<any[]>([]);
-    const [ errors, setErrors ] = useState(null);
+
+    const [post, setPost] = useState<any[]>([]);
+    const [errors, setErrors] = useState(null);
     const params = useParams();
 
     const fetchPost = async () => {
@@ -41,7 +41,7 @@ const PostDetails: React.FunctionComponent<PostDetailsInterface> = (props) => {
             {post.map(item => {
                 return (
                     <>
-                        <h1>{ `Post ${item._id}` }</h1>
+                        <h1>{`Post ${item._id}`}</h1>
                         <div key={item._id}>
                             <div>{item.subject.name}</div>
                             <div>{item.type.name}</div>

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { getAllPosts } from "../../Proxies/getAllPosts";
 
-export interface PostsInterface {};
+export interface PostsInterface { };
 
 const usePosts = () => {
 
-    const [ posts, setPosts ] = useState<any[]>([]);
-    const [ errors, setErrors ] = useState(null);
+    const [posts, setPosts] = useState<any[]>([]);
+    const [errors, setErrors] = useState(null);
 
     const fetchPosts = async () => {
 
@@ -43,12 +43,12 @@ export const Posts: React.FunctionComponent<PostsInterface> = (props) => {
 
                     <div key={item._id}>
                         <div>{item.subject.name}</div>
-                        <div>{ item.type.name }</div>
+                        <div>{item.type.name}</div>
                         <div>{item.user.name} {item.user.class.name}</div>
                         <div>{item.description}</div>
                         <Link to={`/post/${item._id}`}>Go to post</Link>
                     </div>
-                    
+
                 )
             })}
 

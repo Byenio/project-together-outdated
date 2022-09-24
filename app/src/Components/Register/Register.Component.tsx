@@ -6,8 +6,8 @@ import { getClasses } from '../../Proxies/getClasses';
 
 const useClasses = () => {
 
-    const [ classes, setClasses ] = useState<[]>([])
-    const [ errors, setErrors ] = useState(null);
+    const [classes, setClasses] = useState<[]>([])
+    const [errors, setErrors] = useState(null);
 
     const fetchClasses = async () => {
 
@@ -68,30 +68,30 @@ const useFields = (classes: []) => {
 export default function Log() {
 
     const { classes } = useClasses();
-    const { fields } = useFields(classes);    
+    const { fields } = useFields(classes);
 
     return (
 
         <Form
-            service = {{
+            service={{
                 success: 'User was successfully registered',
                 error: 'User with this email already exists',
                 invalid: 'Invalid form'
             }}
-            action = { `${BASE_API_URL}/api/users` }
-            method = "POST"
-            fields = { fields }
-            render = { () => (
+            action={`${BASE_API_URL}/api/users`}
+            method="POST"
+            fields={fields}
+            render={() => (
 
                 <React.Fragment>
-                    <Field { ...fields.name } />
-                    <Field { ...fields.email } />
-                    <Field { ...fields.password } />
-                    <Field { ...fields.passwordConfirmation } />
-                    <Field { ...fields.class } />
+                    <Field {...fields.name} />
+                    <Field {...fields.email} />
+                    <Field {...fields.password} />
+                    <Field {...fields.passwordConfirmation} />
+                    <Field {...fields.class} />
                 </React.Fragment>
 
-            ) }
+            )}
         />
 
     );

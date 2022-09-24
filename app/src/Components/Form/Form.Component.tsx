@@ -53,27 +53,27 @@ export const FormContext = React.createContext<FormContextInterface | undefined>
 
 //! < Validation
 export const required = (values: ValuesInterface, fieldName: string): string =>
-  values[fieldName] === null ||
-  values[fieldName] === ""
-    ? "This must be populated"
-    : "";
+    values[fieldName] === null ||
+        values[fieldName] === ""
+        ? "This must be populated"
+        : "";
 
 export const isEmail = (values: ValuesInterface, fieldName: string): string =>
-  values[fieldName] &&
-  values[fieldName].search(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  )
-    ? "This must be in a valid email format"
-    : "";
+    values[fieldName] &&
+        values[fieldName].search(
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        )
+        ? "This must be in a valid email format"
+        : "";
 
 export const maxLength = (
-  values: ValuesInterface,
-  fieldName: string,
-  length: number
+    values: ValuesInterface,
+    fieldName: string,
+    length: number
 ): string =>
-  values[fieldName] && values[fieldName].length > length
-    ? `This can not exceed ${length} characters`
-    : "";
+    values[fieldName] && values[fieldName].length > length
+        ? `This can not exceed ${length} characters`
+        : "";
 //! Validation />
 
 export class Form extends React.Component<FormInterface, FormStateInterface> {
@@ -103,7 +103,7 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
 
     }
 
-    private handleSubmit = async ( e: React.FormEvent<HTMLFormElement> ): Promise<void> => {
+    private handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 
         e.preventDefault();
 
@@ -121,20 +121,20 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
     }
 
     private async submitForm(): Promise<boolean> {
-        
+
         const auth: any = this.context;
 
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Accept", "application/json");
-        myHeaders.append('authorization', `Bearer ${ auth.accessToken }`);
-        myHeaders.append("x-refresh", `Bearer ${ auth.refreshToken }`);
+        myHeaders.append('authorization', `Bearer ${auth.accessToken}`);
+        myHeaders.append("x-refresh", `Bearer ${auth.refreshToken}`);
 
         try {
             const response = await fetch(this.props.action, {
-              method: this.props.method,
-              headers: myHeaders,
-              body: JSON.stringify(this.state.values)
+                method: this.props.method,
+                headers: myHeaders,
+                body: JSON.stringify(this.state.values)
             });
             const data = await response.json();
             return response.ok;
@@ -144,25 +144,25 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
     }
 
     private setValues = (values: ValuesInterface) => {
-        this.setState({ values: { ...this.state.values, ...values }})
+        this.setState({ values: { ...this.state.values, ...values } })
     }
 
     private validate = (fieldName: string): string => {
         let newError: string = "";
-     
+
         if (
-          this.props.fields[fieldName] &&
-          this.props.fields[fieldName].validation
+            this.props.fields[fieldName] &&
+            this.props.fields[fieldName].validation
         ) {
-          newError = this.props.fields[fieldName].validation!.rule(
-            this.state.values,
-            fieldName,
-            this.props.fields[fieldName].validation!.args
-          );
+            newError = this.props.fields[fieldName].validation!.rule(
+                this.state.values,
+                fieldName,
+                this.props.fields[fieldName].validation!.args
+            );
         }
         this.state.errors[fieldName] = newError;
         this.setState({
-           errors: { ...this.state.errors, [fieldName]: newError }
+            errors: { ...this.state.errors, [fieldName]: newError }
         });
         return newError;
     };
@@ -175,7 +175,7 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
             setValues: this.setValues,
             validate: this.validate
         };
-        
+
         const messages = this.props.service
 
         return (
@@ -183,38 +183,38 @@ export class Form extends React.Component<FormInterface, FormStateInterface> {
             <FormContext.Provider value={context}>
                 <form onSubmit={this.handleSubmit} noValidate={true}>
                     <div className="container">
-                    
+
                         {this.props.render()}
 
                         <div className="form-group">
                             <button
-                            type="submit"
-                            className="btn btn-primary"
-                            disabled={this.haveErrors(errors)}
+                                type="submit"
+                                className="btn btn-primary"
+                                disabled={this.haveErrors(errors)}
                             >
-                            Submit
+                                Submit
                             </button>
                         </div>
 
                         {submitSuccess && (
                             <div className="alert alert-info" role="alert">
-                                { messages.success }
+                                {messages.success}
                             </div>
                         )}
 
                         {submitSuccess === false &&
                             !this.haveErrors(errors) && (
-                            <div className="alert alert-danger" role="alert">
-                                { messages.invalid }
-                            </div>
-                        )}
+                                <div className="alert alert-danger" role="alert">
+                                    {messages.invalid}
+                                </div>
+                            )}
 
                         {submitSuccess === false &&
                             this.haveErrors(errors) && (
-                            <div className="alert alert-danger" role="alert">
-                                { messages.error }
-                            </div>
-                        )}
+                                <div className="alert alert-danger" role="alert">
+                                    {messages.error}
+                                </div>
+                            )}
 
                     </div>
                 </form>

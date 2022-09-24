@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './navbar.css';
 import Navlist from './Navbar.List';
 
-export interface NavbarInterface {};
+export interface NavbarInterface { };
 
 const Navbar: React.FunctionComponent<NavbarInterface> = (props) => {
 

@@ -6,8 +6,8 @@ export const getUserPosts = async (auth: {
 }) => {
 
     var myHeaders = new Headers();
-    myHeaders.append("authorization", `Bearer ${ auth.accessToken }`);
-    myHeaders.append("x-refresh", `Bearer ${ auth.refreshToken }`);
+    myHeaders.append("authorization", `Bearer ${auth.accessToken}`);
+    myHeaders.append("x-refresh", `Bearer ${auth.refreshToken}`);
 
     var requestOptions = {
         method: 'GET',
@@ -20,7 +20,7 @@ export const getUserPosts = async (auth: {
     );
 
     const userPosts = await response.json();
-    
+
     return userPosts;
 
 }

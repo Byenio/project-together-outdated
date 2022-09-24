@@ -4,7 +4,7 @@ import { Form, IFields } from '../Form/Form.Component';
 import { Field } from '../Form/Field/Form.Field.Component';
 import { BASE_API_URL } from "../../config";
 
-export interface LogInterface {};
+export interface LogInterface { };
 
 const useFields = () => {
 
@@ -34,19 +34,19 @@ const Log: React.FunctionComponent = () => {
 
         <>
             <Form
-                service = {{
+                service={{
                     success: 'Login successful',
                     error: 'Invalid email or password',
                     invalid: 'Invalid email or password'
                 }}
-                action = { `${BASE_API_URL}/api/sessions` }
-                method = "POST"
-                fields = { fields }
-                render = {() => (
+                action={`${BASE_API_URL}/api/sessions`}
+                method="POST"
+                fields={fields}
+                render={() => (
 
                     <React.Fragment>
-                        <Field { ...fields.email } />
-                        <Field { ...fields.password } />
+                        <Field {...fields.email} />
+                        <Field {...fields.password} />
                     </React.Fragment>
 
                 )}

@@ -18,7 +18,7 @@ export const AuthContext = React.createContext<Partial<AuthContextInterface>>({}
 
 const useAuth = () => {
 
-    const [ auth, setAuth ] = useState({
+    const [auth, setAuth] = useState({
         authenticated: false,
         accessToken: String(localStorage.getItem('accessToken')),
         refreshToken: String(localStorage.getItem('refreshToken')),
@@ -29,7 +29,7 @@ const useAuth = () => {
             }
         }
     });
-    const [ errors, setErrors ] = useState(null);
+    const [errors, setErrors] = useState(null);
 
     const fetchAuth = async () => {
 
@@ -67,7 +67,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
                         level: auth.userData.permissionLevel.level
                     }
                 },
-                updateTokens: () => {}
+                updateTokens: () => { }
             }}
         >
             {children}

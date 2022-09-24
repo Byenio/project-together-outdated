@@ -10,9 +10,9 @@ const useUsers = () => {
 
     const auth = useContext(AuthContext);
 
-    const [ users, setUsers ] = useState<any[]>([]);
-    const [ permissions, setPermissions ] = useState([]);
-    const [ errors, setErrors ] = useState(null);
+    const [users, setUsers] = useState<any[]>([]);
+    const [permissions, setPermissions] = useState([]);
+    const [errors, setErrors] = useState(null);
 
     const fetchUsers = async () => {
 
@@ -60,39 +60,39 @@ function Users() {
     return (
 
         <>
-            { users.map(user => {
+            {users.map(user => {
 
                 return (
                     <div>
-                        <div key={ user._id }>
-                            <div>{ user.name }</div>
-                            <div>{ user.class.name }</div>
-                            <div>{ user.permissionLevel.name }</div>
+                        <div key={user._id}>
+                            <div>{user.name}</div>
+                            <div>{user.class.name}</div>
+                            <div>{user.permissionLevel.name}</div>
                         </div>
                         <div>
-                        <Form
-                            service = {{
-                                success: 'User successfully updated',
-                                error: 'Invalid form',
-                                invalid: 'Invalid form'
-                            }}
-                            action = { `${BASE_API_URL}/api/user-update/${ user._id }` }
-                            method = 'PUT'
-                            fields = { fields }
-                            render = { () => (
+                            <Form
+                                service={{
+                                    success: 'User successfully updated',
+                                    error: 'Invalid form',
+                                    invalid: 'Invalid form'
+                                }}
+                                action={`${BASE_API_URL}/api/user-update/${user._id}`}
+                                method='PUT'
+                                fields={fields}
+                                render={() => (
 
-                                <React.Fragment>
-                                    <Field { ...fields.permissionLevel } />
-                                </React.Fragment>
+                                    <React.Fragment>
+                                        <Field {...fields.permissionLevel} />
+                                    </React.Fragment>
 
-                            ) }
-                        />
+                                )}
+                            />
                         </div>
 
                     </div>
                 );
 
-            }) }
+            })}
         </>
 
     )

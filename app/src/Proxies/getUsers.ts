@@ -7,15 +7,15 @@ export const getUsers = async (auth: {
 }) => {
 
     var myHeaders = new Headers();
-    myHeaders.append("authorization", `Bearer ${ auth.accessToken }`);
-    myHeaders.append("x-refresh", `Bearer ${ auth.refreshToken }`);
+    myHeaders.append("authorization", `Bearer ${auth.accessToken}`);
+    myHeaders.append("x-refresh", `Bearer ${auth.refreshToken}`);
 
     var requestOptions = {
         method: 'GET',
         headers: myHeaders
     };
 
-    const usersResponse = await fetch (
+    const usersResponse = await fetch(
         `${BASE_API_URL}/api/users/all`,
         requestOptions
     );

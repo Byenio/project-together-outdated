@@ -13,7 +13,7 @@ const ThemeContext = React.createContext<ThemeContextInterface>(defaultState);
 
 export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
-    const [ dark, setDark ] = useState(defaultState.dark);
+    const [dark, setDark] = useState(defaultState.dark);
 
     const toggleTheme = () => {
         setDark(!dark);
@@ -26,7 +26,7 @@ export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
                 toggleTheme
             }}
         >
-            { children }
+            {children}
         </ThemeContext.Provider>
     )
 
