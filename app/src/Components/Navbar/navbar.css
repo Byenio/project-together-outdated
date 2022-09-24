@@ -1,0 +1,38 @@
+.navbar {
+    
+    flex-basis: 100%;
+    background-color: rgb(136, 136, 136);
+
+    padding: 0 5em;
+
+    display: flex;
+    gap: 2em;
+
+}
+
+.navbar-logo-container {
+
+    flex-basis: 20%;
+
+}
+
+.navbar-logo-container .navbar-logo-image {
+
+    height: 4em;
+
+}
+
+.navbar-menu-container {
+
+    flex-basis: 80%;
+
+}
+
+.navbar-menu-list {
+
+    display: flex;
+    gap: 2em;
+    align-items: right;
+    list-style-type: none;
+
+}

@@ -1,11 +1,14 @@
-import jwt from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 import config from 'config';
 
 
-const privateKey = config.get<string>('privateKey');
-const publicKey = config.get<string>('publicKey');
+const privateKey = config.get<Secret>('privateKey');
+const publicKey = config.get<Secret>('publicKey');
 
-export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
+export function signJwt(
+    object: Object,
+    options?: jwt.SignOptions | undefined
+) {
 
     return jwt.sign(object, privateKey, {
         ...(options && options),
@@ -27,7 +30,6 @@ export function verifyJwt(token: string){
         }
 
     } catch(e: any) {
-
         return {
             valid: false,
             expired: e.message === 'jwt expired',

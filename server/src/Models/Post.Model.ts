@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 import { UserDocument } from './User.Model';
 import { PostTypeDocument } from './Post.Type.Model';
+import { SubjectDocument } from './Subject.Model';
 
 export interface PostDocument extends mongoose.Document {
     user: UserDocument['_id'],
-    subject: String,
+    subject: SubjectDocument['_id'],
     description: String,
-    class: UserDocument['class'],
     type: PostTypeDocument['_id'],
     createdAt: Date,
     updatedAt: Date,
@@ -19,16 +19,12 @@ const postSchema = new mongoose.Schema({
         ref: 'User'
     },
     subject: {
-        type: String,
-        required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject'
     },
     description: {
         type: String,
         required: true,
-    },
-    class: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
     },
     type: {
         type: mongoose.Schema.Types.ObjectId,

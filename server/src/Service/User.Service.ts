@@ -1,4 +1,4 @@
-import { DocumentDefinition, FilterQuery, QueryOptions } from 'mongoose';
+import { DocumentDefinition, FilterQuery, UpdateQuery, QueryOptions } from 'mongoose';
 import { omit } from 'lodash';
 import UserModel, { UserDocument } from '../Models/User.Model';
 
@@ -36,5 +36,23 @@ export async function getUser(
     query: FilterQuery<UserDocument>,
     options: QueryOptions = { lean: true }
 ) {
-    return UserModel.findOne(query, {}, options).populate("class");
+    return UserModel
+        .findOne(query, {}, options)
+        .populate("class")
+        .populate('permissionLevel')
+}
+
+export async function getAllUsers() {
+    return UserModel
+        .find()
+        .populate('class')
+        .populate('permissionLevel')
+}
+
+export function findAndUpdateUser(
+    query: FilterQuery<UserDocument>,
+    update: UpdateQuery<UserDocument>,
+    options: QueryOptions
+) {
+    return UserModel.findOneAndUpdate(query, update, options);
 }

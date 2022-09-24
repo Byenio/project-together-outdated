@@ -3,12 +3,13 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 
 import { ClassDocument } from './Class.Model';
+import { PermissionDocument } from './Permission.Model';
 
 export interface UserDocument extends mongoose.Document {
     email: string,
     name: string,
     password: string,
-    permissionLevel: number,    // 0 - normal student, 1 - tutor, 2 - teacher/admin
+    permissionLevel: PermissionDocument['_id'],
     class: ClassDocument['_id'],
     createdAt: Date,
     updatedAt: Date,
@@ -31,8 +32,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     permissionLevel: {
-        type: Number,
-        default: 0
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Permission'
     },
     class: {
         type: mongoose.Schema.Types.ObjectId,

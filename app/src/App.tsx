@@ -1,73 +1,63 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import UserPosts from './Account/AccountNav/UserPosts';
-import NewPost from './Account/AccountNav/NewPost';
+import UserPosts from './Components/Account/UserPosts/Account.Userposts.Component';
+import NewPost from './Components/Account/NewPost/Account.Newpost.Component';
 
-import Navbar from './Navbar';
-import Posts from './Posts';
-import Account from './Account';
-import Log from './Log';
+import Navbar from './Components/Navbar/Navbar.Component';
+import { Posts } from './Components/Posts/Posts.Component';
+import Account from './Components/Account/Account.Component';
+import Log from './Components/Log/Log.Component';
+import Register from './Components/Register/Register.Component';
+import PostDetails from './Components/Posts/PostDetails/Post.Details.Component';
+import Users from './Components/Account/Manage/Tutors/Account.Manage.Users.Component';
+
+import Composer from './Contexts/Context.Composer';
+import { ThemeProvider } from './Contexts/Theme.Context';
+import { AuthProvider } from './Contexts/Auth.Context';
+
+const Contexts = [BrowserRouter, AuthProvider, ThemeProvider];
 
 function App() {
 
-  async function loggedIn(): Promise<boolean> {
-
-    const cookies = new Cookies();
-
-    try {
-      const response = await fetch('http://localhost:1337/api/sessions', {
-        method: 'GET',
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'x-refresh': cookies.get('refreshToken')
-        }),
-        body: ''
-      })
-
-      const result = await response.json();
-
-      console.log(result);
-
-      return response.ok;
-
-    } catch(ex) {
-      return false;
-    }
-
-  }
-
   return (
-    <div className="App">
-      
-      <BrowserRouter>
+    <div className='App'>
+      <Composer components={Contexts}>
+
         <Navbar />
         <Routes>
 
-          <Route path='/' element={<Posts />}/>
-          <Route path='/account' element = {
+          <Route path='/' element={<Posts />} />
+          <Route path='/account' element={
             <>
               <Account />
               <UserPosts />
             </>
           } />
 
-          <Route path='/log' element={<Log />}/>
+          <Route path='/log' element={<Log />} />
 
           <Route path='/account/new-post' element={
             <>
               <Account />
               <NewPost />
             </>
-          }/>
+          } />
+
+          <Route path='/account/manage/users' element={
+            <>
+              <Account />
+              <Users />
+            </>
+          } />
+
+          <Route path='/register' element={<Register />} />
+          <Route path='/post/:_id' element={<PostDetails />} />
 
         </Routes>
-      </BrowserRouter>
 
+      </Composer>
     </div>
   );
 }

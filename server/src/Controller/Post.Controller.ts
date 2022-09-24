@@ -4,14 +4,16 @@ import {
     updatePostInput,
     deletePostInput,
     getPostInput,
-    getAllPostsInput
+    getAllPostsInput,
+    getPostsByUserInput
 } from '../Schema/Post.Schema';
 import {
     createPost,
     findPost,
     findAndUpdatePost,
     deletePost,
-    findAllPosts
+    findAllPosts,
+    findPostsByUser
 } from '../Service/Post.Service';
 
 export async function createPostHandler(
@@ -20,7 +22,6 @@ export async function createPostHandler(
 ) {
 
     const userId = res.locals.user._id;
-    const userClass = res.locals.user.class;
     const userPermission = res.locals.user.permissionLevel;
 
     if (Number(userPermission) !== 1 && Number(userPermission) !== 2) {
@@ -30,7 +31,7 @@ export async function createPostHandler(
     }
 
     const body = req.body;
-    const post = await createPost({ ...body, user: userId, class: userClass });
+    const post = await createPost({ ...body, user: userId });
 
     return res.send(post);
 
@@ -43,9 +44,9 @@ export async function updatePostHandler(
 
     const userId = res.locals.user._id;
 
-    const postId = req.params._id;
+    const _id = req.params._id;
     const update = req.body;
-    const post = await findPost({ postId });
+    const post = await findPost({ _id });
 
     if (!post) {
         return res.status(404).json({
@@ -60,7 +61,7 @@ export async function updatePostHandler(
     }
 
     const updatedPost = await findAndUpdatePost(
-        { postId },
+        { _id },
         update,
         { new: true }
     );
@@ -74,15 +75,36 @@ export async function getPostHandler(
     res: Response
 ) {
 
-    const postId = req.params._id;
+    const _id = req.params._id;
 
-    const post = await findPost({ postId });
+    const post = await findPost({ _id });
 
     if (!post) {
         return res.status(404);
     }
 
     return res.send(post);
+
+}
+
+export async function getPostsByUserHandler(
+    req: Request<getPostsByUserInput>,
+    res: Response
+) {
+
+    const _id = res.locals.user._id;
+
+    const posts = await findPostsByUser({ _id });
+
+    if (!posts) {
+        return res.status(404);
+    }
+
+    if (String(posts[0].user._id) !== _id) {
+        return res.status(403);
+    }
+
+    return res.send(posts);
 
 }
 
@@ -108,8 +130,8 @@ export async function deletePostHandler(
 
     const userId = res.locals.user._id;
 
-    const postId = req.params._id;
-    const post = await findPost({ postId });
+    const _id = req.params._id;
+    const post = await findPost({ _id });
 
     if (!post) {
         return res.status(404);
@@ -119,7 +141,7 @@ export async function deletePostHandler(
         return res.status(403);
     }
 
-    await deletePost({ postId });
+    await deletePost({ _id });
 
     return res.sendStatus(200).json({
         message: 'Post deleted'
