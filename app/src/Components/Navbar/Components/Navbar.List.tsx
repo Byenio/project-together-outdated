@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { loggedInNavbarItems, loggedOutNavbarItems } from './Navbar.Items';
-import { AuthContext } from '../../Contexts/Auth.Context';
+import { loggedInNavbarItems, loggedOutNavbarItems } from 'Components/Navbar/Components/Navbar.Items';
+import { AuthContext } from 'Contexts/Auth.Context';
 
 export interface NavlistInterface { };
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { AuthContext } from '../../../../Contexts/Auth.Context';
-import { Form, IFields } from '../../../Form/Form.Component';
-import { Field } from '../../../Form/Field/Form.Field.Component';
-import { getUsers } from '../../../../Proxies/getUsers';
-import { BASE_API_URL } from '../../../../config';
+import { AuthContext } from 'Contexts/Auth.Context';
+import { Form, IFields } from 'Components/Form/Form.Component';
+import { Field } from 'Components/Form/Field/Form.Field.Component';
+import { getUsers } from 'Proxies/Account.Manage.Tutors/getUsers';
+import { BASE_API_URL } from 'config';
 
 const useUsers = () => {
 

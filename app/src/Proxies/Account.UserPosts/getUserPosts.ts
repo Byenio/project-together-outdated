@@ -1,4 +1,4 @@
-import { BASE_API_URL } from "../config";
+import { BASE_API_URL } from "config";
 
 export const getUserPosts = async (auth: {
     accessToken?: string | null | undefined,

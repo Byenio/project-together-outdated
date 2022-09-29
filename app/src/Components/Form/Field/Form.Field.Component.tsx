@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorInterface, FormContextInterface, FormContext, ValuesInterface } from '../Form.Component';
+import { ErrorInterface, FormContextInterface, FormContext, ValuesInterface } from 'Components/Form/Form.Component';
 
 type Editor = "textbox" | "textarea" | "dropdown" | "email" | "password";
 

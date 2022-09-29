@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { getAllPosts } from "../../Proxies/getAllPosts";
+import { getAllPosts } from "Proxies/Posts/getAllPosts";
 
 export interface PostsInterface { };
 

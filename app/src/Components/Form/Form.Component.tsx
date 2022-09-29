@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { FieldInterfaceProps } from './Field/Form.Field.Component';
-import { AuthContext } from '../../Contexts/Auth.Context';
+import { FieldInterfaceProps } from 'Components/Form/Field/Form.Field.Component';
+import { AuthContext } from 'Contexts/Auth.Context';
 
 export interface IFields {
 

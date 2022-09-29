@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Account.Nav.Style.css';
-import { AccountNavlist } from './Account.Nav.List';
+import 'Components/Account/AccountNav/Account.Nav.Style.css';
+import { AccountNavlist } from 'Components/Account/AccountNav/Components/Account.Nav.List';
 
 export interface AccountNavInterface { };
 

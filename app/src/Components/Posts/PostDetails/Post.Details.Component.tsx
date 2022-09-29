@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { getPostDetails } from '../../../Proxies/getPostDetails';
+import { getPostDetails } from 'Proxies/Posts/getPostDetails';
 
 export interface PostDetailsInterface { };
 

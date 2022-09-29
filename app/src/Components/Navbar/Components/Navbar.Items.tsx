@@ -3,7 +3,7 @@ import {
     MdNotificationsNone,
     RiAccountBoxLine,
     BiMessageAltDetail
-} from "../../Icons/React.Icons"
+} from "Icons/React.Icons"
 
 export interface listInterface {
     title: string,

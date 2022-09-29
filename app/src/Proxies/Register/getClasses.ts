@@ -1,5 +1,5 @@
-import { BASE_API_URL } from '../config';
-import { sortAsc, sortDesc } from '../Scripts/Sort.Script';
+import { BASE_API_URL } from 'config';
+import { sortAsc, sortDesc } from 'Scripts/Sort.Script';
 
 export const getClasses = async () => {
 

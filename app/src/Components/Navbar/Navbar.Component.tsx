@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
-import Navlist from './Navbar.List';
+import 'Components/Navbar/navbar.css';
+import Navlist from 'Components/Navbar/Components/Navbar.List';
 
 export interface NavbarInterface { };
 

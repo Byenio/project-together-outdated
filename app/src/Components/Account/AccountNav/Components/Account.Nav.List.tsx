@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { accountNavItems_zero, accountNavItems_one, accountNavItems_two, listInterface } from './Account.Nav.Items';
-import { AuthContext } from '../../../Contexts/Auth.Context';
+import { accountNavItems_zero, accountNavItems_one, accountNavItems_two, listInterface } from 'Components/Account/AccountNav/Components/Account.Nav.Items';
+import { AuthContext } from 'Contexts/Auth.Context';
 
-import { FaDiscord } from '../../../Icons/React.Icons';
+import { FaDiscord } from 'Icons/React.Icons';
 
 export interface AccountNavlistInterface { };
 

@@ -1,5 +1,5 @@
-import { BASE_API_URL } from "../config";
-import { sortAsc } from '../Scripts/Sort.Script';
+import { BASE_API_URL } from "config";
+import { sortAsc } from 'Scripts/Sort.Script';
 
 export const getNewpostDropdown = async () => {
 

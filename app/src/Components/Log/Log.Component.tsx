@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Form, IFields } from '../Form/Form.Component';
-import { Field } from '../Form/Field/Form.Field.Component';
-import { BASE_API_URL } from "../../config";
+import { Form, IFields } from 'Components/Form/Form.Component';
+import { Field } from 'Components/Form/Field/Form.Field.Component';
+import { BASE_API_URL } from "config";
 
 export interface LogInterface { };
 

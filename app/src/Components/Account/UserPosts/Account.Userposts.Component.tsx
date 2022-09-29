@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../Contexts/Auth.Context';
-import { getUserPosts } from '../../../Proxies/getUserPosts';
+import { AuthContext } from 'Contexts/Auth.Context';
+import { getUserPosts } from 'Proxies/Account.UserPosts/getUserPosts';
 
 export interface UserPostsInterface { };
 

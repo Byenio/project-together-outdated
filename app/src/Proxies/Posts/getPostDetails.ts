@@ -1,5 +1,5 @@
 import { Params } from "react-router";
-import { BASE_API_URL } from "../config";
+import { BASE_API_URL } from "config";
 
 export const getPostDetails = async (params: Readonly<Params<string>>) => {
 

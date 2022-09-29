@@ -1,5 +1,5 @@
 import React, { useState, PropsWithChildren, useEffect } from 'react';
-import { getAuth } from '../Proxies/getAuth';
+import { getAuth } from 'Proxies/getAuth';
 
 export interface AuthContextInterface {
     authenticated: boolean;

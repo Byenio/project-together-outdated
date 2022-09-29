@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Form, IFields } from '../Form/Form.Component';
-import { Field } from '../Form/Field/Form.Field.Component';
-import { BASE_API_URL } from '../../config';
-import { getClasses } from '../../Proxies/getClasses';
+import { Form, IFields } from 'Components/Form/Form.Component';
+import { Field } from 'Components/Form/Field/Form.Field.Component';
+import { BASE_API_URL } from 'config';
+import { getClasses } from 'Proxies/Register/getClasses';
 
 const useClasses = () => {
 
