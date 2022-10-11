@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-hook-form": "^7.37.0",
     "universal-cookie": "^4.0.4"
   }
 }

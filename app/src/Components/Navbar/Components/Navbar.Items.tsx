@@ -42,6 +42,6 @@ export const loggedOutNavbarItems: listInterface[] = [
     },
     {
         title: 'Zaloguj',
-        for: 'login'
+        url: '/log'
     }
 ]

@@ -1,59 +1,44 @@
-import React from "react";
 import { Link } from 'react-router-dom';
-import { Form, IFields } from 'Components/Form/Form.Component';
-import { Field } from 'Components/Form/Field/Form.Field.Component';
 import { BASE_API_URL } from "config";
+import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
 
 export interface LogInterface { };
 
-const useFields = () => {
-
-    const fields: IFields = {
-        email: {
-            id: 'email',
-            label: 'Email',
-            editor: 'email'
-        },
-        password: {
-            id: 'password',
-            label: 'Password',
-            editor: 'password'
-        }
-
-    }
-
-    return { fields };
-
-}
 
 const Log: React.FunctionComponent = () => {
 
-    const { fields } = useFields();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+
+    const onSubmit = async (data: any) => {
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Accept", "application/json");
+
+        const response = await fetch(`${BASE_API_URL}/api/sessions`, {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(data)
+        })
+
+        const resData = await response.json();
+        localStorage.setItem('accessToken', resData.accessToken)
+        localStorage.setItem('refreshToken', resData.refreshToken)
+
+        navigate('/');
+        window.location.reload();
+
+    }
 
     return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="email" placeholder="Email" {...register('email', { required: true })} />
+            <input type="password" placeholder="Password" {...register('password', { required: true })} />
 
-        <>
-            <Form
-                service={{
-                    success: 'Login successful',
-                    error: 'Invalid email or password',
-                    invalid: 'Invalid email or password'
-                }}
-                action={`${BASE_API_URL}/api/sessions`}
-                method="POST"
-                fields={fields}
-                render={() => (
-
-                    <React.Fragment>
-                        <Field {...fields.email} />
-                        <Field {...fields.password} />
-                    </React.Fragment>
-
-                )}
-            />
-            <Link to='/register'>Nie masz konta? Zarejestruj sie</Link>
-        </>
-
+            <input type="submit" />
+        </form>
     );
 
 }

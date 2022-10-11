@@ -2,7 +2,7 @@ export default {
 
     port: 1337,
     host: 'localhost',
-    dbUri: 'mongodb://127.0.0.1:27017/project-together',
+    dbUri: `mongodb://admin:Win123@10.0.0.240:27017/project-together`,
     saltWorkFactor: 16,
     accessTokenTtl: '15m',
     refreshTokenTtl: '1y',

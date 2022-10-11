@@ -4,7 +4,7 @@ export const getAuth = async (auth: {
     authenticated?: boolean;
     accessToken: string;
     refreshToken: string;
-    userData: {
+    userData?: {
         email: string,
         permissionLevel: {
             level: number

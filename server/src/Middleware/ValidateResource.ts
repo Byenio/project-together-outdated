@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { AnyZodObject } from 'zod';
 
-const validate = (schema: AnyZodObject) => (req: Request, res: Response, next:NextFunction) => {
+const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
 
     try {
         schema.parse({
@@ -10,7 +10,7 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next:Ne
             params: req.params
         });
         next();
-    } catch( e: any ) {
+    } catch (e: any) {
         return res.status(400).send(e.errors);
     }
 

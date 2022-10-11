@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { loggedInNavbarItems, loggedOutNavbarItems } from 'Components/Navbar/Components/Navbar.Items';
 import { AuthContext } from 'Contexts/Auth.Context';
 
@@ -21,6 +21,9 @@ const Navlist: React.FunctionComponent<NavlistInterface> = (props) => {
                 level: 0
             }
         }
+
+        localStorage.setItem('accessToken', '');
+        localStorage.setItem('refreshToken', '');
 
         navigate('/log');
 
