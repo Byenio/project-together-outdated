@@ -10,12 +10,12 @@ import { createUser, getUser, getAllUsers, findUser, findAndUpdateUser } from '.
 import logger from '../Utils/Logger';
 import { omit } from 'lodash';
 
-export async function createUserHandler( req: Request<{}, {}, CreateUserInput['body']>, res: Response ) {
+export async function createUserHandler(req: Request<{}, {}, CreateUserInput['body']>, res: Response) {
 
     try {
         const user = await createUser(req.body);
         return res.send(user);
-    } catch(e: any) {
+    } catch (e: any) {
         logger.error(e);
         return res.status(409).send(e.message);
     }
@@ -67,19 +67,20 @@ export async function updateUserHandler(
     res: Response
 ) {
 
-    const userId = res.locals.user._id;
-    const update = req.body;
+    const _id = req.body._id;
+    const update = {
+        'permissionLevel': req.body.permissionLevel
+    }
+    const user = await findUser({ _id });
 
-    const user = await findUser({ userId });
-
-    if(!user) {
+    if (!user) {
         return res.status(404).json({
             message: 'User not found'
         });
     }
 
     const updatedUser = await findAndUpdateUser(
-        { userId },
+        { _id },
         update,
         { new: true }
     );
@@ -99,8 +100,8 @@ export async function getAllUsersHandler(
 
     const fetchItems = async () => {
         var myHeaders = new Headers();
-        myHeaders.append('authorization', `Bearer ${ accessToken }`);
-        myHeaders.append('x-refresh', `Bearer ${ refreshToken }`);
+        myHeaders.append('authorization', `Bearer ${accessToken}`);
+        myHeaders.append('x-refresh', `Bearer ${refreshToken}`);
 
         var requestOpitons = {
             method: 'GET',
@@ -110,7 +111,7 @@ export async function getAllUsersHandler(
             'http://localhost:1337/api/permissions/all',
             requestOpitons
         )
-        
+
         const data = await response.json();
         return data;
     }

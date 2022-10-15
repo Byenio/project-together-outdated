@@ -1,6 +1,6 @@
 import React from "react";
 
-import AccountNav from 'Components/Account/AccountNav/Account.Nav.Component';
+import AccountNav from 'Components/Account/Components/AccountNav/Account.Nav.Component';
 
 export interface AccountInterface { };
 

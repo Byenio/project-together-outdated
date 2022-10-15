@@ -8,6 +8,9 @@ import {
     getPostsByUserInput
 } from '../Schema/Post.Schema';
 import {
+    getUser
+} from '../Service/User.Service';
+import {
     createPost,
     findPost,
     findAndUpdatePost,
@@ -21,8 +24,9 @@ export async function createPostHandler(
     res: Response
 ) {
 
-    const userId = res.locals.user._id;
-    const userPermission = res.locals.user.permissionLevel;
+    const _id = res.locals.user._id;
+    const user = await getUser({ _id })
+    const userPermission = await user!.permissionLevel!.level;
 
     if (Number(userPermission) !== 1 && Number(userPermission) !== 2) {
         return res.status(403).json({
@@ -31,7 +35,7 @@ export async function createPostHandler(
     }
 
     const body = req.body;
-    const post = await createPost({ ...body, user: userId });
+    const post = await createPost({ ...body, user: _id });
 
     return res.send(post);
 

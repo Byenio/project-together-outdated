@@ -33,12 +33,24 @@ const Log: React.FunctionComponent = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="email" placeholder="Email" {...register('email', { required: true })} />
-            <input type="password" placeholder="Password" {...register('password', { required: true })} />
-
-            <input type="submit" />
-        </form>
+        <>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    {...register('email', { required: true })}
+                />
+                {errors.email && <span>Email is required</span>}
+                <input
+                    type="password"
+                    placeholder="Password"
+                    {...register('password', { required: true })}
+                />
+                {errors.password && <span>Password is required</span>}
+                <input type="submit" />
+            </form>
+            Nie masz konta? <Link to='/register'>Zarejestruj się!</Link>
+        </>
     );
 
 }
