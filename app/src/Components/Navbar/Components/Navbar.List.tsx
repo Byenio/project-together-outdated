@@ -39,28 +39,23 @@ const Navlist: React.FunctionComponent<NavlistInterface> = (props) => {
 
     return (
 
-        <div className='navbar-menu-container'>
+        <div className='hidden md:flex navbar-menu-container justify-end items-center'>
 
-            <ul className='navbar-menu-list'>
+            <ul className='navbar-menu-list text-white'>
                 {list.map((menu, index) => {
                     if (menu.icon && menu.url) {
                         const icon = React.createElement(menu.icon);
                         return (
-                            <Link to={menu.url} key={index}>{icon}{menu.title}</Link>
+                            <Link className="flex items-center gap-1 font-medium" to={menu.url} key={index}>{icon}{menu.title}</Link>
                         )
                     } else if (menu.url) {
                         return (
-                            <Link to={menu.url} key={index}>{menu.title}</Link>
-                        )
-                    } else if (menu.for === 'notifications' && menu.icon) {
-                        const icon = React.createElement(menu.icon);
-                        return (
-                            <li key={index}>{icon}{menu.title}</li>
+                            <Link className="flex items-center gap-1 font-medium" to={menu.url} key={index}>{menu.title}</Link>
                         )
                     } else if (menu.for === 'logout' && menu.icon) {
                         const icon = React.createElement(menu.icon);
                         return (
-                            <li key={index} onClick={Logout} >{icon}{menu.title}</li>
+                            <li className="flex items-center gap-1 font-medium" key={index} onClick={Logout} >{icon}{menu.title}</li>
                         )
                     }
                 })}

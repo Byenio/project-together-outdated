@@ -24,11 +24,6 @@ export const loggedInNavbarItems: listInterface[] = [
         icon: RiAccountBoxLine
     },
     {
-        title: 'Powiadomienia',
-        for: 'notifications',
-        icon: MdNotificationsNone
-    },
-    {
         title: 'Wyloguj',
         for: 'logout',
         icon: FiLogOut
