@@ -2,7 +2,7 @@ import { DocumentDefinition, FilterQuery, UpdateQuery, QueryOptions } from 'mong
 import { omit } from 'lodash';
 import UserModel, { UserDocument } from '../Models/User.Model';
 
-export async function createUser(input: DocumentDefinition<Omit<UserDocument, 'createdAt' | 'updatedAt' | 'comparePassword' | 'permissionLevel'>>) {
+export async function createUser(input: DocumentDefinition<Omit<UserDocument, 'createdAt' | 'updatedAt' | 'comparePassword'>>) {
 
     try {
         const user = await UserModel.create(input);

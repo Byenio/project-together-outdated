@@ -40,7 +40,7 @@ export const createUserSchema = object({
         class: string({
             required_error: 'Class is required'
         }),
-        permission: string({
+        permissionLevel: string({
             required_error: 'Permission is required'
         })
     }).refine((data) => data.password === data.passwordConfirmation, {

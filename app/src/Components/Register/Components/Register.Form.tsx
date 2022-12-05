@@ -23,7 +23,7 @@ export const RegisterForm: FC<IRegisterForm> = (props) => {
     const permissionsResponse = await fetch(`${BASE_API_URL}/api/permissions/all`);
     const permissions = await permissionsResponse.json();
 
-    data.permission = permissions.filter((permission: { level: number; }) => permission.level === 0)[0]._id;
+    data.permissionLevel = permissions.filter((permission: { level: number; }) => permission.level === 0)[0]._id;
 
     const response = await fetch(`${BASE_API_URL}/api/users`, {
       method: "POST",
