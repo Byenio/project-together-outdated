@@ -100,7 +100,7 @@ export async function getPostsByUserHandler(
 
     const posts = await findPostsByUser({ _id });
 
-    if (!posts) {
+    if (!posts.length) {
         return res.status(404);
     }
 
