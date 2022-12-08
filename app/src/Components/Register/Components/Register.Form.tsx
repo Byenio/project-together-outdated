@@ -111,7 +111,7 @@ export const RegisterForm: FC<IRegisterForm> = (props) => {
       </form>
       {loading &&
         <div>
-          Loading...
+          Ładowanie...
         </div>
       }
       {fetchError &&
