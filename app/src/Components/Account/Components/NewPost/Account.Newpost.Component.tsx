@@ -73,7 +73,7 @@ function NewPost() {
     }
 
     return (
-        <>
+        <div className='flex-1 min-width-[70%]'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <textarea cols={30} rows={10} {...register('description')}></textarea>
                 <select {...register('subject')}>
@@ -108,7 +108,7 @@ function NewPost() {
                     Wprowadzono niepoprawne dane
                 </div>
             }
-        </>
+        </div>
     );
 
 }

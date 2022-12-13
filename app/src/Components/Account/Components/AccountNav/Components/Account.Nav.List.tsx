@@ -25,7 +25,7 @@ export const AccountNavlist: React.FunctionComponent<AccountNavlistInterface> = 
 
     return (
 
-        <ul className="account-nav-list">
+        <ul className="account-nav-list text-black flex-1 min-w-[300px]">
             {accountNavItems.map((item, index) => {
                 const icon = React.createElement(item.icon);
                 if (item.submenu) {

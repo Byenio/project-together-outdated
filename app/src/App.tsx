@@ -31,8 +31,10 @@ function App() {
           <Route path='/' element={<Posts />} />
           <Route path='/account' element={
             <>
+              <div className='w-full flex'>
               <Account />
               <UserPosts />
+              </div>
             </>
           } />
 
@@ -40,15 +42,19 @@ function App() {
 
           <Route path='/account/new-post' element={
             <>
+              <div className='w-full flex'>
               <Account />
               <NewPost />
+              </div>
             </>
           } />
 
           <Route path='/account/manage/users' element={
             <>
+              <div className='w-full flex'>
               <Account />
               <Users />
+              </div>
             </>
           } />
 

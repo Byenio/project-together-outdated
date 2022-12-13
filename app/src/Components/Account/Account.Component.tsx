@@ -8,9 +8,7 @@ const Account: React.FunctionComponent<AccountInterface> = (props) => {
 
     return (
         <>
-
             <AccountNav />
-
         </>
     );
 

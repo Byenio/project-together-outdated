@@ -9,7 +9,7 @@ const AccountNav: React.FunctionComponent<AccountNavInterface> = (props) => {
 
     return (
 
-        <div className="account-nav">
+        <div className="account-nav flex-1">
 
             <AccountNavlist />
 
