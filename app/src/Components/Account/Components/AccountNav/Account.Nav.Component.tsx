@@ -9,7 +9,7 @@ const AccountNav: React.FunctionComponent<AccountNavInterface> = (props) => {
 
     return (
 
-        <div className="account-nav flex-1">
+        <div className="account-nav flex-1 max-w-[450px] md:grow-0">
 
             <AccountNavlist />
 

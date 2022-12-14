@@ -31,7 +31,7 @@ function App() {
           <Route path='/' element={<Posts />} />
           <Route path='/account' element={
             <>
-              <div className='w-full flex'>
+              <div className='w-full flex flex-wrap justify-items-center'>
               <Account />
               <UserPosts />
               </div>
@@ -42,7 +42,7 @@ function App() {
 
           <Route path='/account/new-post' element={
             <>
-              <div className='w-full flex'>
+              <div className='w-full flex flex-wrap justify-items-center'>
               <Account />
               <NewPost />
               </div>
@@ -51,7 +51,7 @@ function App() {
 
           <Route path='/account/manage/users' element={
             <>
-              <div className='w-full flex'>
+              <div className='w-full flex flex-wrap justify-items-center'>
               <Account />
               <Users />
               </div>

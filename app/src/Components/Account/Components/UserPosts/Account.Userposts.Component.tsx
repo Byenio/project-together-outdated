@@ -38,16 +38,16 @@ const UserPosts: React.FunctionComponent<UserPostsInterface> = (props) => {
 
     return (
 
-        <div className='posts-container'>
+        <div className='posts-container flex-1 flex flex-wrap'>
 
             {userPosts.map(item => {
                 return (
 
-                    <div key={item._id}>
-                        <div>{item.subject.name}</div>
-                        <div>{item.type.name}</div>
-                        <div>{item.user.name} {item.user.class.name}</div>
-                        <div>{item.description}</div>
+                    <div key={item._id} className="p-3 flex flex-wrap text-black border-2 m-[1vw] w-1/4 rounded-xl min-w-[250px] grow min-h-[200px]">
+                        <div className='basis-1/2 text-left text-xl font-semibold'>{item.subject.name}</div>
+                        <div className='basis-1/2 text-right'>{item.user.name} {item.user.class.name}</div>
+                        <div className='text-left basis-[100%] grow'>{item.type.name}</div>
+                        <div className='flex flex-wrap h-[30%] break-normal basis-[100%]'><p className='w-full text-center'>{item.description}</p></div>
                         <Link to={`/post/${item._id}`}>Go to post</Link>
                     </div>
 

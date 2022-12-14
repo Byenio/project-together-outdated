@@ -38,19 +38,20 @@ export const Posts: React.FunctionComponent<PostsInterface> = (props) => {
         <>
 
             <h1>Posts</h1>
-            {posts.map(item => {
-                return (
+            <div className="w-full flex flex-wrap">
+                {posts.map(item => {
+                    return (
 
-                    <div key={item._id}>
-                        <div>{item.subject.name}</div>
-                        <div>{item.type.name}</div>
-                        <div>{item.user.name} {item.user.class.name}</div>
-                        <div>{item.description}</div>
-                        <Link to={`/post/${item._id}`}>Go to post</Link>
-                    </div>
-
-                )
-            })}
+                        <div key={item._id} className="min-w-[400px] flex flex-wrap">
+                            <div className="flex-1">{item.subject.name}</div>
+                            <div className="flex-1">{item.type.name}</div>
+                            <div className="flex-1">{item.user.name} {item.user.class.name}</div>
+                            <div className="flex-1">{item.description}</div>
+                            <Link to={`/post/${item._id}`}>Go to post</Link>
+                        </div>
+                    )
+                })}
+            </div>
 
         </>
 
