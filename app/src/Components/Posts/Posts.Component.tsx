@@ -36,7 +36,7 @@ export const Posts: React.FunctionComponent<PostsInterface> = (props) => {
     return (
 
         <>
-            <div className="w-full flex flex-wrap justify-around">
+            <div className="w-full flex flex-wrap justify-center">
                 {posts.map(item => {
                     return (
 
