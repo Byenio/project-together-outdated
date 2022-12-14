@@ -74,9 +74,11 @@ function NewPost() {
 
     return (
         <div className='flex-1 min-width-[70%]'>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <textarea cols={30} rows={10} {...register('description')}></textarea>
-                <select {...register('subject')}>
+            <form onSubmit={handleSubmit(onSubmit)} className='text-black rounded-xl justify-end border-4 m-5 p-5 flex flex-wrap'>
+                <textarea cols={30} rows={10} {...register('description')} placeholder="Podaj opis postu" className="basis-[100%] border-2"></textarea>
+                <div>
+                Przedmiot
+                <select {...register('subject')} className="ml-2 mr-5">
                     <option disabled selected>-</option>
                     {subjects.map(subject => {
                         return (
@@ -86,7 +88,10 @@ function NewPost() {
                         )
                     })}
                 </select>
-                <select {...register('type')}>
+                </div>
+                <div>
+                Typ
+                <select {...register('type')} className="ml-2 mr-5">
                     <option disabled selected>-</option>
                     {types.map(type => {
                         return (
@@ -96,6 +101,7 @@ function NewPost() {
                         )
                     })}
                 </select>
+                </div>
                 <input type="submit" value="Utwórz post" />
             </form>
             {loading &&
