@@ -36,8 +36,6 @@ export const Posts: React.FunctionComponent<PostsInterface> = (props) => {
     return (
 
         <>
-
-            <h1>Posts</h1>
             <div className="w-full flex flex-wrap">
                 {posts.map(item => {
                     return (
