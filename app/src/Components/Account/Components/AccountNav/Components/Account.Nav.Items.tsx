@@ -20,7 +20,7 @@ export interface listInterface {
 export const accountNavItems_zero: listInterface[] = [
     {
         title: 'Ustawienia konta',
-        url: '/account/settings',
+        url: '/account/development',
         icon: FiSettings
     }
 ]
@@ -38,7 +38,7 @@ export const accountNavItems_one: listInterface[] = [
     },
     {
         title: 'Ustawienia konta',
-        url: '/account/settings',
+        url: '/account/development',
         icon: FiSettings
     }
 ]
@@ -61,29 +61,29 @@ export const accountNavItems_two: listInterface[] = [
         submenu: [
             {
                 title: 'Użytkownicy',
-                url: '/account/manage/users',
+                url: '/account/development',
                 icon: VscMortarBoard
             },
             {
                 title: 'Klasy',
-                url: '/account/manage/classes',
+                url: '/account/development',
                 icon: SiGoogleclassroom
             },
             {
                 title: 'Przedmioty',
-                url: '/account/manage/subjects',
+                url: '/account/development',
                 icon: BiBookBookmark
             },
             {
                 title: 'Typy postów',
-                url: '/account/manage/post-types',
+                url: '/account/development',
                 icon: MdFormatListBulleted
             }
         ]
     },
     {
         title: 'Ustawienia konta',
-        url: '/account/settings',
+        url: '/account/development',
         icon: FiSettings
     }
 ]

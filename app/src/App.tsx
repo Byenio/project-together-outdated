@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import UserPosts from './Components/Account/Components/UserPosts/Account.Userposts.Component';
 import NewPost from './Components/Account/Components/NewPost/Account.Newpost.Component';
+import Development from './Components/Account/Components/Development/Account.Development.Component';
 
 import Navbar from './Components/Navbar/Navbar.Component';
 import { Posts } from './Components/Posts/Posts.Component';
@@ -49,11 +50,11 @@ function App() {
             </>
           } />
 
-          <Route path='/account/manage/users' element={
+          <Route path='/account/development' element={
             <>
               <div className='w-full flex flex-wrap justify-items-center'>
               <Account />
-              <Users />
+              <Development />
               </div>
             </>
           } />
