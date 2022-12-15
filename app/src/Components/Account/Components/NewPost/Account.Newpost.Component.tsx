@@ -75,37 +75,37 @@ function NewPost() {
     return (
         <div className='flex-1 min-width-[70%]'>
             <form onSubmit={handleSubmit(onSubmit)} className='text-black rounded-xl justify-end border-4 m-5 p-5 flex flex-wrap'>
-                <textarea cols={30} rows={10} {...register('description')} placeholder="Podaj opis postu" className="basis-[100%] border-2"></textarea>
+                <textarea cols={30} rows={10} {...register('description')} placeholder="Podaj opis postu" className="basis-[100%] border-2 text-black"></textarea>
                 <div>
-                Przedmiot
-                <select {...register('subject')} className="ml-2 mr-5">
-                    <option disabled selected>-</option>
-                    {subjects.map(subject => {
-                        return (
-                            <option value={subject._id}>
-                                {subject.name}
-                            </option>
-                        )
-                    })}
-                </select>
+                    Przedmiot
+                    <select {...register('subject')} className="ml-2 mr-5">
+                        <option disabled selected>-</option>
+                        {subjects.map(subject => {
+                            return (
+                                <option value={subject._id}>
+                                    {subject.name}
+                                </option>
+                            )
+                        })}
+                    </select>
                 </div>
                 <div>
-                Typ
-                <select {...register('type')} className="ml-2 mr-5">
-                    <option disabled selected>-</option>
-                    {types.map(type => {
-                        return (
-                            <option value={type._id}>
-                                {type.name}
-                            </option>
-                        )
-                    })}
-                </select>
+                    Typ
+                    <select {...register('type')} className="ml-2 mr-5">
+                        <option disabled selected>-</option>
+                        {types.map(type => {
+                            return (
+                                <option value={type._id}>
+                                    {type.name}
+                                </option>
+                            )
+                        })}
+                    </select>
                 </div>
                 <input type="submit" value="Utwórz post" />
             </form>
             {loading &&
-                <div>
+                <div className='basis-full text-black'>
                     Ładowanie...
                 </div>
             }
