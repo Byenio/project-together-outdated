@@ -15,7 +15,7 @@ const Navbar: React.FunctionComponent<NavbarInterface> = (props) => {
 
             <div className="navbar-logo-container">
                 <Link to="/">
-                    <img src={require("../../img/logo192.png")} alt="ZSTI logo" className="navbar-logo-image" />
+                    <img src={require("../../img/logo.png")} alt="ZSTI logo" className="navbar-logo-image min-w-[190px]" />
                 </Link>
             </div>
 

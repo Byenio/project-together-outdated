@@ -74,26 +74,27 @@ export const RegisterForm: FC<IRegisterForm> = (props) => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+    <div className='flex justify-center w-full p-10 m-2 flex-wrap'>
+      <div className='flex justify-center w-full max-w-[600px] p-6 flex-wrap rounded-xl border-4'>
+      <form onSubmit={handleSubmit(onSubmit)} className='text-black flex justify-center w-[60%] flex-wrap'>
+        <div className="basis-[100%]">
           <label>Imię i nazwisko</label>
-          <input {...register('name')} />
+          <input {...register('name')} className="basis-[100%] bg-gray-300	m-2 rounded-md"/>
         </div>
-        <div>
+        <div className="basis-[100%]">
           <label>Adres email</label>
-          <input type='email' {...register('email')} />
+          <input type='email' {...register('email')} className="bg-gray-300	m-2 rounded-md"/>
         </div>
-        <div>
+        <div className="basis-[100%]">
           <label>Hasło</label>
-          <input type='password' {...register('password')} />
+          <input type='password' {...register('password')} className="basis-[100%] bg-gray-300	m-2 rounded-md"/>
         </div>
-        <div>
+        <div className="basis-[100%]">
           <label>Potwierdź hasło</label>
-          <input type='password' {...register('passwordConfirmation')} />
+          <input type='password' {...register('passwordConfirmation')} className="basis-[100%] bg-gray-300	m-2 rounded-md"/>
         </div>
-        <div>
-          <label>Klasa</label>
+        <div className="basis-[100%]">
+          <label>Klasa   </label>
           <select {...register('class')}>
             <option disabled selected>-</option>
             {props.classes.map(element => {
@@ -119,7 +120,8 @@ export const RegisterForm: FC<IRegisterForm> = (props) => {
           Użytkownik z podanym adresem email już istnieje
         </div>
       }
-    </>
+      </div>
+    </div>
   )
 
 }

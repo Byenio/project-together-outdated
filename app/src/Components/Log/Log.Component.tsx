@@ -48,23 +48,26 @@ const Log: React.FunctionComponent = () => {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='flex justify-center w-full p-10 m-2 flex-wrap'>
+            <div className='flex justify-center w-full max-w-[600px] p-6 flex-wrap rounded-xl border-4'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex justify-center w-full flex-wrap'>
                 <input
                     type="email"
                     placeholder="Email"
                     {...register('email', { required: true })}
+                    className="basis-[100%] bg-gray-300	m-2 rounded-md"
                 />
                 {errors.email && <span>Email is required</span>}
                 <input
                     type="password"
                     placeholder="Password"
+                    className="basis-[100%] bg-gray-300	m-2 rounded-md"
                     {...register('password', { required: true })}
                 />
                 {errors.password && <span>Password is required</span>}
-                <input type="submit" />
+                <input type="submit" className="basis-[100%] text-black"/>
             </form>
-            Nie masz konta? <Link to='/register'>Zarejestruj się!</Link>
+            <p className='text-black'>Nie masz konta? <u><Link to='/register'>Zarejestruj się!</Link></u></p>
             {loading &&
                 <div>
                     Ładowanie...
@@ -75,7 +78,8 @@ const Log: React.FunctionComponent = () => {
                     Podano niepoprawne dane logowania
                 </div>
             }
-        </>
+            </div>
+        </div>
     );
 
 }
